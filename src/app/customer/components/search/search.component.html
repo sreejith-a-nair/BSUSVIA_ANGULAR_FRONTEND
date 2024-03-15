@@ -1,0 +1,89 @@
+<div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="420px">
+    <!-- Departure Place Dropdown -->
+    <div></div>
+    <mat-form-field fxFlex class="input-style from-input-styles">
+      <mat-label>From</mat-label>
+      <mat-select formControlName="departurePlace" required class="from-input-styles" (selectionChange)="onDeparturePlaceSelectionChange($event.value)">
+        <mat-icon matSuffix>departure</mat-icon>
+        <mat-option *ngFor="let district of fromPlace" [value]="district">{{ district }}</mat-option>
+      </mat-select>
+      <!-- <input matInput placeholder="Other..." formControlName="customDeparturePlace" class="from-input-styles" style="flex: 3;" [hidden]="!showInputField" /> -->
+      <mat-error *ngIf="selectedFromToAndDate.controls['departurePlace'].touched && selectedFromToAndDate.controls['departurePlace'].hasError('required')">
+        <span>This field is mandatory.</span>
+      </mat-error>
+    </mat-form-field>
+  
+    <!-- Arrival Place Dropdown -->
+    <mat-form-field fxFlex class="input-style">
+      <mat-label>To</mat-label>
+      <mat-select formControlName="arrivalPlace" required  (selectionChange)="onArrivalPlaceSelectionChange($event.value)">
+        <mat-option *ngFor="let district of toPlace" [value]="district">{{ district }}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="selectedFromToAndDate.controls['arrivalPlace'].touched && selectedFromToAndDate.controls['arrivalPlace'].hasError('required')">
+        <span>This field is mandatory.</span>
+      </mat-error>
+    </mat-form-field>
+  
+    <!-- From Date -->
+    <mat-form-field appearance="fill" class="input-style">
+      <mat-label>Date</mat-label>
+      <input matInput formControlName="departureDate" [matDatepicker]="departurePicker" (dateChange)="onDepartureDateChange($event.value)" />
+      <mat-datepicker-toggle matSuffix [for]="departurePicker"></mat-datepicker-toggle>
+      <mat-datepicker #departurePicker></mat-datepicker>
+      <mat-error *ngIf="selectedFromToAndDate.controls['departureDate'].touched && selectedFromToAndDate.controls['departureDate'].hasError('required')">
+        <span>This field is mandatory.</span>
+      </mat-error>
+    </mat-form-field>
+    
+  
+    <!-- Search Button -->
+    <button class="button-input-styles input-style" mat-raised-button color="primary" (click)="search()">Search</button>
+  </div>
+  
+
+<!-- 
+<div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="420px" >
+  
+    <div>
+        
+    </div>
+    <mat-form-field fxFlex class="input-style from-input-styles">
+      <mat-label>From</mat-label>
+      <mat-select formControlName="departurePlace" required class="from-input-styles">
+        <mat-icon matSuffix>departure</mat-icon>
+        <mat-option *ngFor="let district of fromPlace" [value]="district">{{ district }}</mat-option>
+      </mat-select>
+      <input matInput placeholder="Other..." formControlName="customDeparturePlace" class="from-input-styles" style="flex: 3;" [hidden]="!showInputField">
+          <mat-icon matSuffix>departure</mat-icon>
+      <mat-error *ngIf="selectedFromToAndDate.controls['departurePlace'].touched && selectedFromToAndDate.controls['departurePlace'].hasError('required')">
+        <span>This field is mandatory.</span>
+      </mat-error>
+    </mat-form-field>
+  
+    <mat-form-field fxFlex class="input-style">
+      <mat-label>To</mat-label>
+      <mat-select formControlName="arrivalPlace" required>
+        <mat-option *ngFor="let district of toPlace" [value]="district">{{ district }}</mat-option>
+      </mat-select>
+      <mat-icon matSuffix>arrival</mat-icon>
+      <mat-error *ngIf="selectedFromToAndDate.controls['arrivalPlace'].touched && selectedFromToAndDate.controls['arrivalPlace'].hasError('required')">
+        <span>This field is mandatory.</span>
+      </mat-error>
+    </mat-form-field>
+  
+
+    <mat-form-field appearance="fill" class="input-style">
+      <mat-label>Date</mat-label>
+      <input matInput formControlName="departureDate" [matDatepicker]="departurePicker">
+      <mat-datepicker-toggle matSuffix [for]="departurePicker"></mat-datepicker-toggle>
+      <mat-datepicker #departurePicker></mat-datepicker>
+      <mat-error *ngIf="selectedFromToAndDate.controls['departureDate'].touched && selectedFromToAndDate.controls['departureDate'].hasError('required')">
+        <span>This field is mandatory.</span>
+      </mat-error>
+    </mat-form-field>
+  
+    <button class="button-input-styles input-style" mat-raised-button color="primary" (click)="search()">Search</button>
+  </div> -->
+  
+  
+  

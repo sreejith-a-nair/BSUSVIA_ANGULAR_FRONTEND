@@ -1,0 +1,37 @@
+<p>common-dialog works!</p>
+<mat-toolbar color="primary">
+    <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
+      <span>{{ title }}</span>
+      <span class="spacer"></span>
+      <button class="mat-dialog-close" mat-icon-button mat-dialog-close>
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  
+  <mat-dialog-content class="mat-typography">
+    <form [formGroup]="form">
+      <div fxFlex fxLayout="column">
+        <div *ngFor="let field of fields">
+          <mat-form-field fxFlex style="width: 100%;">
+            <mat-label>{{ field.label }}</mat-label>
+            <input matInput [formControlName]="field.controlName" [type]="field.type || 'text'">
+            <mat-error *ngIf="form.get(field.controlName)?.touched && form.get(field.controlName)?.invalid">
+              <!-- <span *ngIf="form.get(field.controlName)?.errors.required">This field is mandatory.</span>
+              <span *ngIf="form.get(field.controlName)?.errors.pattern">This field is invalid.</span> -->
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </form>
+  </mat-dialog-content>
+  <!-- (click)="onSubmit()" -->
+  <mat-dialog-actions align="end">
+    <button mat-raised-button color="primary" type="button"  [disabled]="!form.valid">
+      <mat-icon>send</mat-icon>Submit
+    </button>
+    <button mat-raised-button color="warn" mat-dialog-close>
+      <mat-icon>cancel</mat-icon>Close
+    </button>
+  </mat-dialog-actions>
+  

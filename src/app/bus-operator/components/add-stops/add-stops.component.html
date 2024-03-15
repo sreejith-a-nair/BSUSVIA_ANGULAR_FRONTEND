@@ -1,0 +1,40 @@
+<h2 mat-dialog-title>Add Stops</h2>
+
+<mat-dialog-content>
+  <div class="dialog-content">
+    <!-- Left side: List of stops -->
+    <div class="left-side">
+      <div *ngFor="let stop of stops" class="stop-item">
+        <mat-form-field appearance="fill">
+          <mat-label>Stop {{ stop.number }}</mat-label>
+          <mat-select [(ngModel)]="stop.selectedDistrict"  placeholder="Select district">
+            <mat-option *ngFor="let district of DistrictsArray" [value]="district">{{ district }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button mat-icon-button color="warn" *ngIf="stop.number !== 1 && stop.number !== stops.length" (click)="removeStop(stop.number)">
+          <mat-icon>remove</mat-icon>
+        </button>
+      </div>
+    </div>
+
+    <!-- Right side: Start and end points -->
+    <div class="right-side">
+      <mat-form-field appearance="fill">
+        <mat-label>Start Point</mat-label>
+        <input matInput [(ngModel)]="data.start" disabled>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>End Point</mat-label>
+        <input matInput [(ngModel)]="data.end" disabled>
+      </mat-form-field>
+    </div>
+  </div>
+</mat-dialog-content>
+
+
+<mat-dialog-actions align="end">
+  <button mat-raised-button color="primary" (click)="addStop()">Add Stop</button>
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-raised-button color="accent" [disabled]="stops.length < 2 ||  !isSaveEnabled()" (click)="saveStops()   ">Save</button>
+</mat-dialog-actions>
+

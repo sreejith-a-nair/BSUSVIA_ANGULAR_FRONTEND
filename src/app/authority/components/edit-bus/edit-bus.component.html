@@ -1,0 +1,145 @@
+
+<mat-toolbar color="primary">
+    <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
+      <span>Edit Bus</span>
+      <span class="spacer"></span>
+      <button class="mat-dialog-close" mat-icon-button mat-dialog-close>
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-toolbar-row>
+</mat-toolbar>
+  
+<mat-dialog-content class="mat-typography">
+    <form [formGroup]="addBusForm">
+        <div fxFlex fxLayout="column">
+            <mat-form-field  fxFlex style="width: 100%;">
+                <mat-label>Bus Name</mat-label>
+                <input matInput formControlName="busName" type="text" required>
+                <mat-error *ngIf="addBusForm.controls['busName'].touched && addBusForm.controls['busName'].hasError('required')">
+                    <span>This field is mandatory.</span>
+                </mat-error>    
+                <mat-error *ngIf="addBusForm.controls['busName'].touched && addBusForm.controls['busName'].hasError('pattern')">
+                    <span>Invalid bus Name format.</span>
+                  </mat-error>           
+            </mat-form-field>
+            <mat-form-field  fxFlex style="width: 100%;">
+                <mat-label>Bus Number</mat-label>
+                <input matInput formControlName="busNumber" type="text" required>
+                <mat-error *ngIf="addBusForm.controls['busNumber'].touched && addBusForm.controls['busNumber'].hasError('pattern')">
+                    <span>Invalid bus number format.</span>
+                  </mat-error>
+                  <mat-error *ngIf="addBusForm.controls['busNumber'].touched && addBusForm.controls['busNumber'].hasError('required')">
+                    <span>This field is mandatory.</span>
+                  </mat-error>
+
+            </mat-form-field>
+            <mat-form-field  fxFlex style="width: 100%;">
+                <mat-label>Type</mat-label>
+                <input matInput formControlName="busType" type="text" required>
+                <mat-select formControlName="busType" required>
+                    <mat-option *ngFor="let type of busTypes" [value]="type">{{ type }}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="addBusForm.controls['busType'].touched && addBusForm.controls['busType'].hasError('required')">
+                    <span>This field is mandatory.</span>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field  fxFlex style="width: 100%;">
+                <mat-label>Category</mat-label>
+                <input matInput formControlName="category" type="text" required>
+                <mat-select formControlName="category" required>
+                    <mat-option *ngFor="let categ of categories" [value]="categ">{{ categ }}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="addBusForm.controls['category'].touched && addBusForm.controls['category'].hasError('required')">
+                    <span>This field is mandatory.</span>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field  fxFlex style="width: 100%;">
+                <mat-label>Total Seat</mat-label>
+                <input matInput formControlName="totalSeats" type="number" required>
+                <mat-error *ngIf="addBusForm.controls['totalSeats'].touched && addBusForm.controls['totalSeats'].hasError('required')">
+                    <span>This field is mandatory.</span>
+                </mat-error>   
+                <mat-error *ngIf="addBusForm.controls['totalSeats'].touched && addBusForm.controls['totalSeats'].hasError('pattern')">
+                    <span>Invalid bus number format..</span>
+                </mat-error>              
+            </mat-form-field>
+
+            <mat-form-field  fxFlex style="width: 100%;">
+                <mat-label>Upper Seat</mat-label>
+                <input matInput formControlName="upperSeat" type="number" required>
+                <mat-error *ngIf="addBusForm.controls['upperSeat'].touched && addBusForm.controls['upperSeat'].hasError('required')">
+                    <span>This field is mandatory.</span>
+                </mat-error>   
+                <mat-error *ngIf="addBusForm.controls['upperSeat'].touched && addBusForm.controls['upperSeat'].hasError('pattern')">
+                    <span>Invalid bus number format..</span>
+                </mat-error>              
+            </mat-form-field>
+
+            <mat-form-field  fxFlex style="width: 100%;">
+                <mat-label>Lower Seat</mat-label>
+                <input matInput formControlName="lowerSeat" type="number" required>
+                <mat-error *ngIf="addBusForm.controls['lowerSeat'].touched && addBusForm.controls['lowerSeat'].hasError('required')">
+                    <span>This field is mandatory.</span>
+                </mat-error>   
+                <mat-error *ngIf="addBusForm.controls['lowerSeat'].touched && addBusForm.controls['lowerSeat'].hasError('pattern')">
+                    <span>Invalid bus number format..</span>
+                </mat-error>              
+            </mat-form-field>
+
+            <mat-form-field  fxFlex style="width: 100%;">
+                <mat-label>Available Seat</mat-label>
+                <input matInput formControlName="availableSeats" type="number" required>
+                <mat-error *ngIf="addBusForm.controls['availableSeats'].touched && addBusForm.controls['availableSeats'].hasError('required')">
+                    <span>This field is mandatory.</span>
+                </mat-error>   
+                <mat-error *ngIf="addBusForm.controls['availableSeats'].touched && addBusForm.controls['availableSeats'].hasError('pattern')">
+                    <span>Invalid bus number format..</span>
+                </mat-error>              
+            </mat-form-field>
+            
+            <mat-form-field  fxFlex style="width: 100%;">
+                <mat-label>Double Seat </mat-label>
+                <input matInput formControlName="doubleSeatCount" type="number" required>
+                <mat-error *ngIf="addBusForm.controls['doubleSeatCount'].touched && addBusForm.controls['doubleSeatCount'].hasError('required')">
+                    <span>This field is mandatory.</span>
+                </mat-error> 
+                <mat-error *ngIf="addBusForm.controls['doubleSeatCount'].touched && addBusForm.controls['doubleSeatCount'].hasError('pattern')">
+                    <span>Invalid bus number format..</span>
+                </mat-error>                   
+            </mat-form-field>
+            <mat-form-field  fxFlex style="width: 100%;">
+                <mat-label>Third Row Seat</mat-label>
+                <input matInput formControlName="thirdRowSeatCount" type="number" required>
+                <mat-error *ngIf="addBusForm.controls['thirdRowSeatCount'].touched && addBusForm.controls['thirdRowSeatCount'].hasError('required')">
+                    <span>This field is mandatory.</span>
+                </mat-error> 
+                <mat-error *ngIf="addBusForm.controls['thirdRowSeatCount'].touched && addBusForm.controls['thirdRowSeatCount'].hasError('pattern')">
+                    <span>Invalid bus number format..</span>
+                </mat-error>                   
+            </mat-form-field>
+            <mat-form-field  fxFlex style="width: 100%;">
+                <mat-label>Fare</mat-label>
+                <input matInput formControlName="fare" type="number" required>
+                <mat-error *ngIf="addBusForm.controls['fare'].touched && addBusForm.controls['fare'].hasError('required')">
+                    <span>This field is mandatory.</span>
+                </mat-error> 
+                <mat-error *ngIf="addBusForm.controls['fare'].touched && addBusForm.controls['fare'].hasError('pattern')">
+                    <span>Invalid bus number format..</span>
+                </mat-error>                   
+            </mat-form-field>
+
+        </div>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    
+    <button mat-raised-button color="primary" type="submit" (click)="handleEditBusSubmit()" [disabled]="addBusForm.invalid">
+        <mat-icon>save</mat-icon>Next
+    </button>
+    <button mat-raised-button color="warn" mat-dialog-close>
+        <mat-icon>cancel</mat-icon>Cancel
+    </button>
+</mat-dialog-actions>

@@ -1,0 +1,15 @@
+
+<div class="heading">
+    <h4>Driver Details</h4>
+</div>
+
+<div>
+     <div class="col-md-12" >
+       <app-commontable     [HeadingArray]="HeadingArray"   
+                            [GridArray]="driverDetails" (Delete)="deleteBusData($event)" 
+                            [busManage]="busManage"   (assignBusToOperator)="AssignBusToOperator($event)" 
+                            (viewDriverBus)="viewDriverBuses($event)"
+>
+        </app-commontable>
+      </div>
+</div>

@@ -1,0 +1,330 @@
+
+  .bus-card {
+    border: 2px solid blue;
+    border-radius: 10px;
+    padding-top:  12px;
+    padding-left:  45px;
+    padding-right:  55px;
+    padding-bottom:  15px;
+    margin: 10px;
+    margin-left: 60px;
+    width: 100%;
+    background-color: #FFFFFF;
+    margin-top: 50px;
+  }
+
+  .side-content{
+    border: .5px solid rgb(171, 171, 174);
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 10px;
+    margin-right: 13px;
+    border-radius: 10px;
+    height: 900px;
+  }
+  .row {
+    display: flex;
+    align-items: center;
+  }
+
+  .col {
+    flex: 1;
+    padding: 5px;
+    flex-basis: 33%; /* Add this line to ensure equal width for each column */
+  }
+  .cols{
+    flex: 1;
+    padding: 5px;
+    flex-basis: 22%;
+  }
+
+  .bus-options {
+    display: flex; /* Add this to make the flex styles work */
+    justify-content: space-between;
+  }
+
+  .bus-options a {
+    text-decoration: none;
+    color: black;
+  }
+
+  .bus-button button {
+    background: linear-gradient(to right, blue, rgb(159, 208, 224));
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    margin-left: 180px;
+  }
+
+  .bus-info p:nth-child(2) {
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+
+  .bus-info p:nth-child(4) {
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+  .container {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 10px; /* Gap between the sidebar and the card */
+   margin: 0px;
+   margin-right: 40px;
+   margin-left: 1px;
+
+   
+  }
+  .containers{
+    background-color: #F5F5F5;
+  }
+  .sidebar {
+    margin: 0px;
+    border-right: 3px solid #b6b6b6;
+    background-color: linear-gradient(to right, lightblue, white)
+  }
+  .heading{
+    margin-top: 30px;
+  }
+
+  .card-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Add this line to align the cards vertically */
+  }
+
+  .sub-nav{
+    background-color: rgb(31, 4, 110);
+    width: 100%;
+    position: sticky;
+    top: 0;
+    height: 70px;
+  }
+
+
+  /*  sub nav bar*/
+  
+.filters-group {
+    margin-bottom: 10px;
+}
+
+.filters-group p {
+    font-weight: bold;
+}
+
+.filters-option {
+    display: flex;
+   
+}
+
+.filter-options button {
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+    background-color: #4280e5;
+    border: 1px solid rgb(221, 221, 221);
+}
+.from-button {
+    background-color: #4280e5;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 190px;
+    height: 45px;
+    margin-right: 12px;
+    margin-left: 10px;
+    margin-top: 12px;
+    border: 1px solid rgb(73, 73, 73);
+    color: #565454  ;
+}
+.arrow-button{
+    width: 55px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: #1F046E;
+    border-color: navy;
+    color: #ccc;
+    
+}
+
+.from-button:hover {
+    /* background-color: lightblue; 
+    border: 2px solid blue; */
+    border-color: rgb(77, 160, 188);
+    color: rgb(55, 138, 165);
+}
+
+  /* end sub navbar */
+
+  /*  side bar inside style */
+ 
+
+
+
+.filter-group {
+    margin-bottom: 10px;
+}
+
+.filter-group p {
+    font-weight: bold;
+}
+
+.filter-options {
+    display: flex;
+   
+}
+
+.filter-options button {
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+    background-color: #F9F9F9;
+    border: 1px solid rgb(221, 221, 221);
+}
+.feture-button {
+    
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 190px;
+    height: 70px;
+    margin-right: 12px;
+    margin-left: 10px;
+    border: 1px solid rgb(73, 73, 73);
+    color: #565454  ;
+}
+
+.feture-button:hover {
+    /* background-color: lightblue; 
+    border: 2px solid blue; */
+    border-color: rgb(77, 160, 188);
+    color: rgb(55, 138, 165);
+}
+
+/* pickup point */
+.pickup-time {
+    width: 240px;
+    margin: 20px auto;
+    margin-top: 80px;
+    padding: 10px;
+    /* border: 1px solid #ccc; */
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-weight: 900;
+}
+
+.header span {
+    font-weight: bold;
+}
+
+.button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.time-slot button {
+    display: block;
+    width: 100%;
+    margin: 5px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: left;
+    background-color: #f9f9f9;
+}
+
+.time-slot img {
+    vertical-align: middle;
+    margin-right: 10px;
+}
+.clearButton {
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    color: rgb(103, 100, 100);
+    background-color: #ffffff;
+    margin-left: 120px;
+    margin-bottom: 30px;
+}
+
+.clearButton:hover {
+    border-color: rgb(77, 160, 188);
+    color: rgb(55, 138, 165);
+}
+.timeIconButton{
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    color: rgb(103, 100, 100);
+    background-color: #ffffff;
+    position: relative;
+    text-align: center;
+    height: 70px;
+}
+.timeIconButton{
+    border: 1px solid gray;
+    border-radius: 5px;
+    cursor: pointer;
+    color: rgb(67, 36, 122);
+    background-color: #ffffff;
+    
+}
+.timeIconButton{
+    border-color: rgb(77, 160, 188);
+    color: rgb(55, 138, 165);
+}
+.material-icons {
+    
+  margin-left:37%; 
+}
+.text_margings{
+    margin-top: 50px;
+    padding-top: 60px;
+    margin-left:37%; 
+}
+/* date  */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(13, 1fr); 
+}
+
+.grid-item {
+    background-color: #f0f0f0;
+    padding-bottom:  4px;
+    padding-top:  4px;
+    padding-left: 18px;
+    padding-right: 18px;
+    width: 100px;
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+.filter-head{
+  margin-bottom: 30px;
+  margin-top: 10px;
+  width: 100%;
+  background-color: #4280e5;
+  color: white;
+  border-radius: 10px 20px; 
+}

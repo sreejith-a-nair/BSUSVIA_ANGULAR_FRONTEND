@@ -1,0 +1,11 @@
+<div *ngIf="isSignup" class="signup-container">
+    <button type="submit" (click)="onClick()" [disabled]="disable" class="signup-button">
+        <ng-content></ng-content>
+    </button>
+</div>
+
+<!-- <div *ngIf="isSignup" class="signup-container">
+    <button type="button" (click)="onClick()" [disabled]="disabled" class="signup-button">
+        <ng-content></ng-content>
+    </button>
+</div> -->

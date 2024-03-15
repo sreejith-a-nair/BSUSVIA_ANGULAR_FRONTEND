@@ -1,0 +1,142 @@
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-xrDp7V56kOVio9Hq1p5s3STvmWF63aF5VOb0TwV2KZ8R8YY5eQC1kqjKEOehAqMMJLdftL9Bt7VTVHJMrU2fsA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<div class="container my-0" style="max-width: 1600px;background: linear-gradient(90deg, #9498e0, #862fc0);">
+<div class="row">
+    <div class="col-md-6 border-right" style=" height: 100px; margin-top: 20px;margin-left: 30px;margin-bottom: 20px;
+     background: linear-gradient(90deg, #292965, #453053);border-radius: 10px;">
+        <div class="text-right p-4" style="border: 12 px #1b1a1c;">
+
+          <h2 style="text-align: center;color: aliceblue;">Busvia.com</h2>
+        </div>
+        
+    </div>
+   
+    <div class="container register" style="padding: 30px;padding-top: 0;  background: linear-gradient(90deg, #f8f8f9, #e7e8f2)">
+        <div class="heading">
+            <h4 >Sign Up</h4>
+        </div>
+    <form [formGroup]="registerForm" (ngSubmit)="submitForm()"> 
+        <div class="form-group">
+            <label for="firstName">FirstName</label>
+            <input type="text" class="form-control" id="firstName" formControlName="firstName" />
+            <small *ngIf="registerForm.get('firstName')?.invalid && (registerForm.get('firstName')?.dirty && registerForm.get('firstName')?.touched)" 
+                class="block p-error">
+                 {{ getErrorMessage('firstName') }}
+            </small>
+        </div>
+        <!-- gender -->
+        <div class="form-group row">
+          
+            <label  for="role" class="col-sm-2 col-form-label">Role</label>
+                <div class="col-sm-4">
+                    <select (change)="roleHandler($event)" class="form-select" id="role" formControlName="role">
+                        <option value="" disabled selected>Select Role</option>
+                        <option *ngFor="let role of roles" [value]="role">{{ role }}</option>
+                    </select>
+                    <small *ngIf="registerForm.get('role')?.invalid && (registerForm.get('role')?.dirty || registerForm.get('role')?.touched)" 
+                        class="block p-error">
+                        Role is required
+                    </small>
+                </div>
+          
+
+          <label for="gender" class="col-sm-2 col-form-label">Gender</label>
+            <div  class="col-sm-4">
+                <select class="form-select"  id="gender" formControlName="gender">
+                <option value="" disabled selected>Select Gender</option>
+                <option *ngFor="let gender of genders" [value]="gender">{{ gender }}</option>
+                </select>
+                <small *ngIf="registerForm.get('gender')?.invalid && (registerForm.get('gender')?.dirty || registerForm.get('gender')?.touched)" 
+                class="block p-error">
+                Gender is required
+                </small>
+            </div>
+          
+        </div>
+
+        <div class="form-group" *ngIf="!isOperator">
+            <label for="lastName">LastName</label>
+            <input type="text" class="form-control" id="lastName" formControlName="lastName" />
+            <small *ngIf="registerForm.get('lastName')?.invalid && (registerForm.get('lastName')?.dirty && registerForm.get('lastName')?.touched)" 
+               class="block p-error">
+               {{ getErrorMessage('lastName') }}
+            </small>
+        </div>
+       
+        <div class="form-group" *ngIf="isOperator">
+            <label for="authorityEmail">Authority Email</label>
+            <select class="form-select" id="authorityEmail" formControlName="authorityEmail" (change)="onAuthorityEmailChange($event)" (click)="getEmail()">
+                <option value="" disabled selected>Select Authority Email</option>
+                <option *ngFor="let authority of existingAuthorityEmails" [value]="authority.email" [selected]="authority.email === registerForm.get('authorityEmail')?.value">{{ authority.email }}</option>
+            </select>
+            <small *ngIf="registerForm.get('authorityEmail')?.invalid && (registerForm.get('authorityEmail')?.dirty || registerForm.get('authorityEmail')?.touched)" class="block p-error">
+                Valid authority email is required.
+            </small>
+        </div>
+        
+     
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" formControlName="email" />
+            <small *ngIf="registerForm.get('email')?.invalid && (registerForm.get('email')?.dirty && registerForm.get('email')?.touched)" 
+               class="block p-error">
+              {{ getErrorMessageForEmail('email') }}
+            </small>
+        </div>
+
+    
+
+        <div class="form-group">
+            <label for="contact">Contact</label>
+            <input type="text" class="form-control" id="contact" formControlName="contact" />
+            <small *ngIf="registerForm.get('contact')?.invalid && (registerForm.get('contact')?.dirty || registerForm.get('contact')?.touched)" 
+                class="block p-error">
+                {{ getErrorMessageForContact() }}
+            </small>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <div class="input-group position-relative">
+                <input [type]="inputType" class="form-control" id="password" formControlName="password" />
+                <div class="position-absolute top-0 end-0">
+                    <button type="button" class="btn btn-outline-secondary" (click)="togglePasswordVisibility()">
+                        <i class="far" [ngClass]="{ 'fa-eye': showPassword, 'fa-eye-slash': !showPassword }"></i>
+                    </button>
+                </div>
+            </div>
+            <small *ngIf="registerForm.get('password')?.invalid && (registerForm.get('password')?.dirty || registerForm.get('password')?.touched)" 
+                class="block p-error">
+                {{ getErrorMessageForPassword('password') }}
+            </small>
+        </div>          
+        
+        <div class="form-group">
+            <label for="confirmPassword">Confirm-Password</label>
+            <div class="input-group position-relative">
+                <input [type]="inputType" class="form-control" id="confirmPassword" formControlName="confirmPassword" />
+                <div class="position-absolute top-0 end-0">
+                    <button type="button" class="btn btn-outline-secondary" (click)="togglePasswordVisibility()">
+                        <i class="far" [ngClass]="{ 'fa-eye': showPassword, 'fa-eye-slash': !showPassword }"></i>
+                    </button>
+                </div>
+            </div>
+            <small *ngIf="registerForm.get('confirmPassword')?.invalid && (registerForm.get('confirmPassword')?.dirty || registerForm.get('confirmPassword')?.touched)" 
+                class="block p-error">
+                <div *ngIf="registerForm.get('confirmPassword')?.errors?.['required']">Confirm Password is required</div>
+                <div *ngIf="registerForm.hasError('passwordMismatch')">Passwords do not match</div>
+            </small>
+        </div>
+       
+         <app-button *ngIf="!isAuthority"   [isSignup]="true"  >Sign Up</app-button>
+         <app-button   *ngIf="isAuthority"  [isSignup]="true"  >Next</app-button>
+
+        <div class="mt-3 mb-3">
+            Already have an account ?  <a routerLink="/authentication/login">Login</a>    
+        </div>
+
+    </form>
+    
+</div>
+
+</div> 

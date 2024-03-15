@@ -1,0 +1,33 @@
+<!-- bus-selection-dialog.component.html -->
+<mat-toolbar color="primary">
+    <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
+      <span>Assign Bus </span>
+      <span class="spacer"></span>
+      <button class="mat-dialog-close" mat-icon-button mat-dialog-close>
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-toolbar-row>
+</mat-toolbar>
+<div>
+ 
+    <div>
+        <mat-form-field style="width: 100%;">
+          <mat-label>Bus Name</mat-label>
+          <mat-select [(ngModel)]="selectedBus" name="busName" required>
+            <mat-option *ngFor="let bus of data.busManage" [value]="bus.uuid">{{ bus.busName }} - {{ bus.busType }} ({{ bus.busNumber }})</mat-option>
+          </mat-select>
+          <mat-error *ngIf="!selectedBus">This field is mandatory.</mat-error>
+        </mat-form-field> 
+    </div>
+  
+    
+</div>
+<mat-dialog-actions align="end">
+    <button mat-raised-button color="primary" type="submit" (click)="handleAddBusSubmit()" [disabled]="!selectedBus">
+      <mat-icon>save</mat-icon>save
+    </button>
+    <button mat-raised-button color="warn" mat-dialog-close>
+      <mat-icon>cancel</mat-icon>Cancel
+    </button>
+  </mat-dialog-actions>
+

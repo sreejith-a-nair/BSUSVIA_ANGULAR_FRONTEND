@@ -1,14 +1,21 @@
 import { User, UserModel } from "../user.model";
 
 export const UserState: UserModel={
+
     list:[],
     errormessage:'',
+
     userObj:{
-        id: 0,
-        name: "",
+
+        uuid:"",
+        firstName: "",
+        lastName:"",
         email: "",
-        password: "",
-        role: "ROLE_USER",
-        isActive: true
+        contact:"",
+        role: "User",
+      
     }
+
+    
+
 }

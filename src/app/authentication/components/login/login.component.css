@@ -1,0 +1,103 @@
+
+.container {
+    padding-top: 30px;
+    max-width: 1600px;
+    height: 840px;
+    
+    margin-bottom: 20px;
+        background-color: #f8f9fa;
+    margin-top: 100px;
+}
+.sideText{
+    background: linear-gradient(90deg, #a00ba0, #ff69b4); /* Purple-to-pink gradient */
+    -webkit-background-clip: text;
+
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+
+    label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    input {
+        width: 100%;
+        padding: 8px;
+        font-size: 16px;
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+        transition: border-color 0.15s ease-in-out;
+    }
+
+    input:focus {
+        border-color: #80bdff;
+        outline: 0;
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    }
+
+    .text-danger {
+        color: #dc3545;
+        font-size: 14px;
+        margin-top: 4px;
+    }
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.btn-primary:disabled,
+.btn-primary.disabled {
+    background-color: #b3d7ff;
+    border-color: #b3d7ff;
+}
+a {
+    text-decoration: none; /* Remove underline */
+    color: #752f75;
+    /* Set text color to purple */
+  }
+  label {
+    font-size: 11px; /* Adjust the size as needed */
+    font-weight: 600;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: rgb(74, 73, 73); /* Set text color to gray */
+  }
+  div h4 {
+    text-align: center;
+    text-transform: uppercase;
+    font-style: italic; 
+    color: #ff00ff; 
+    background: linear-gradient(90deg, #a00ba0, #ff69b4);
+    -webkit-background-clip: text; 
+    color: transparent; 
+    display: inline-block;
+  }
+  .heading{
+    margin-top: 0;
+    border-bottom-left-radius: 10px; 
+    border-bottom-right-radius: 10px;
+    background: linear-gradient(90deg, #1e1b1e, #13020b);
+    color: transparent;
+    text-align: center;
+  }
+

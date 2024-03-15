@@ -1,0 +1,12 @@
+.dialog-content {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .left-side {
+    width: 70%; /* Adjust as per your layout */
+  }
+  
+  .right-side {
+    width: 30%; /* Adjust as per your layout */
+  }

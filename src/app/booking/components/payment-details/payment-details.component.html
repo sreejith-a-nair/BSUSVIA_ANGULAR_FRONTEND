@@ -1,0 +1,216 @@
+<div class="title-bar">
+    <h5>Your Tickets Details</h5>
+</div>
+<div class="container">
+    <div class="row" style="margin-top:50px;">
+        
+        <div class="col-md-9">
+            <div class="bus-card" style="display: flex;">
+                <div class="col-md-3 busdata" style="padding-left: 50px; margin-top: 10px;">
+                    <h4>{{busName}}</h4><span>{{category}}</span>
+                    <h5>{{busType}}</h5>
+                    <h6>{{busNumber}}</h6>
+                    <h6>{{email}}</h6>
+                </div>
+
+                <div class="col-md-7" style="text-align: center; margin-top: 10px;">
+                    <div class="row">
+                        <div class="col-md-6 place1">
+                            <div>{{from}} ------------</div>
+                        </div>
+                        <div class="col-md-6 place2">
+                            <div>--------- {{to}}</div>
+                        </div>
+                    </div>
+                    <p>{{totalHours}}Hr</p>
+                    <div class="row date">
+                        <div class="col-md-6 row date1">
+                            <div>{{departuredate}}</div>
+                        </div>
+                        <div class="col-md-6 row date2">
+                            <div style="margin-right: 40px;">{{arrivaldate}}</div>
+                        </div>
+                    </div>
+
+                    <div class="row route">
+                        <div class="col-md-6">
+                            <div>{{departureTime}}</div>
+                        </div>
+                        <div class="col-md-6">
+                            <div style="margin-right: 40px;">{{arrivalTime}}</div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- <div class="seats col-md-2"> -->
+                    <!-- <p style="text-align: start;"><strong> seats : {{actualSeatNumber}} </strong> </p> -->
+                    <!-- <ul>
+                        <li  style="text-align: start;" *ngFor="let seat of selectedSeatsLists">{{ seat + 1 }}</li> 
+                    </ul>
+                </div> -->
+                <div class="seats col-md-2">
+                    <ul class="seat-list">
+                      <li *ngFor="let seat of selectedSeatsLists" class="seat-item">{{ seat + 1 }}</li>
+                    </ul>
+                  </div>
+
+            </div>
+
+            <div class="forms-container " >
+                <form [formGroup]="userForm" (ngSubmit)="submitForm()">
+                  
+                    <div>
+                        <div class="from-titile">
+                            <h6 class="from-titiles">Passenger Details</h6>
+                        </div>
+                        <div class="inner-form" style="background-color: white">
+                            <ng-container *ngFor="let seat of getSeatsArray()" >
+                                <div class="row" style="margin-bottom: 50px;">
+                                    <div class="col-md-4" style="margin-top: 10px;">
+                                        <div class="passengeres">Passenger {{ seat + 1 }}</div>
+                                        <label for="name">Name:</label>
+                                        <input type="text" style="margin-left: 20px;border-radius: 10px;border-color: rgb(124, 124, 124);" [formControlName]="'passengerName' + seat" placeholder="Enter Name">
+                                        <div *ngIf="userForm.get('passengerName'+ seat)?.invalid && (userForm.get('passengerName'+ seat)?.dirty || userForm.get('passengerName'+ seat)?.touched)" class="error-message">
+                                            <span *ngIf="userForm.get('passengerName'+ seat)?.errors?.['required']">Name is required</span>
+                                            <span *ngIf="userForm.get('passengerName'+ seat)?.errors?.['pattern']">Name should be at least 4 characters long</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4" style="margin-top: 33px;">
+                                        <label for="gender">Gender:</label>
+                                        <select id="gender" style="margin-left: 20px;border-radius: 10px;"  [formControlName]="'passengerGender' + seat">
+                                            <option value="" disabled>Select Gender</option>
+                                            <option value="male">Male</option>
+                                            <option value="female">Female</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="col-md-4" style="margin-top: 30px;">
+                                        <label for="age" style="margin-left: 10px;">Age:</label>
+                                        <input type="number" style="border-color: rgb(100, 100, 100);margin-left: 20px;border-radius: 10px;" id="age" [formControlName]="'passengerAge' + seat" placeholder="Enter Age">
+                                        <div *ngIf="userForm.get('passengerAge' + seat)?.invalid && (userForm.get('passengerAge' + seat)?.dirty || userForm.get('passengerAge' + seat)?.touched)" class="error-message">
+                                            <span *ngIf="userForm.get('passengerAge' + seat)?.errors?.['required']">Age is required</span>
+                                            <span *ngIf="userForm.get('passengerAge' + seat)?.errors?.['invalidAge']">Age must be greater than 10</span>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </ng-container>
+                        </div>
+
+                    </div>
+           
+                    <div>
+                        
+                        <div class="from-titil" style="background-color: white;">
+                            <h6 class="from-titiles">Contact Details</h6>
+                        </div>
+                        <p style="color: rgb(104, 104, 104);">Ticket Details will be  forwarded to  these Email/Phone number .</p>
+                        <div class="inner-form1 row" style="background-color: white">
+                            <div class="col-md-6">
+                                <label for="email" style="margin-left: 10px;">Email:</label>
+                                <input id="email" style="margin-left: 10px;margin-left: 20px;" type="email" formControlName="email" placeholder="Enter Email">
+                                <div *ngIf="userForm.get('email')?.invalid && (userForm.get('email')?.dirty || userForm.get('email')?.touched)" class="error-message">
+                                    <span *ngIf="userForm.get('email')?.errors?.['required']">Email is required</span>
+                                    <span *ngIf="userForm.get('email')?.errors?.['pattern']">Invalid email format</span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="phone" style="margin-left: 10px;">Phone Number:</label>
+                                <input id="phone" style="margin-left: 10px;margin-left: 20px;" type="tel" formControlName="phone" placeholder="Enter Phone Number">
+                                <div *ngIf="userForm.get('phone')?.invalid && (userForm.get('phone')?.dirty || userForm.get('phone')?.touched)" class="error-message">
+                                    <span *ngIf="userForm.get('phone')?.errors?.['required']">Phone is required</span>
+                                    <span *ngIf="userForm.get('phone')?.errors?.['invalidPhoneNumber']">Phone number must contain exactly 10 digits</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+ 
+                    <div>
+                        <button class="bookMyseat" type="submit" [disabled]="!userForm.valid" [ngClass]="{'disabled-button': !userForm.valid}">Book Tickets</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+  
+        <div class="col-md-3">
+            <section class="seat-body col-md-4" style="padding-left: 50px;margin-bottom: 20px;">
+                <div class="card-book">
+                    <div class="container">
+                        <div class="heading-price">
+                            <h5>Price details</h5>
+                        </div>
+
+                        <!-- <h6><b>Selected Seats</b></h6>
+                        <div class="selected-seats-container seat-num">
+                            <div  class="seat-box" >
+                                {{ selectedSeats }}
+                            </div>
+                        </div> -->
+
+                        <div class="selected-seats-container seat-num ">
+                            <ul class="seat-list seat-box">
+                              <li *ngFor="let seat of selectedSeatsLists" class="seat-items">{{ seat + 1 }}</li>
+                            </ul>
+                          </div>
+
+                        <h6><b>Total seat</b></h6>
+                        <div class="seat-number-box">
+
+                            <span></span><strong>{{totalSeats}}</strong>
+
+                        </div>
+
+                        <h6><b>Total Fare</b></h6>
+                        <div class="seat-number-box">
+
+                            <span></span><strong class="base-fare">&#8377;{{totalFare}}</strong>
+
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- <div style="margin-top: 30px;">
+                <section class="seat-body col-md-4" style="padding-left: 50px;">
+                    <div class="card-book">
+                        <div class="container">
+                            <div class="heading-price">
+                                <h5>Coupon Details</h5>
+                            </div>
+
+                            <h6><b>Selected Seats</b></h6>
+                            <div class="selected-seats-container seat-num">
+                                <div *ngFor="let seatNumber of " class="seat-box">
+                                    {{ seatNumber+1 }}
+                                </div>
+                            </div>
+                            <h6><b>Total seat</b></h6>
+                            <div class="seat-number-box">
+
+                                <span></span><strong></strong>
+
+                            </div>
+
+                            <h6><b>Total Fare</b></h6>
+                            <div class="seat-number-box">
+
+                                <span></span><strong class="base-fare">&#8377;</strong>
+
+                            </div>
+
+                            <button type="submit" [disabled]=" " class="bookMyseats">Apply coupon</button>
+                        </div>
+                    </div>
+
+                </section>
+
+
+            </div> -->
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,185 @@
+
+<!-- {{seat.selected? 'selected':'booked'}}" -->
+<main>
+    <div class="row">
+        <div   style="background-color: rgb(123, 95, 204);color: white;width: 100%;height: 50px;margin-bottom: 10px;text-align: center;padding-top: 10px;"><h5 class="">Select Your Seat</h5></div>
+         
+
+
+            <!-- <section class="seat-body col-md-2" style="padding-left: 120px;">
+                <div class="lowerSeat-title">
+                    Upper Seats
+                </div>
+                <div class="seat-lists">
+                    <div *ngFor="let seat of upperSeatsList"
+                        (click)="bookSeat(seat.seatNumber)" 
+                        class="seat" 
+                        (mouseenter)="showIndex(seat.seatNumber)"
+                        (mouseleave)="hideIndex()"
+                        [class.selected]="seat.selected"
+                        [class.booked]="!seat.booked"
+                        (mouseenter)="hoveredIndex = seat.seatNumber"
+                        (mouseleave)="hoveredIndex = null"
+                        style="position: relative;">
+                        <mat-icon *ngIf="seat.selected" [ngClass]="{'booked-icon': seat.selected, 'hovered-icon': hoveredIndex === seat.seatNumber }" class="rotate-icon">chair</mat-icon>
+                        <mat-icon *ngIf="!seat.selected" [ngClass]="{'selected-icon': seat.booked, 'hovered-icon-notselected': hoveredIndex === seat.seatNumber}" class="rotate-icon-notselected">chair</mat-icon>
+                        <p *ngIf="hoveredIndex === seat.seatNumber">{{ seat.seatNumber }}</p>
+                        <p *ngIf="seat.booked && hoveredIndex === seat.seatNumber" class="booked-message">Booked</p>
+                        <p *ngIf="!seat.booked && hoveredIndex === seat.seatNumber" class="selected-message">Selected</p>
+                    </div>
+                </div>
+            </section>
+            <section class="seat-body col-md-3" style="padding-left: 120px;">
+                <div class="lowerSeat-title">
+                    Lower Seats
+                </div>
+                <div class="seat-lists">
+                    <div *ngFor="let seat of lowerSeatsList"
+                        [class.selected]="seat.selected"
+                        (click)="bookSeat(seat.seatNumber)" 
+                        class="seat" 
+                        (mouseenter)="showIndex(seat.seatNumber)"
+                        (mouseleave)="hideIndex()"
+                        [class.booked]="!seat.booked"
+                        (mouseenter)="hoveredIndex = seat.seatNumber"
+                        (mouseleave)="hoveredIndex = null"
+                        style="position: relative;">
+                        <mat-icon *ngIf="seat.selected" [ngClass]="{'booked-icon': seat.selected, 'hovered-icon': hoveredIndex === seat.seatNumber }" class="rotate-icon">chair</mat-icon>
+                        <mat-icon *ngIf="!seat.selected" [ngClass]="{'selected-icon': seat.booked, 'hovered-icon-notselected': hoveredIndex === seat.seatNumber}" class="rotate-icon-notselected">chair</mat-icon>
+                        <p *ngIf="hoveredIndex === seat.seatNumber">{{ seat.seatNumber }}</p>
+                        <p *ngIf="seat.booked && hoveredIndex === seat.seatNumber" class="booked-message">Booked</p>
+                        <p *ngIf="!seat.booked && hoveredIndex === seat.seatNumber" class="selected-message">Selected</p>
+                    </div>
+                </div>
+            </section> -->
+            
+
+            <!-- <section class="seat-body col-md-3" style="padding-left: 120px;">
+                <div class="lowerSeat-title">
+                    lowerSeat
+                </div>
+                <div class="seat-lists">
+                    <div style="margin-left: 44px; ;width: 100%;height: 30px;"></div>
+                    <div  style="margin-left: 40px;height:20px ;width: 70px;">
+                    <mat-icon>steering_wheel</mat-icon>
+    
+                    </div>
+                    <div  style="margin-left: 40px;height: 40px ;width: 20px;"><i class="fas fa-steering-wheel"></i> </div>
+                    <div *ngFor="let seat of selectedSeatsList let i = index"
+                            (click)="bookSeat(i)" 
+                            class="seat" 
+                            
+                            [class.selected]="seat.selected"
+                            (mouseenter)="hoveredIndex = i"
+                            [class.booked]="!seat.booked"
+                            (mouseenter)="showIndex(i)"
+                            (mouseleave)="hideIndex()"
+                            (mouseleave)="hoveredIndex = null"
+                            style="position: relative;">
+                            <mat-icon *ngIf="seat.selected" [ngClass]="{'booked-icon': seat.selected, 'hovered-icon': hoveredIndex === i}" class="rotate-icon">chair</mat-icon>
+                            <mat-icon *ngIf="!seat.selected" [ngClass]="{'selected-icon': seat.booked, 'hovered-icon-notselected': hoveredIndex === i}" class="rotate-icon-notselected">chair</mat-icon>
+                            <p *ngIf="hoveredIndex === i">{{ i +1 }}</p>
+                            <p *ngIf="seat.selected && hoveredIndex === i" class="booked-message">Booked</p>
+                            <p *ngIf="seat.booked&& hoveredIndex === i" class="selected-message">Selected</p>
+                    </div>
+    
+                  
+                </div>
+            </section> -->
+    
+            <!-- new -->
+             <section class="seat-body col-md-3" style="padding-left: 120px;">
+                <div class="lowerSeat-title">
+                  
+                </div>
+                <div class="seat-lists">
+                  <div style="margin-left: 44px; ;width: 100%;height: 30px;"></div>
+                  <div style="margin-left: 40px;height: 40px ;width: 70px;">
+                    <mat-icon>steering_wheel</mat-icon>
+                  </div>
+                  <div style="margin-left: 40px;height: 40px ;width: 20px;"><i class="fas fa-steering-wheel"></i> </div>
+                  <div *ngFor="let seat of selectedSeatsList let i = index"
+                       (click)="bookSeat(i)" 
+                       class="seat" 
+                       [class.selected]="seat.selected"
+                       [class.booked]="!seat.booked"
+                       (mouseenter)="hoveredIndex = i"
+                       (mouseleave)="hoveredIndex = null"
+                       style="position: relative;">
+                    <mat-icon *ngIf="seat.selected" [ngClass]="{'booked-icon': seat.selected, 'hovered-icon': hoveredIndex === i}" class="rotate-icon">chair</mat-icon>
+                    <mat-icon *ngIf="!seat.selected" [ngClass]="{'selected-icon': seat.booked, 'hovered-icon-notselected': hoveredIndex === i}" class="rotate-icon-notselected">chair</mat-icon>
+                    <p *ngIf="hoveredIndex === i">{{ i + 1 }}</p>
+                    <p *ngIf="seat.selected && hoveredIndex === i" class="booked-message">Booked</p>
+                    <p *ngIf="seat.booked&& hoveredIndex === i" class="selected-message">Selected</p>
+                  </div>
+                </div>
+              </section> 
+       
+     
+        <!-- end -->
+
+        <section class="seat-body col-md-2">
+            <div >
+                <div class="container">
+                    <div class="seat-heading">
+                        <h6><b>Seat details</b></h6>
+                    </div>
+                   
+                    <div class="seat-boxes bookedseat">
+                        <span class="status-label">Booked</span>
+                    </div>
+                    <div class="seat-boxes available">
+                        <span class="status-label">Selected</span>
+                    </div>
+                    <div class="seat-boxes vacant">
+                        <span class="status-label">Vacant</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="seat-body col-md-4 " style="padding-left: 50px;">
+            <div class="card-book " >
+                <div class="container">
+                    <h6><b>Selected Seats</b></h6>
+                    <div class="selected-seats-container seat-num">
+                        <div *ngFor="let seatNumber of selectedSeatsLists" class="seat-box">
+                            {{ seatNumber+1 }}
+                        </div>
+                    </div>
+                    <h6><b> Total seat</b></h6>
+                    <div class="seat-number-box">
+                  
+                       <span> </span> <strong > {{ selectedSeatsCount }}</strong>
+
+                    </div>
+                    <h6><b>Base Fare</b></h6>
+                    <div class="seat-number-box">
+                 
+                       <span> </span> <strong class="base-fare">&#8377; {{  busfare }}</strong>
+
+                    </div>
+              
+                    <h6><b>Total Fare</b></h6>
+                    <div class="seat-number-box">
+                 
+                       <span> </span> <strong class="base-fare" *ngIf="selectedSeatsCount!">&#8377; {{ selectedSeatsCount! * busfare }}</strong>
+                       <span> </span> <strong class="base-fare" *ngIf="selectedSeatsCount==0"> </strong>
+                    </div>
+
+                        <button type="submit" [disabled]="selectedSeatsCount==0 " (click)="navigateToPayment()" class="bookMyseats">Book Seat</button>
+                </div>
+            </div>
+        </section>
+        
+        
+
+
+    </div>
+
+</main>      
+<ng-template #customSnackBarTemplate>
+    <div class="custom-snackbar">
+      {{ message }}
+      <button mat-button class="mat-snack-bar-action" (click)="dismiss()">Close</button>
+    </div>
+</ng-template>

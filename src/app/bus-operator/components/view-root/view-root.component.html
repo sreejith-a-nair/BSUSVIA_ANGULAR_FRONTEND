@@ -1,0 +1,19 @@
+<button mat-button  [routerLink]="['/operator/view-root']">
+    <mat-icon>arrow_back</mat-icon>
+</button>
+<div class="heading">
+    <h4>Bus & root-time </h4>
+</div>
+
+<div>
+     <div class="col-md-12" >
+        <app-commontable [HeadingArray]="HeadingArray" 
+                         [GridArray]="driverBus" 
+                         (addStop)="addStops($event)"
+                         (viewStop)="viewStops($event)"
+
+                        >
+        </app-commontable>
+      </div>
+</div>
+

@@ -1,10 +1,12 @@
-export interface User {
-    id: number;
-    name: string;
+
+  export interface User {
+    uuid: string; 
+    firstName: string;
+    lastName: string;
     email: string;
-    password: string;
+    contact:string;
     role: string;
-    isActive: boolean;
+    isBlock ?: boolean;
   }
 
   export interface UserModel{

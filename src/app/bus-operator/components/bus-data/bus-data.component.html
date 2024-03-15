@@ -1,0 +1,14 @@
+
+<div class="heading">
+    <h4>Bus & Setas  </h4>
+</div>
+
+<div>
+     <div class="col-md-12" >
+        <app-commontable [HeadingArray]="HeadingArray" 
+                         [GridArray]="driverBus" 
+                         (addSeatRow)="AddSeatRow($event)" 
+                         (viewSeatRow)="viewSeatRow($event)">
+        </app-commontable>
+      </div>
+</div>

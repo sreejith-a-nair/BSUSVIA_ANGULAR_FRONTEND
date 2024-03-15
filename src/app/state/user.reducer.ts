@@ -1,6 +1,7 @@
 import { createReducer, on } from "@ngrx/store";
 import { UserState } from "./user.state";
-import { loadUserFail, loadUsersSuccess } from "./user.action";
+import {  loadUserFail, loadUsersSuccess } from "./user.action";
+
 
 
 const _UserReducer = createReducer(UserState,
@@ -19,6 +20,8 @@ const _UserReducer = createReducer(UserState,
         }
     })
 )
+
+
 
 export function UserReducer(state:any, action: any){
 

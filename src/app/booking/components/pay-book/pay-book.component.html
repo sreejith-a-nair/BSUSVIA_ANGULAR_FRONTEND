@@ -1,0 +1,113 @@
+
+
+
+<div class="row">
+    <div class="title-bar">
+         <h5>Book Your Tickets</h5>
+    </div>
+    <div class="col-md-8 frame">
+        <div class="bus-card" style="display: flex;">
+            <div class="col-md-3 busdata" style="padding-left: 50px; margin-top: 10px;">
+                <h4>{{busName}}</h4><span>{{category}}</span>
+                <h5>{{busType}}</h5>
+            </div>
+
+            <div class="col-md-7" style="text-align: center; margin-top: 10px;">
+                <div class="row">
+                    <div class="col-md-5 place1">From
+                        <div>{{from}} ------------</div>
+                    </div>
+                    <div class="col-md-5 place2">To
+                        <div>--------- {{to}}</div>
+                    </div>
+                </div>
+           
+                <div class="row date">
+                    <div class="col-md-5 row date1">
+                        <div>{{departuredate}}</div>
+                    </div>
+                    <div class="col-md-5 row date2">
+                        <div style="margin-right: 40px;">{{arrivaldate}}</div>
+                    </div>
+                </div>
+
+                <div class="row route">
+                    <div class="col-md-6">
+                        <div>{{departureTime}}</div>
+                    </div>
+                    <div class="col-md-6">
+                        <div style="margin-right: 40px;">{{arrivalTime}}</div>
+                    </div>
+                </div>
+
+            </div>
+            
+        </div>
+        <div class="frame2">
+            <div class="heading1">
+              <h6>Travelers</h6>
+            </div>
+            <div class="row"  *ngFor="let passenger of passengers">
+                <div class="col-md-3 content">
+                    <strong>Name : </strong> <h6 style="display: inline;">{{passenger.name}}</h6>
+                </div>
+                <div class="col-md-3 content">
+                    <strong>Gender : </strong><h6 style="display: inline;">{{passenger.gender}}</h6>
+                </div>
+                <div class="col-md-3 content">
+                    <strong>Age : </strong> <h6 style="display: inline;">{{passenger.age }}</h6>
+                </div>
+                <div class="col-md-3 content1">
+                   
+                    <div  class="ticketCard">{{passenger.seatNumber+1}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="frame2">
+            <div class="heading1">
+              <h6>Contact info</h6>
+            </div>
+            <div class="row">
+                <div class="col-md-6 content">
+                    <strong>Email : </strong> <h6 style="display: inline;">{{email}}</h6>
+                </div>
+                <div class="col-md-6 content">
+                    <strong>Contact : </strong><h6 style="display: inline;">{{contact}}</h6>
+                </div>
+            </div>
+            
+        </div>
+        <div >
+             <button class="payandBookButton"   onmouseover="this.style.backgroundColor='#4d96ce';" onmouseout="this.style.backgroundColor='#3e89c6';"  (click)="payBook()">PayNow
+
+             </button>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+
+        <section class="seat-body col-md-6" style="padding-left: 50px;margin-bottom: 20px;">
+            <div class="card-book">
+                <div class="container">
+                    <div class="heading-price">
+                        <h5 style="text-align: center;">Price details</h5>
+                    </div>
+                        <strong>Selected Seats : </strong>
+                        <div class="contents content">
+                            <ng-container *ngFor="let passenger of passengers">
+                              <div class="ticketCards">{{ passenger.seatNumber + 1 }}</div>
+                            </ng-container>
+                        </div>
+                        <div class="content" >
+                            <strong>Total seat    : </strong> <h6 style="display: inline;margin-left: 30px;">{{ totalSeats }}</h6>
+                         </div>
+                         <div class="content" >
+                            <strong>Total Fare    : </strong> <h6 style="display: inline;margin-left: 30px;">{{ totalFare }}</h6>
+                         </div>
+                </div>
+            </div>
+        </section>
+        
+
+    </div>
+</div> 

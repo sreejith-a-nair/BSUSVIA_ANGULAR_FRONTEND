@@ -1,0 +1,107 @@
+.card-book {
+    box-shadow: 0 2px 4px 0 rgba(160, 160, 160, 0.2);
+    transition: 0.3s;
+    width: 390px;
+    margin: 20px;
+    height: 470px;
+    border-radius: 2px;
+    text-align: start;
+    background-color: #f1f5f8;
+        background-image: linear-gradient(135deg, #ffffff 0%, #fcfcff 50%, #ffffff 100%);
+        ;
+        color: #3c3939;
+        text-align: center;
+      
+  }
+  .heading-price{
+    background-color: hsl(107, 75%, 67%);
+        background-image: linear-gradient(135deg, #88e48e 0%, #c8f7d0 50%, #c2e9b1 100%);
+        ;
+    width: 100%;
+    height: 60px;
+    border-radius: 0 0 10px 20px;
+    margin-bottom: 40px;
+    color: rgb(83, 80, 141);
+    padding-top: 15px;
+    
+}
+.title-bar{
+    background-color: rgb(123, 95, 204);
+    color: white;
+    width: 100%;
+    height: 60px;
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: large;
+    font-weight: 500;
+    padding-top: 18px;
+
+}
+.success-banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-image: url('assets/Bus-banner/booking-succes-img.jpg');  */
+    background-size: cover;
+    color: white;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.success-banner mat-icon {
+    margin-right: 10px;
+    color: green; /* Adjust icon color as needed */
+}
+.success-content{
+    margin: 30px;
+    border-radius: 1%;
+    background-color: #eafaeb;
+    height: 300px;
+    width: 270px;
+    padding: 30px;
+}.material-icons.color_white {
+    color: #FFFFFF; /* White color */
+    font-size: 46px;
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    background-color: #88e48e;
+    display: flex; /* Use flexbox to center vertically and horizontally */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    margin-left: 62px;
+    margin-top: 30px;
+  }
+  .messages{
+    color: #747874;
+  }
+  .maincontainer{
+    padding:40px;
+  }
+
+  .material-icons-download.color_white{
+    color: #FFFFFF; /* White color */
+    font-size: 16px;
+    height: 30px;
+    width: 30px;
+    border-radius: 20%;
+    background-color: #8893e4;
+    display: flex; /* Use flexbox to center vertically and horizontally */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    margin-left: 19px;
+    margin-top: 30px;
+  }
+.download-container{
+    display: flex;
+    align-items: center;
+    background-color: #eafaeb;
+}
+.clickTo{
+    padding-top: 23px;
+    color: #5f6489b8;
+   font-weight: 430;
+   font-size: small;
+   
+  }

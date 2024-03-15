@@ -1,0 +1,38 @@
+<div class="row maincontainer">
+    <!-- <div class="title-bar">
+        <h5>success </h5>
+    </div> -->
+    <!-- <img src="assets/Bus-banner/bus-banner.jpg" alt="Banner Image" style="width: 100%;"> -->
+   <section class="seat-body col-md-8" style="padding-left: 50px; margin-bottom: 20px;">
+        <div class="success-banner">
+            <img src="assets/Bus-banner/booking-succes-img.jpg" alt="Banner Image" style="width: 100%;"> 
+        </div>
+   </section>
+   <section class="card-book  col-md-4">
+       <div class="container" style="background-color: rgb(253, 252, 254);">
+          <div class="heading-price">
+            <h5 style="text-align: center;">Booking success</h5>
+          </div>
+          <div class="success-content">
+              <div class="messages">
+                <h6>Booking Successful! Thank you for booking with Busvia.com</h6>
+              </div>
+            
+              <div>
+                <mat-icon class="material-icons color_white">check</mat-icon>
+              </div>
+              <div class="container">
+                <button class="download-container" style="border: none;" (click)="downloadBookingPdf()">
+                    <span class="clickTo" >To print your booking</span>
+                  <mat-icon class="material-icons-download color_white">cloud_download</mat-icon>
+                </button>
+                <div *ngIf="pdfSrc">
+                  <iframe [src]="pdfSrc" frameborder="0" width="100%" height="600"></iframe>
+                </div>
+              </div>
+              
+              
+          </div>
+       </div>
+   </section>
+</div>

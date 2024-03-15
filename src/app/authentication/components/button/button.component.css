@@ -1,0 +1,111 @@
+
+  
+  
+  .signup-button {
+    padding: 10px 20px;
+    width: 100%;
+    border: none;
+    outline: none;
+    color: white;
+    background: #d2b8b8;
+    
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    transition: background 0.3s ease-in-out;
+    animation: glowing-signup-button 10s linear infinite;
+  }
+  
+  @keyframes glowing-signup-button {
+    0% {
+      background-position: 0 0;
+    }
+    50% {
+      background-position: 400% 0;
+    }
+    100% {
+      background-position: 0 0;
+    }
+  }
+  .signup-button:before {
+    content: "";
+    background: linear-gradient(
+      110deg,
+      #ffffff,
+      #ffffff,
+      #f7f7db,
+      #f3eff2,
+      #b1eae0,
+      #f5c7c2,
+      #e2f4a2,
+      #ffffff,
+      #ffffff
+    );
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(2px);
+    -webkit-filter: blur(2px);
+    width: calc(100% + 1px);
+    height: calc(100% + 1px);
+    animation: glowing-signup-button 20s linear infinite;
+    transition: opacity 0.2s ease-in-out;
+    border-radius: 10px;
+  }
+  
+  .signup-button:hover {
+    background: linear-gradient(to right, #2196F3, #b7d1e9);
+  }
+  
+  .signup-button:after {
+    z-index: -1;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, #2196F3, #b7d1e9);
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+    transition: background 0.6s ease-in-out;
+  }
+
+
+  /* enable and disable button */
+  .enable-button {
+    padding: 10px 20px;
+    width: 100%;
+    border: none;
+    outline: none;
+    color: white;
+    background: #ff0000; /* Red background color */
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    transition: background 0.2s ease-in-out;
+  }
+  
+  .enable-button:hover {
+    background: #ff3333; /* Darker red color on hover */
+  }
+  
+  .enable-button:after {
+    z-index: -1;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #ff0000; /* Red background color */
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+    transition: background 0.3s ease-in-out;
+  }
