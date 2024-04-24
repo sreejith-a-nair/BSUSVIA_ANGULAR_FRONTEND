@@ -9,6 +9,7 @@
      <div class="col-md-12" >
         <app-commontable [HeadingArray]="HeadingArray" 
                          [GridArray]="driverBus" 
+                         (editRoot)="editRoot($event)"
                          (addStop)="addStops($event)"
                          (viewStop)="viewStops($event)"
 

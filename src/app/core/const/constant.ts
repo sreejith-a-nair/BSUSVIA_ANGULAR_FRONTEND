@@ -13,4 +13,7 @@ export class GlobalConstants{
     //variable
     public static error:string="error";
 
+   public static  strongPasswordRegex : string= "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,16}$/;"
+
+
 }

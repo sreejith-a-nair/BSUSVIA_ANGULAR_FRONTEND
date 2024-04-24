@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class UserErrorpageComponent {
 
+  errorMessage:any;
+  ngOnInit() {
+
+    this.errorMessage="bus  not found "
+  }
+  
+
 }

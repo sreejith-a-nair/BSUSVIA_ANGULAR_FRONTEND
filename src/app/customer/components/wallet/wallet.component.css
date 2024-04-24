@@ -1,0 +1,146 @@
+.text {
+    color: white;
+  }
+  
+  .card {
+    background-color: black;
+  }
+  
+  .wallet-container {
+    width: 60%;
+    height: 400px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #f0f0f0;
+    text-align: center;
+    /* margin: 20px auto; */
+    display: flex;
+    flex-direction: column;
+    margin-left: 250px;
+  }
+  
+  .wallet {
+    padding: 20px;
+  }
+  
+  h2 {
+    font-size: 24px;
+    color: #333;
+  }
+  
+  p {
+    font-size: 18px;
+    color: #555;
+  }
+  
+  .referral-code {
+    margin-top: 20px;
+  }
+  
+  #referralCode {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .btn-submit {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-apply-money {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  #referralCode {
+    flex-grow: 1;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .btn-submit:hover {
+    background-color: #0056b3;
+  }
+  
+  .btn-apply-money:hover {
+    background-color: #0056b3;
+  }
+  
+  .btn-submit {
+    background-color: black;
+    color: white;
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 5px 15px;
+    cursor: pointer;
+  }
+  
+  .btn-submit:hover {
+    background-color: white;
+    color: black;
+    border: 2px solid white;
+  }
+  
+  .custom-input {
+    padding-left: 20px;
+    width: 250px;
+    height: 40px;
+    border-radius: 10px;
+  }
+ .head{
+    text-align: center;
+    font-weight: 700;
+    font-size: 17px;
+    color: white;
+    height: 50px;
+    padding-top: 20px;
+ } 
+ .wallet-info {
+    background-color: #E9D0D0;
+    padding: 20px;
+    border-radius: 5px;
+  }
+  
+  .wallet-field {
+    display: flex;
+    height: 30px;
+    width: 100%;
+    background-color: #dbdada;
+    color: #333;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    padding-left: 50px;
+  }
+  .conte{
+    margin-left: 40px;text-align: center;
+  }
+ .wallet-history{
+    background-color: #3ff4be;
+    background-image: linear-gradient(132deg, #3fdcf4 0%, #16A085 100%);
+    color: white;
+    border-radius: 10px;
+    width: 130px;
+    height: 33px;
+    font-size: 15px;
+    font-weight: 500;
+    border: none;
+    margin-left: 450px;
+    
+ }
+ 

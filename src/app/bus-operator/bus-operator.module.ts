@@ -13,6 +13,9 @@ import { ViewRootComponent } from './components/view-root/view-root.component';
 import { AddStopsComponent } from './components/add-stops/add-stops.component';
 import { SeatRowsComponent } from './components/seat-rows/seat-rows.component';
 import { BusDataComponent } from './components/bus-data/bus-data.component';
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+import { ReservedUserListComponent } from './components/reserved-user-list/reserved-user-list.component';
+import { EditRootComponent } from './components/edit-root/edit-root.component';
 
 
 @NgModule({
@@ -24,7 +27,9 @@ import { BusDataComponent } from './components/bus-data/bus-data.component';
         ViewRootComponent,
         AddStopsComponent,
         SeatRowsComponent,
-        BusDataComponent
+        BusDataComponent,
+        ReservedUserListComponent,
+        EditRootComponent
     ],
     imports: [
         CommonModule,
@@ -32,7 +37,8 @@ import { BusDataComponent } from './components/bus-data/bus-data.component';
         ReusableComponentsModule,
         MatCustomModule,
         ReactiveFormsModule,
-        FormsModule
+        FormsModule,
+        NgxMaterialTimepickerModule
         
     ]
 })

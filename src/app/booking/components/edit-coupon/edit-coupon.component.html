@@ -1,0 +1,77 @@
+
+<mat-toolbar color="primary">
+    <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
+      <span>Edit Coupon</span>
+      <span class="spacer"></span>
+      <button class="mat-dialog-close" mat-icon-button mat-dialog-close>
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-toolbar-row>
+</mat-toolbar>
+<mat-dialog-content class="mat-typography">
+    <form [formGroup]="editCouponForm">
+        <div fxFlex fxLayout="column">
+            <mat-form-field fxFlex style="width: 100%;">
+                <mat-label>Coupon Name</mat-label>
+                <input matInput formControlName="couponName" type="text" required>
+                <mat-error *ngIf="editCouponForm.controls['couponName'].touched && editCouponForm.controls['couponName'].hasError('required')">
+                    <span>This field is mandatory.</span>
+                </mat-error>    
+            </mat-form-field>
+            <mat-form-field fxFlex style="width: 100%;">
+                <mat-label>Coupon Code</mat-label>
+                <input matInput formControlName="couponCode" type="text" required>
+                <mat-error *ngIf="editCouponForm.controls['couponCode'].touched && editCouponForm.controls['couponCode'].hasError('required')">
+                    <span>This field is mandatory.</span>
+                </mat-error>    
+            </mat-form-field>
+            <mat-form-field fxFlex style="width: 100%;">
+                <mat-label>Expiry Date</mat-label>
+                <input matInput formControlName="expiryDate" type="date" required>
+                <mat-error *ngIf="editCouponForm.controls['expiryDate'].touched && editCouponForm.controls['expiryDate'].hasError('required')">
+                    <span>This field is mandatory.</span>
+                </mat-error>    
+            </mat-form-field>
+            <mat-form-field fxFlex style="width: 100%;">
+                <mat-label>Count</mat-label>
+                <input matInput formControlName="count" type="number" required>
+                <mat-error *ngIf="editCouponForm.controls['count'].touched && editCouponForm.controls['count'].hasError('required')">
+                    <span>This field is mandatory.</span>
+                </mat-error>    
+            </mat-form-field>
+            <mat-form-field fxFlex style="width: 100%;">
+                <mat-label>Max Price</mat-label>
+                <input matInput formControlName="maxPrice" type="number" required>
+                <mat-error *ngIf="editCouponForm.controls['maxPrice'].touched && editCouponForm.controls['maxPrice'].hasError('required')">
+                    <span>This field is mandatory.</span>
+                </mat-error>    
+            </mat-form-field>
+
+            <mat-form-field fxFlex style="width: 100%;">
+                <mat-label>Min Fare</mat-label>
+                <input matInput formControlName="minFare" type="number" required>
+                <mat-error *ngIf="editCouponForm.controls['minFare'].touched && editCouponForm.controls['minFare'].hasError('required')">
+                    <span>This field is mandatory.</span>
+                </mat-error>    
+            </mat-form-field>
+            
+            <mat-form-field fxFlex style="width: 100%;">
+                <mat-label>Off Percent</mat-label>
+                <input matInput formControlName="offPercent" type="number" required>
+                <mat-error *ngIf="editCouponForm.controls['offPercent'].touched && editCouponForm.controls['offPercent'].hasError('required')">
+                    <span>This field is mandatory.</span>
+                </mat-error>    
+            </mat-form-field>
+        </div>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    
+    <button mat-raised-button color="primary" type="submit" (click)="handleAddCouponSubmit()" [disabled]="editCouponForm.invalid">
+        <mat-icon>save</mat-icon>Next
+    </button>
+    <button mat-raised-button color="warn" mat-dialog-close>
+        <mat-icon>cancel</mat-icon>Cancel
+    </button>
+</mat-dialog-actions>

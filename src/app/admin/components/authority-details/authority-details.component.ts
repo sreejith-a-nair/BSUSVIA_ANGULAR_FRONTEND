@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 
 import { Authority } from 'src/app/core/interface/authoriy.model';
 import { JwtServiceService } from 'src/app/service/jwt-service.service';
+import { UserServiceService } from 'src/app/service/user-service.service';
 import { loadAuthority, loadUser } from 'src/app/state/user.action';
 import { getauthoritylist, getuserlist } from 'src/app/state/user.selector';
 
@@ -26,7 +27,8 @@ export class AuthorityDetailsComponent {
     constructor(private jwtService: JwtServiceService,
                 private store:Store,private route: ActivatedRoute,
                 private router : Router,
-                private dialog: MatDialog) {
+                private dialog: MatDialog,
+                private userService :UserServiceService) {
       this.authority = [];
       this.filteredUsers = this.filteredUsers;
     }
@@ -36,8 +38,9 @@ export class AuthorityDetailsComponent {
   {Head : 'Email',bodyKey : 'email'},
   {Head : 'Contact',bodyKey : 'contact'},
   {Head : 'Role',bodyKey : 'role'},
+  {Head : 'Gender',bodyKey : 'gender'},
   {Head : 'Delete',bodyKey : 'delete'},
-  // {Head : 'Restrict',bodyKey : 'restrict'},
+  {Head : 'Restrict',bodyKey : 'restrict'},
   {Head : 'MoreDetails',bodyKey : 'moreDetails'},
 
                   ];
@@ -55,9 +58,7 @@ export class AuthorityDetailsComponent {
   }
 
   onDeleteAuthority(userId: string|any) {
-    debugger;
-    console.log("USER ID  >>>   ", userId);
-    
+ 
     this.jwtService.deleteUser(userId).subscribe(
       () => {
         console.log("user deleted successfully");
@@ -68,12 +69,58 @@ export class AuthorityDetailsComponent {
       }
     );
   }
+
   viewMoreAuthority(event : Event) {
       
-    console.log("USER ID IS >>> *****",event);
     this.router.navigate(['/admin/authority-more-details'], { queryParams: { userId: event } });
 
     }
+
+    onRestrictUser(event: any) {
+      const { uuid, active } = event;
+      console.log("UUID:", uuid);
+      console.log("Active:", active);
+  
+      if(active){
+        console.log("if");
+        
+        this.userService.blockUser(uuid).subscribe(
+          () => {
+            console.log("User blocked successfully");
+            this.updateUserData();
+           
+          },
+          error => {
+            console.error("Error blocking user:", error);
+            this.updateUserData();
+            
+          }
+        );
+    
+      }else{
+        console.log("else");
+        
+        this.userService.unblockUser(uuid).subscribe(
+          () => {
+            console.log("User unblocked successfully");
+            this.updateUserData();
+            
+          },
+          error => {
+            console.error("Error unblocking user:", error);
+            this.updateUserData();
+            
+          }
+        );
+      }
+  
+      }
+  
+      updateUserData() {
+     
+        this.store.dispatch(loadAuthority({ role: 'Authority'}));
+      }
+
 
 }
 

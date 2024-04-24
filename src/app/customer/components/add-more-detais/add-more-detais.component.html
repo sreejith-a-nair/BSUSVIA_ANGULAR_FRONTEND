@@ -1,0 +1,102 @@
+
+<mat-toolbar color="primary">
+    <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
+      <span style="text-align: center;">Add more Details</span>
+      <span class="spacer"></span>
+      <button class="mat-dialog-close" mat-icon-button mat-dialog-close>
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-toolbar-row>
+</mat-toolbar>
+<mat-dialog-content class="mat-typography">
+    <form [formGroup]="addMoreDetailForm">
+        <!-- Your existing form fields -->
+
+        <!-- Date of Birth -->
+        <!-- <mat-form-field fxFlex style="width: 100%;">
+            <mat-label>Date of Birth</mat-label>
+            <input matInput formControlName="dob" type="date" required>
+            <mat-error *ngIf="addMoreDetailForm.controls['dob'].touched && addMoreDetailForm.controls['dob'].hasError('required')">
+                <span>This field is mandatory.</span>
+            </mat-error>
+        </mat-form-field> -->
+        <mat-form-field appearance="fill" style="margin-right: 84px;">
+            <mat-label>Choose Departure date</mat-label>
+            <input matInput formControlName="dob" [matDatepicker]="departurePicker">
+            <mat-datepicker-toggle matSuffix [for]="departurePicker"></mat-datepicker-toggle>
+            <mat-datepicker #departurePicker></mat-datepicker>
+            <mat-error *ngIf="addMoreDetailForm.controls['dob'].touched && addMoreDetailForm.controls['dob'].hasError('required')">
+                <span>This field is mandatory.</span>
+            </mat-error>
+        </mat-form-field>
+
+        <!-- Additional Contact -->
+        <mat-form-field fxFlex style="width: 100%;">
+            <mat-label>Additional Contact</mat-label>
+            <input matInput formControlName="additionalContact" type="text" required>
+            <mat-error *ngIf="addMoreDetailForm.controls['additionalContact'].touched && addMoreDetailForm.controls['additionalContact'].hasError('required')">
+                <span>This field is mandatory.</span>
+            </mat-error>
+            <mat-error *ngIf="addMoreDetailForm.controls['additionalContact'].hasError('pattern')">
+                <span>Invalid format. Contact should contain exactly 10 digits.</span>
+            </mat-error>
+        </mat-form-field>
+
+        <!-- Zip Code -->
+        <mat-form-field fxFlex style="width: 100%;">
+            <mat-label>Zip Code</mat-label>
+            <input matInput formControlName="zipCode" type="text" required>
+            <mat-error *ngIf="addMoreDetailForm.controls['zipCode'].touched && addMoreDetailForm.controls['zipCode'].hasError('required')">
+                <span>This field is mandatory.</span>
+            </mat-error>
+            <mat-error *ngIf="addMoreDetailForm.controls['zipCode'].hasError('pattern')">
+                <span>Invalid format. Zip code should contain at least 6 digits.</span>
+            </mat-error>
+        </mat-form-field>
+
+          <!-- Zip Code -->
+          <mat-form-field fxFlex style="width: 100%;">
+            <mat-label>city</mat-label>
+            <input matInput formControlName="city" type="text" required>
+            <mat-error *ngIf="addMoreDetailForm.controls['city'].touched && addMoreDetailForm.controls['city'].hasError('required')">
+                <span>This field is mandatory.</span>
+            </mat-error>
+            <mat-error *ngIf="addMoreDetailForm.controls['city'].touched && addMoreDetailForm.controls['city'].hasError('required')">
+                <span>This field is mandatory.</span>
+            </mat-error>
+        </mat-form-field>
+
+        <!-- District -->
+        <mat-form-field fxFlex style="width: 100%;">
+            <mat-label>District</mat-label>
+            <input matInput formControlName="district" type="text" required>
+            <mat-error *ngIf="addMoreDetailForm.controls['district'].touched && addMoreDetailForm.controls['district'].hasError('required')">
+                <span>This field is mandatory.</span>
+            </mat-error>
+            <mat-error *ngIf="addMoreDetailForm.controls['district'].hasError('minlength')">
+                <span>District must be at least 4 characters long.</span>
+            </mat-error>
+        </mat-form-field>
+
+        <!-- State -->
+        <mat-form-field fxFlex style="width: 100%;">
+            <mat-label>State</mat-label>
+            <input matInput formControlName="state" type="text" required>
+            <mat-error *ngIf="addMoreDetailForm.controls['state'].touched && addMoreDetailForm.controls['state'].hasError('required')">
+                <span>This field is mandatory.</span>
+            </mat-error>
+            <mat-error *ngIf="addMoreDetailForm.controls['state'].hasError('minlength')">
+                <span>State must be at least 4 characters long.</span>
+            </mat-error>
+        </mat-form-field>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>
+        <mat-icon>cancel</mat-icon> Cancel
+    </button>
+    <button mat-raised-button color="primary" type="submit" (click)="addMoreUserDetails()" [disabled]="addMoreDetailForm.invalid">
+        <mat-icon>save</mat-icon> Submit
+    </button>
+</mat-dialog-actions>

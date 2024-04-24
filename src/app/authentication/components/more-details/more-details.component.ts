@@ -66,13 +66,13 @@ export class MoreDetailsComponent implements OnInit{
             this.router.navigateByUrl("/authentication/login");
             
           } else {
-            this.tostersrevice.error("Sign up failed.");
+            this.tostersrevice.failed("Sign up failed.");
             console.log("login error");
           }
         },
         (error) => {
           console.error("HTTP request failed", error);
-          this.tostersrevice.error("Sign up failed.");
+          this.tostersrevice.failed("Sign up failed.");
         }
       );
     } else {

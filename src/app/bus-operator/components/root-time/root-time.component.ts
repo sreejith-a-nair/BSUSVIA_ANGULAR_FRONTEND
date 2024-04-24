@@ -62,18 +62,23 @@ driverBus: BusResponse[] = [];
     this.ngxService.stop();
     this.openRouteAndTimeModal(busId);
   }
-    
-  openRouteAndTimeModal(busId:string|null) { 
-    
-    
-    const dialogConfig= new MatDialogConfig();
-    dialogConfig.width="650px";
-    dialogConfig.data = { busId: busId };
-    this.dialogs.open(AddRootComponent,dialogConfig)
-    console.log("root time modal open  ",busId);
-    this.router.navigate(['/operator/add-root'], { queryParams: { busId: busId } });
 
+  openRouteAndTimeModal(busId: string | null) {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.width = "650px";
+    dialogConfig.data = { busId: busId };
+    
+    const dialogRef = this.dialogs.open(AddRootComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(result => {
+      window.location.reload();
+    });
+  
+    console.log("root time modal open  ", busId);
+    this.router.navigate(['/operator/add-root'], { queryParams: { busId: busId } });
   }
+    
+ 
 
 
   viewRoot(busId: Event) {

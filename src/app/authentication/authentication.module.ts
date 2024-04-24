@@ -17,6 +17,10 @@ import { AuthInterceptor } from '../core/interceptor/auth.interceptor';
 import { MatCustomModule } from '../modules/mat_custom_module';
 import { ToastModule } from 'primeng/toast';
 import { MoreDetailsComponent } from './components/more-details/more-details.component';
+import { OtpValidationComponent } from './components/otp-validation/otp-validation.component';
+import { AdminRequestComponent } from './components/admin-request/admin-request.component';
+
+
 
 const ngxUiLoader:NgxUiLoaderConfig={
   text:"Loading...",
@@ -38,7 +42,9 @@ const ngxUiLoader:NgxUiLoaderConfig={
     ForgotPasswordComponent,
     ChangePasswordComponent,
     LogoutComponent,
-    MoreDetailsComponent
+    MoreDetailsComponent,
+    OtpValidationComponent,
+    AdminRequestComponent
   ],
   imports: [
     CommonModule,

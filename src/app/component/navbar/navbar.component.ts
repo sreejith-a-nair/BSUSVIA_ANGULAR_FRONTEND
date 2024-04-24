@@ -16,6 +16,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 export class NavbarComponent implements DoCheck{
 
 
+
 @ViewChild('drawer') drawer !: MatSidenav;
   title = 'jwt-front';
   users: any;
@@ -25,38 +26,77 @@ export class NavbarComponent implements DoCheck{
   isLogged: boolean=false;
   isAdmin: boolean=false;
   role:null| string='';
+  userName!:string;
+  status!:boolean;
 
   constructor(private jwtService: JwtServiceService,
-              private userServiec : UserServiceService,
+              private userService : UserServiceService,
               private dialog: MatDialog,
               private router :Router){}
 
               adminSideBar = [
-                { label: 'Dashboard', routerLink: '/admin/dashboard', icon: 'dashboard' },
-                { label: 'Booking', routerLink: '/admin/booking-details', icon: 'directions_bus' },
+                // { label: 'Dashboard', routerLink: '/admin/dashboard', icon: 'dashboard' },
+                { label: 'Booking', routerLink: '/admin/booking-details', icon: 'booking_icon_name' },
+                { label: 'Buses', routerLink: '/admin/all-bus-list', icon: 'directions_bus' },
+                { label: 'Coupon', routerLink: '/booking/coupon-list', icon: 'confirmation_number' }, // Corrected routerLink
                 { label: 'Customers', routerLink: '/customer/user-list', icon: 'group' },
                 { label: 'Employees', routerLink: '/admin/employ-list', icon: 'group' },
                 { label: 'Authority', routerLink: '/admin/authority-details', icon: 'group' },
-                { label: 'Buses', routerLink: '/admin/all-bus-list', icon: 'directions_bus' },
+              
+                
                 // { label: 'Banner/image', routerLink: '/admin/user-list', icon: 'image' }
               ];
-
               authoritySideBar = [
-                { label: 'Dashboard manage', routerLink: '/admin/dashboard-manage', icon: 'dashboard' },
+                // { label: 'Dashboard manage', routerLink: '/admin/dashboard-manage', icon: 'dashboard' },
                 { label: 'Bus management', routerLink: '/authority/bus-manage', icon: 'directions_bus' },
                 { label: 'Driver management', routerLink: '/authority/operator-manage', icon: 'group' },
-                { label: 'Ticket management', routerLink: '/authority/ticket-manage', icon: 'receipt' },
-                { label: 'Bus seat management', routerLink: '/authority/ticket-manage', icon: 'receipt' },
                 { label: 'Booking manage', routerLink: '/authority/booking-manage', icon: 'book' },
+                { label: 'Live Chat', routerLink: '/authority/chat-manage', icon: 'chat' },
+                { label: 'Notification', routerLink: '/authority/notification', icon: 'notifications' },
+                
+                // { label: 'Live Chat', routerLink: '/communication/chat', icon: 'chat' },
                
               ];
               operatorSidebar = [
-                { label: 'Dashboard' , routerLink: '/operator/dashboard', icon: 'dashboard' },
+                // { label: 'Dashboard' , routerLink: '/operator/dashboard', icon: 'dashboard' },
                 { label: 'Bus Root-Time', routerLink: '/operator/bus-root-time', icon: 'access_time' },
                 { label: 'Bus & seats', routerLink: '/operator/bus-data', icon: 'directions_bus' },
-                { label: 'Booking off-line ', routerLink: '/bus-operator/booking-manage', icon: 'book' },
+                { label: 'Reserved Users ', routerLink: '/operator/reserved-user-list', icon: 'book' },
               ];
 
+              
+
+              ngOnInit(): void {
+                const driverMail = this.jwtService.extractEmail();
+                this.userService.getUseByEmail  (driverMail).subscribe(
+                  response => {
+                    console.log("find user in nav bar component : ",response);
+                   
+                this.userName=response.firstName;
+                this.status=response.block;
+
+                                  console.log("find user in nav bar component : ",this.userName);
+                                  console.log("ststus : ",response.block);
+                                  this.checkUserisBlock(response.block);        
+                      
+                  },
+                  err => {
+                    console.error("Error fetching bus:", err);
+                  }
+                );
+
+                
+              }
+
+
+              checkUserisBlock(status: boolean) {
+                console.log("checkUserisBlock : ",status);
+                
+                if(status===false){
+                  this.router.navigateByUrl('/authentication/logout')
+
+                }
+              }
   
 
   ngDoCheck(): void {
@@ -101,6 +141,7 @@ export class NavbarComponent implements DoCheck{
 
   }
 
+
   toggleSidebar() {
     const showSidebar = localStorage.getItem('showSidebar') === 'true';
     localStorage.setItem('showSidebar', (!showSidebar).toString());
@@ -111,6 +152,12 @@ export class NavbarComponent implements DoCheck{
    
         this.router.navigate(['/customer/profile']);
   }
+  
+    handleWallet() {
+      console.log("wallet worked >>>");
+      this.router.navigate(['/customer/userWallet']);
+    
+      }
 
   isAdmins(): boolean {
     return this.jwtService.extractRole() === '[Admin]';
@@ -124,12 +171,17 @@ export class NavbarComponent implements DoCheck{
   }
 
   navigateToMyTicket(arg0: string) {
+    console.log("mytiket 1");
+    
     this.router.navigate(['/customer/my-tickets'])
     }
     
     navigateToHome(arg0: string) {
       this.router.navigate(['/customer/home'])
       }
+      navigateToAbout(arg0: string) {
+        this.router.navigate(['/customer/about'])
+        }
   
 }
 

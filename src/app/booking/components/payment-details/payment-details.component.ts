@@ -36,6 +36,7 @@ export class PaymentDetailsComponent {
   category:any;
   busName:any;
   busType:any;
+  authorityEmail:string='';
 
   selectedSeatsLists: number[] = [];
 
@@ -52,9 +53,13 @@ export class PaymentDetailsComponent {
         this.selectedSeatIndex= +params['selectedSeats'] ?? 0;
         this.totalFare = +params['totalFare'] ?? 0;
         this.busId = params['busId'] ?? '';
+        this.busNumber=params['busNumber']??'';
         this.totalSeats = +params['totalSeats'] ?? 0;
         this.fare = +params['fare'] ?? 0;
+        this.authorityEmail = params['authorityEmail'] ?? ''; 
       });
+      console.log("Authority email &&&",this.authorityEmail);
+      
     this.actualSeatNumber=this.selectedSeatIndex+1;
     this.userForm = this.fb.group({
       // Initial form controls go here
@@ -85,8 +90,10 @@ export class PaymentDetailsComponent {
      this.category=response.busInfo.category;
      this.busType=response.busInfo.busType;
      this.email=response.busInfo.email;
+     this.authorityEmail=this.authorityEmail;
 
      console.log("Bus full data by id ",this.busMoreDetails);
+     console.log("Bus email authority ",this.authorityEmail);
      
     }, (error) => {
       console.log("RESPONSE  ", error);
@@ -163,8 +170,11 @@ export class PaymentDetailsComponent {
             busNo: this.busNumber,
             busName: this.busName,
             busType: this.busType,
-            category: this.category
+            category: this.category,
+            authorityEmail:this.authorityEmail
         };
+        console.log("Quesry paar in payment details ",this.authorityEmail);
+        
 
         console.log("PASSENGER LIST", passengers);
         this.openError("successfully booked");

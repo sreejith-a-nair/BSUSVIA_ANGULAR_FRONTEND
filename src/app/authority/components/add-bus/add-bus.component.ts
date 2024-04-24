@@ -37,7 +37,7 @@ export class AddBusComponent {
 
   ngOnInit(): void {
     this.addBusForm = this.formBuilder.group({
-      busName: new FormControl('', [Validators.required, Validators.pattern(this.busNamePattern)]),
+      busName: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z ]{4,}$/)]),
       busNumber: new FormControl('', [Validators.required, Validators.pattern(this.busNumberPattern)]),
       busType: ['', Validators.required],
       totalSeats: ['', [Validators.required, Validators.pattern(this.numberPattern)]],
@@ -51,29 +51,29 @@ export class AddBusComponent {
     });
   }
 
-  handleAddBusSubmit() {
-    console.log("add work  ");
-    const email =this.jwtService.extractEmail();
-    this.ngxService.start();
-    const formData = this.addBusForm.value;
-    const busData :any = {
+    handleAddBusSubmit() {
+      console.log("add work  ");
+      const email =this.jwtService.extractEmail();
+      this.ngxService.start();
+      const formData = this.addBusForm.value;
+      const busData :any = {
 
-      busName: formData.busName,
-      busNumber: formData.busNumber,
-      busType: formData.busType,
-      totalSeats: formData.totalSeats,
-      upperSeat: formData.upperSeat,
-      lowerSeat: formData.lowerSeat,
-      availableSeats:formData.availableSeats,
-      fare:formData.fare,
-      category:formData.category,
-      doubleSeatCount: formData.doubleSeatCount,
-      thirdRowSeatCount: formData.thirdRowSeatCount,
+        busName: formData.busName,
+        busNumber: formData.busNumber,
+        busType: formData.busType,
+        totalSeats: formData.totalSeats,
+        upperSeat: formData.upperSeat,
+        lowerSeat: formData.lowerSeat,
+        availableSeats:formData.availableSeats,
+        fare:formData.fare,
+        category:formData.category,
+        doubleSeatCount: formData.doubleSeatCount,
+        thirdRowSeatCount: formData.thirdRowSeatCount,
 
-      email: email
-    };
-    console.log("add work + data  ",busData);
-  
+        email: email
+      };
+      console.log("add work + data  ",busData);
+    
     this.authorityService.addBus(busData).subscribe((response: any) => {
       console.log("Response add bus success  ",response);
       

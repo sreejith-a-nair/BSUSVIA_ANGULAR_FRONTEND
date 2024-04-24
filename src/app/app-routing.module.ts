@@ -9,6 +9,7 @@ const routes: Routes = [
   { path: 'authority', loadChildren: () => import('./authority/authority.module').then(m => m.AuthorityModule) },
   { path: 'operator', loadChildren: () => import('./bus-operator/bus-operator.module').then(m => m.BusOperatorModule) },
   { path: 'booking', loadChildren: () => import('./booking/booking.module').then(m => m.BookingModule) },
+  { path: 'communication', loadChildren: () => import('./communication/communication.module').then(m => m.CommunicationModule) },
 
 ];
 

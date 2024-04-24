@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { BookingServiceService } from 'src/app/service/booking-service.service';
 import { UserServiceService } from 'src/app/service/user-service.service';
 
 @Component({
@@ -9,12 +10,14 @@ import { UserServiceService } from 'src/app/service/user-service.service';
 })
 export class BusListComponent {
 
+
   buses: any[] = [];
+  finalRating:number = 0;
   originalBuses: any[] = [];
   departurePlace="";
   arrivalPlace="";
   departdate="";
-  constructor(private route: ActivatedRoute,private userService: UserServiceService,private router: Router) {}
+  constructor(private route: ActivatedRoute,private userService: UserServiceService,private router: Router,private busService:BookingServiceService) {}
 
   
   ngOnInit(): void {
@@ -22,7 +25,10 @@ export class BusListComponent {
       if (params && params['buses']) {
         this.originalBuses = JSON.parse(params['buses']);
       this.buses = [...this.originalBuses]; 
+
+      
         // Parse the response data from JSON string
+        
         this.buses = JSON.parse(params['buses']);
         this.departurePlace=JSON.parse(params['buses']);
         console.log("Buses: in bus list component ", this.buses);
@@ -33,6 +39,8 @@ export class BusListComponent {
         }
       }
     });
+    console.log("BUS DSAT ",this.buses);
+  
   }
 
   // featue filter
@@ -52,6 +60,21 @@ export class BusListComponent {
 
   }
 
+  filterByCategory(value: string) {
+    console.log(value);
+    console.log();
+    
+
+    
+    if (value) {
+      this.buses = this.originalBuses.filter(bus => bus.busType === value);
+    } else {
+      
+      this.buses = [...this.originalBuses];
+    }
+    }
+  
+
   checkTimeRange(startTime: string, endTime: string) {
    
     console.log("Start Time:", startTime);
@@ -70,8 +93,14 @@ export class BusListComponent {
  
 selectSeats(busId: any) {
   console.log("bus id ", busId);
+  console.log("BUS DSAT ",this.buses);
+  
   this.router.navigate(['/booking/view-seats'], { queryParams: { busId: busId } });
 }
+
+
+
+
 
 
 }

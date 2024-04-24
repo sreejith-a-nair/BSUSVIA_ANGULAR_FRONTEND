@@ -1,0 +1,18 @@
+
+<div class="heading">
+    <h4>Coupon Details</h4>
+</div>
+<div>
+    <button mat-button color="primary" (click)="addCoupon()">Add coupon</button>
+</div>
+
+  
+<div>
+     <div class="col-md-12" >
+        <app-commontable     [HeadingArray]="HeadingArray"   
+                             [GridArray]="couponInfo" (Delete)="deleteCouponData($event)" 
+                             (edit)="editCoupon($event)" 
+                             (RestrictCoupon)="onRestrictCoupon($event)">
+        </app-commontable>
+      </div>
+</div>

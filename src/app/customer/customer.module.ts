@@ -23,6 +23,20 @@ import { ChangePswdComponent } from './components/change-pswd/change-pswd.compon
 import { ChangePswdDialogComponent } from './components/change-pswd-dialog/change-pswd-dialog.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserErrorpageComponent } from './components/user-errorpage/user-errorpage.component';
+import { TicketErrorComponent } from './components/ticket-error/ticket-error.component';
+import { AddMoreDetaisComponent } from './components/add-more-detais/add-more-detais.component';
+import { EditUserComponent } from './components/edit-user/edit-user.component';
+import { WalletComponent } from './components/wallet/wallet.component';
+import { WalletHistoryComponent } from './components/wallet-history/wallet-history.component';
+import { AddRatingComponent } from './components/add-rating/add-rating.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CouponsComponent } from './components/coupons/coupons.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { AboutComponent } from './components/about/about.component';
+// import { MatNativeDateModule } from '@angular/material/core';
+// import { MatDatepickerModule } from '@angular/material/datepicker';
+// import { MatInputModule } from '@angular/material/input';
+
 
 
 
@@ -54,6 +68,16 @@ const ngxUiLoader:NgxUiLoaderConfig={
     ChangePswdComponent,
     ChangePswdDialogComponent,
     UserErrorpageComponent,
+    TicketErrorComponent,
+    AddMoreDetaisComponent,
+    EditUserComponent,
+    WalletComponent,
+    WalletHistoryComponent,
+    AddRatingComponent,
+    CouponsComponent,
+    FooterComponent,
+    AboutComponent,
+    
     // DashboardComponent,
 
   ],
@@ -66,6 +90,10 @@ const ngxUiLoader:NgxUiLoaderConfig={
     ReusableComponentsModule,
     FormsModule,
     ReactiveFormsModule,
+    NgbModule,
+    // MatNativeDateModule,
+    // MatInputModule,
+    // MatDatepickerModule,
     // StoreModule.forRoot({user:UserReducer}),
     // EffectsModule.forRoot([UserEffect]),
     StoreDevtoolsModule.instrument({maxAge:50, logOnly: !isDevMode()})

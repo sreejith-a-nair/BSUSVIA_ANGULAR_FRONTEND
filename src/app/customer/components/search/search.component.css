@@ -8,7 +8,8 @@
 }
 .input-style{
     width: 315px;
-    height: 120px;
+    /* height: 120px; */
+    height: 140px;
 }
 /* .from-input-styles{
     background-color: white;
@@ -17,8 +18,8 @@
     border-radius: 20px 0 0 20px;
 } */
 .button-input-styles{
-    margin-top: 22px;
+    margin-top: 44px;
     border-radius: 0 20px 20px 0;
     width: 200px;
-    height: 100px;
+    height: 120px;
 }

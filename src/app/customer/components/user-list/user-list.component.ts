@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { JwtServiceService } from 'src/app/service/jwt-service.service';
+import { UserServiceService } from 'src/app/service/user-service.service';
 import { loadUser } from 'src/app/state/user.action';
 import { getuserlist } from 'src/app/state/user.selector';
 import { User } from 'src/app/user.model';
@@ -12,6 +13,7 @@ import { User } from 'src/app/user.model';
   styleUrls: ['./user-list.component.css']
 })
 export class UserListComponent {
+
 
   
 
@@ -30,13 +32,13 @@ export class UserListComponent {
                  {Head : 'Contact',bodyKey : 'contact'},
                  {Head : 'Gender',bodyKey : 'gender'},
                  {Head : 'Delete',bodyKey : 'delete'},
-                //  {Head : 'Restrict',bodyKey : 'restrict'},
+                 {Head : 'Restrict',bodyKey : 'restrict'},
                                  ];
 
   @Input() user: any; 
   block: boolean = false;
 
-  constructor(private jwtService: JwtServiceService, private store:Store,private dialog: MatDialog ) {
+  constructor(private jwtService: JwtServiceService, private store:Store,private dialog: MatDialog,private userService:UserServiceService ) {
     this.users = [];
     this.filteredUsers = this.users;
   }
@@ -45,8 +47,12 @@ export class UserListComponent {
   ngOnInit() {
     this.store.dispatch(loadUser());
     this.store.select(getuserlist).subscribe(item=>{
-      this.users = item;
-      console.log(this.users);
+      // this.users = item;
+      console.log("user data  uswer list ",this.users);
+      if(item){
+        this.users = item.filter(user => user.role === 'User');
+        console.log("Filtered user data:", this.users);
+      }
     });
   }
 
@@ -94,6 +100,51 @@ export class UserListComponent {
       }
     );
   }
+
+  onRestrictUser(event: any) {
+    const { uuid, active } = event;
+    console.log("UUID:", uuid);
+    console.log("Active:", active);
+
+    if(active){
+      console.log("if");
+      
+      this.userService.blockUser(uuid).subscribe(
+        () => {
+          console.log("User blocked successfully");
+          this.updateUserData();
+         
+        },
+        error => {
+          console.error("Error blocking user:", error);
+          this.updateUserData();
+          
+        }
+      );
+  
+    }else{
+      console.log("else");
+      
+      this.userService.unblockUser(uuid).subscribe(
+        () => {
+          console.log("User unblocked successfully");
+          this.updateUserData();
+          
+        },
+        error => {
+          console.error("Error unblocking user:", error);
+          this.updateUserData();
+          
+        }
+      );
+    }
+
+    }
+
+    updateUserData() {
+   
+      this.store.dispatch(loadUser());
+    }
 
 
   // searchUsers(): void {

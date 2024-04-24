@@ -2,3 +2,10 @@
     padding: 15px;
     margin-left: 135px;
 }
+::ng-deep .timepicker-overlay {
+    z-index: 10000 !important;
+  }
+  
+  ::ng-deep .timepicker-backdrop-overlay {
+    z-index: 10000 !important;
+  }

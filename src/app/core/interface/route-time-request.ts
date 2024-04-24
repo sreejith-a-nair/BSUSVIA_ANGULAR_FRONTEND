@@ -1,3 +1,5 @@
+import { RootType } from "src/app/bus-operator/components/enum/rootType.enum";
+
   export interface RouteTimeDataRequest {
     uuid?: string;
     sourceLocation: string;
@@ -8,6 +10,6 @@
     arrivalDate: Date;
     totalHour: string;
     perdayTrip: number;
-      
+    rootType: string; 
     }
   

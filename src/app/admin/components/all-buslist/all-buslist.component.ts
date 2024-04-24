@@ -33,7 +33,8 @@ HeadingArray = [
   { Head: 'Fare', bodyKey: 'fare' },
   { Head: 'Category', bodyKey: 'category' },
   { Head: 'single', bodyKey: 'doubleSeatCount' },
-  { Head: 'Double', bodyKey: 'thirdRowSeatCount' }
+  { Head: 'Double', bodyKey: 'thirdRowSeatCount' },
+  { Head: 'Status', bodyKey: 'status' },
 ];
                  
   ngOnInit(): void {

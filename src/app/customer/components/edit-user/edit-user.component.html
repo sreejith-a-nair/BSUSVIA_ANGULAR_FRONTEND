@@ -1,0 +1,80 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
+      <span>Edit Profile </span>
+      <span class="spacer"></span>
+      <button class="mat-dialog-close" mat-icon-button mat-dialog-close>
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-toolbar-row>
+</mat-toolbar>
+  
+<mat-dialog-content class="mat-typography">
+    <form [formGroup]="editUserForm">
+        <div fxFlex fxLayout="column">
+            <mat-form-field  fxFlex style="width: 100%;">
+                <mat-label>Bus Name</mat-label>
+                <input matInput formControlName="firstName" type="text" required>
+                <mat-error *ngIf="editUserForm.controls['firstName'].touched && editUserForm.controls['firstName'].hasError('required')">
+                    <span>This field is mandatory.</span>
+                </mat-error>    
+                <mat-error *ngIf="editUserForm.controls['firstName'].touched && editUserForm.controls['firstName'].hasError('pattern')">
+                    <span>Invalid bus Name format.</span>
+                  </mat-error>           
+            </mat-form-field>
+            
+            <mat-form-field  fxFlex style="width: 100%;">
+                <mat-label>Last Name</mat-label>
+                <input matInput formControlName="lastName" type="text" required>
+                <mat-error *ngIf="editUserForm.controls['lastName'].touched && editUserForm.controls['lastName'].hasError('required')">
+                    <span>This field is mandatory.</span>
+                </mat-error>
+                <mat-error *ngIf="editUserForm.controls['lastName'].touched && editUserForm.controls['lastName'].hasError('pattern')">
+                    <span>Invalid bus Number format.</span>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field  fxFlex style="width: 100%;">
+                <mat-label>Contact</mat-label>
+                <input matInput formControlName="contact" type="text" required>
+                <mat-error *ngIf="editUserForm.controls['contact'].touched && editUserForm.controls['contact'].hasError('required')">
+                    <span>This field is mandatory.</span>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field  fxFlex style="width: 100%;">
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="email" type="email" required>
+                <mat-error *ngIf="editUserForm.controls['email'].touched && editUserForm.controls['email'].hasError('required')">
+                    <span>This field is mandatory.</span>
+                </mat-error>
+                <mat-error *ngIf="editUserForm.controls['email'].touched && editUserForm.controls['email'].hasError('email')">
+                    <span>Invalid email format.</span>
+                </mat-error>
+            </mat-form-field>
+
+    
+
+            <mat-form-field fxFlex style="width: 100%;">
+                <mat-label>Gender</mat-label>
+                <mat-select formControlName="gender" required>
+                    <mat-option *ngFor="let option of genderOptions" [value]="option">{{ option }}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="editUserForm.controls['gender'].touched && editUserForm.controls['gender'].hasError('required')">
+                    <span>This field is mandatory.</span>
+                </mat-error>
+            </mat-form-field>
+            
+            
+
+        </div>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-raised-button color="primary" type="submit" (click)="handleEditBusSubmit()" [disabled]="editUserForm.invalid">
+        <mat-icon>save</mat-icon>Next
+    </button>
+    <button mat-raised-button color="warn" mat-dialog-close>
+        <mat-icon>cancel</mat-icon>Cancel
+    </button>
+</mat-dialog-actions>

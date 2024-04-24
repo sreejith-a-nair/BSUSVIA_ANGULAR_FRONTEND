@@ -14,6 +14,12 @@ import { MyTicketsComponent } from './components/my-tickets/my-tickets.component
 import { ConfirmationMessageComponent } from './components/confirmation-message/confirmation-message.component';
 import { ChangePswdComponent } from './components/change-pswd/change-pswd.component';
 import { ChangePswdDialogComponent } from './components/change-pswd-dialog/change-pswd-dialog.component';
+import { UserErrorpageComponent } from './components/user-errorpage/user-errorpage.component';
+import { TicketErrorComponent } from './components/ticket-error/ticket-error.component';
+import { WalletComponent } from './components/wallet/wallet.component';
+import { WalletHistoryComponent } from './components/wallet-history/wallet-history.component';
+import { AddRatingComponent } from './components/add-rating/add-rating.component';
+import { AboutComponent } from './components/about/about.component';
 
 
 const routes: Routes = [{ path: '', component: CustomerComponent ,canActivate: [AuthGuard] },
@@ -27,6 +33,12 @@ const routes: Routes = [{ path: '', component: CustomerComponent ,canActivate: [
                         { path: "confirm-message", component: ConfirmationMessageComponent },
                         { path: "change-pswd", component: ChangePswdComponent },
                         { path: "change-pswd-dilog", component: ChangePswdDialogComponent },
+                        { path: "error-page", component: UserErrorpageComponent },
+                        { path: "ticke-error", component: TicketErrorComponent },
+                        { path: "userWallet", component: WalletComponent },
+                        { path: "walletHistory", component: WalletHistoryComponent },
+                        { path: "add-rating", component: AddRatingComponent },
+                        { path: "about", component: AboutComponent },
                         
                        
 ];

@@ -16,7 +16,6 @@ export class SearchComponent {
 
   searchQuery: string = '';
   selectedFromToAndDate!: FormGroup ;
-  addRouteTimeForm!: FormGroup;
   fromPlace = Object.values(SearchEnum);
   toPlace = Object.values(SearchEnum);
   showInputField: boolean = false;
@@ -27,7 +26,8 @@ export class SearchComponent {
   ngOnInit(): void {
     this.selectedFromToAndDate = this.fb.group({
       departurePlace: ['', Validators.required],
-      departureDate: ['', Validators.required],
+      // departureDate: ['', Validators.required],
+      departureDate: [new Date(), Validators.required],
       arrivalPlace: ['', Validators.required]
     });
     console.log("Oninit ",this.selectedFromToAndDate.value);
@@ -55,23 +55,29 @@ export class SearchComponent {
 
 
     console.log("DEPARTURE DATE  : ",searchData.departureDate);
+    
    
     
     
     this.userService.searchBus(searchData).subscribe((response: any) => {
       console.log("RESPONSE  ",response);
-      this.router.navigate(['/customer/bus-list'], {
-        queryParams: {
-          buses: JSON.stringify(response)
-        }
-      });
+      if (response && response.length > 0) {
+        this.router.navigate(['/customer/bus-list'], {
+          queryParams: {
+            buses: JSON.stringify(response)
+          }
+        });
+      } else {
+        this.router.navigate(['/customer/error-page'])
+      }
       
     }, (error) => {
-      console.log("RESPONSE  ",error);
+      console.log("RESPONSE  ERR",error);
       
+      this.router.navigate(['/customer/error-page'])
     });
   }
-  onDepartureDateChange(value: Date) {
+  onDepartureDateChange(value: any) {
     this.selectedFromToAndDate.patchValue({
       departureDate: value
     });
@@ -96,5 +102,29 @@ export class SearchComponent {
     });
   }
 
-  
+  dateFilter = (date: Date | null): boolean => {
+    if (!date) {
+      return false;
+    }
+    // Disable dates before the current date
+    const currentDate = new Date();
+    currentDate.setHours(0, 0, 0, 0);
+    if (date < currentDate) {
+      return false;
+    }
+
+    // Enable only current date to next 2 months duration dates
+    const maxDate = new Date();
+    maxDate.setMonth(maxDate.getMonth() + 2);
+    maxDate.setDate(maxDate.getDate() - 1);
+    maxDate.setHours(0, 0, 0, 0);
+    if (date > maxDate) {
+      return false;
+    }
+
+    return true;
+  };
 }
+
+  
+

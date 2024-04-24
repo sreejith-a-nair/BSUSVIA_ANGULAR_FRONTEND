@@ -26,18 +26,35 @@ table {
     padding: 8px;
   }
   .booked-button{
-    width:100px;
-    height:40px;
+    width:90px;
+    height:30px;
     border-radius: 5px;
     background-color: rgba(49, 182, 138, 0.926);
     color: #ffffff;
     border: none;
   }
   .canceled-button{
-    width:100px;
-    height:40px;
+    width:90px;
+    height:30px;
     border-radius: 5px;
-    background-color: rgba(198, 86, 55, 0.907);
+    background-color: rgba(209, 66, 125, 0.907);
+    border: none;
+    color: white;
+  }
+  .active-button{
+    width:90px;
+    height:30px;
+    margin: 5px;
+    border-radius: 5px;
+    background-color: rgba(35, 141, 146, 0.926);
+    color: #ffffff;
+    border: none;
+  }
+  .inactive-button{
+    width:90px;
+    height:30px;
+    border-radius: 5px;
+    background-color: rgba(209, 66, 125, 0.907);
     border: none;
     color: white;
   }

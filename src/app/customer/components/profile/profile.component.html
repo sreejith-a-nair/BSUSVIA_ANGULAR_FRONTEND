@@ -1,15 +1,36 @@
+
 <div class="border-container">
   <div *ngIf="users" class="profile-container ">
+  
     <div class="center-container">
       <mat-card-header></mat-card-header>
       <mat-card class="profile-card">
-        <mat-card-title class="title">Personal Detail</mat-card-title>
-        <mat-card-content style="margin-bottom: 50px;padding-top: 20px; background-color: white;">
+        <mat-card-title class="title">Profile</mat-card-title>
+        <mat-card-content  class="contents" >
           <p><strong>Name:</strong> {{ users.firstName }}</p>
           <p><strong>Last Name:</strong> {{ users.lastName }}</p>
           <p><strong>Email:</strong> {{ users.email }}</p>
           <p><strong>Contact:</strong> {{ users.contact }}</p>
           <p><strong>Gender:</strong> {{ users.gender }}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-icon-button color="primary" class="edit-btn" aria-label="Edit Profile" (click)="editUserDetails()">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+    <div *ngIf="users.additionalContact" class="center-container">
+      <mat-card-header></mat-card-header>
+      <mat-card class="profile-card">
+        <mat-card-title class="title">More Detail</mat-card-title>
+        <mat-card-content  class="contents">
+          <!-- <p><strong>DOB:</strong> </p> -->
+          <p><strong>Additonal contact :</strong> {{users.additionalContact}}</p>
+          <p><strong>District :</strong>{{users.district}} </p>
+          <p><strong>State :</strong> {{users.state}}</p>
+          <p><strong>City :</strong>{{users.city}}</p>
+          <p><strong>Zip code :</strong>{{users.zipCode}}</p>
         </mat-card-content>
         <mat-card-actions>
           <button mat-icon-button color="primary" class="edit-btn" aria-label="Edit Profile">
@@ -18,41 +39,21 @@
         </mat-card-actions>
       </mat-card>
     </div>
-    <div class="center-container">
+    <div  *ngIf="users.additionalContact==''" class="center-container">
       <mat-card-header></mat-card-header>
       <mat-card class="profile-card">
-        <mat-card-title class="title">Personal Detail</mat-card-title>
-        <mat-card-content style="margin-bottom: 50px;padding-top: 20px; background-color: white;">
-          <p><strong>Name:</strong> {{ users.firstName }}</p>
-          <p><strong>Last Name:</strong> {{ users.lastName }}</p>
-          <p><strong>Email:</strong> {{ users.email }}</p>
-          <p><strong>Contact:</strong> {{ users.contact }}</p>
-          <p><strong>Gender:</strong> {{ users.gender }}</p>
+        <mat-card-title class="title">More Detail</mat-card-title>
+        <button class="btn-details" (click)="addMoreDetails()">Add Details</button>
+        <mat-card-content >
+         
         </mat-card-content>
         <mat-card-actions>
           <button mat-icon-button color="primary" class="edit-btn" aria-label="Edit Profile">
-            <mat-icon>edit</mat-icon>
+        
           </button>
         </mat-card-actions>
       </mat-card>
     </div>
-    <div class="center-container">
-      <mat-card-header></mat-card-header>
-      <mat-card class="profile-card">
-        <mat-card-title class="title">Personal Detail</mat-card-title>
-        <mat-card-content style="margin-bottom: 50px;padding-top: 20px; background-color: white;">
-          <p><strong>Name:</strong> {{ users.firstName }}</p>
-          <p><strong>Last Name:</strong> {{ users.lastName }}</p>
-          <p><strong>Email:</strong> {{ users.email }}</p>
-          <p><strong>Contact:</strong> {{ users.contact }}</p>
-          <p><strong>Gender:</strong> {{ users.gender }}</p>
-        </mat-card-content>
-        <mat-card-actions>
-          <button mat-icon-button color="primary" class="edit-btn" aria-label="Edit Profile">
-            <mat-icon>edit</mat-icon>
-          </button>
-        </mat-card-actions>
-      </mat-card>
-    </div>
+    
   </div>
 </div>

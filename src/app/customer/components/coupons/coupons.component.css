@@ -1,0 +1,46 @@
+/* coupon-card.component.css */
+.coupon-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+  .coupon-card {
+    border-radius: 8px;
+    color: white;
+    margin: 10px;
+    padding: 20px;
+    width: 30%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .coupon-content h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.5em;
+  }
+  
+  .coupon-content p {
+    margin: 0;
+    font-size: 1em;
+  }
+  .body{
+    border-radius: 10px;
+    background-color: rgb(204, 249, 249);
+    margin-top: 50px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+  }
+  .inner-body{
+    padding: 50px;
+    margin-top: 10px;
+    border: 3px solid #9ed8ef;
+    border-radius: 10px;
+  }
+  .text{
+    font-size: 25px;
+    font-weight: 700;
+    color: rgb(97, 97, 97);
+    margin-bottom:30px ;
+    padding-left: 30px;
+  }

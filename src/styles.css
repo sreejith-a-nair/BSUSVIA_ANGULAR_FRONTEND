@@ -82,3 +82,11 @@ cursor: pointer;
     background-color: rgb(145, 44, 44); /* Red background */
     color: white; /* White text color */
 }
+
+::ng-deep .timepicker-overlay {
+    z-index: 10000 !important;
+  }
+  
+  ::ng-deep .timepicker-backdrop-overlay {
+    z-index: 10000 !important;
+  }

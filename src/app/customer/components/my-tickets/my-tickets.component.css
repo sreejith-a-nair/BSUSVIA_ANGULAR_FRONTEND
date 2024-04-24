@@ -1,4 +1,4 @@
-
+/* 
 body{
     margin: 0;
     padding: 0;
@@ -13,7 +13,7 @@ body{
     left: -webkit-calc(20% - 100px);
   }
   .title-bar{
-    background-color: rgb(123, 95, 204);
+    background-color:  #1F046E;
     color: white;
     width: 100%;
     height: 60px;
@@ -28,11 +28,11 @@ body{
   .ticket{
     width: 1200px;
     height: 270px;
-    background: #FFB300;
+    background: #3c09b3;
     border-radius: 3px;
     box-shadow: 0 0 100px #aaa;
-    border-top: 1px solid #E89F3D;
-    border-bottom: 1px solid #E89F3D;
+    border-top: 1px solid #4511ca;
+    border-bottom: 1px solid #0c17b4;
   }
   
   .left{
@@ -552,6 +552,10 @@ body{
   .airlineslip{
     left: 1055px;
   }
+ */
+
+
+
 
 
   /* new */
@@ -566,8 +570,9 @@ body{
     margin-left: 10px; /* Optional: Add space between passenger number and details */
 }
 .contain{
-    margin-left: 60px;
-    margin-right: 100px;
+    /* display: flex; */
+    margin-left: 50px;
+    width: 90%;
 }
   .texing{
     font-size: 16px;
@@ -600,6 +605,20 @@ body{
     border-radius: 10px;
     border: none;
     margin-bottom: 40px;
+  }
+  .addToWallet-button{
+    width: 100px;
+    height: 35px;
+    margin-top: 30px;
+    background-color: #0093E9;
+    background-image: linear-gradient(160deg, #0093E9 0%, #406bb5 100%);
+    font-size: small;
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+    border: none;
+    margin-bottom: 40px;
+    margin-right: 50px;
   }
 
   .cancel-but{
@@ -694,33 +713,34 @@ body{
 
    
   }
-  .containers{
-    background-color: #F5F5F5;
-  }
-  .sidebar {
-    width: 100px;
-    margin: 0px;
-    border-right: 3px solid #b6b6b6;
-    background-color: linear-gradient(to right, lightblue, white)
-    
-  }
-  .heading{
-    margin-top: 30px;
-  }
+    .containers{
+      background-color: #F5F5F5;
+    }
+    .sidebar {
+      width: 140px;
+      margin: 0px;
+      border-right: 3px solid #b6b6b6;
+      background-color: linear-gradient(to right, lightblue, white)
+      
+    }
+    .heading{
+      margin-top: 30px;
+    }
 
-  .card-column {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start; /* Add this line to align the cards vertically */
-  }
+    .card-column {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      border-radius: 30px; /* Add this line to align the cards vertically */
+    }
 
-  .sub-nav{
-    background-color: rgb(31, 4, 110);
-    width: 100%;
-    position: sticky;
-    top: 0;
-    height: 70px;
-  }
+    .sub-nav{
+      background-color: rgb(31, 4, 110);
+      width: 100%;
+      position: sticky;
+      top: 0;
+      height: 70px;
+    }
 
 
   /*  sub nav bar*/
@@ -796,7 +816,7 @@ body{
    
 }
 .top-padd{
-    height: 40px;
+    height: 30px;
     width: 100%;
     display: flex;
     align-items: center;
@@ -806,18 +826,38 @@ background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%); */
 background-image: linear-gradient(62deg, #fbe87e 0%, hsla(43, 78%, 66%, 0.814) 100%); */
 /* background-color: #FBDA61;
 background-image: linear-gradient(45deg, #FBDA61 0%, #FF5ACD 100%); */
-background-color: #FAD961;
-background-image: linear-gradient(90deg, #FAD961 0%, #f6823e 100%);
+/* background-color: #FAD961;
+background-image: linear-gradient(90deg, #FAD961 0%, #f6823e 100%); */
 
-
-
+background-color: #d01313;
+background-image: linear-gradient(180deg, #d01313 0%, #f14a25 33%, #FF0000 66%, #e51d1d 100%);
 
 
 }
+.top-padd1{
+  height: 20px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  /* background-color: #FBAB7E;
+background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%); */
+/* background-color: #fbe27e;
+background-image: linear-gradient(62deg, #fbe87e 0%, hsla(43, 78%, 66%, 0.814) 100%); */
+/* background-color: #FBDA61;
+background-image: linear-gradient(45deg, #FBDA61 0%, #FF5ACD 100%); */
+/* background-color: #FAD961;
+background-image: linear-gradient(90deg, #FAD961 0%, #f6823e 100%); */
+background-color: #0030e9;
+background-image: linear-gradient(160deg, #0030e9 0%, #1154ce 33%, #1e4abe 66%, #1259be 100%);
+
+
+}
+
 .from-to{
     /* background-color: rgb(222, 135, 113); */
-    background-color: #FF9A8B;
-background-image: linear-gradient(90deg, #FF9A8B 0%, #FF6A88 55%, #FF99AC 100%);
+    /* background-color: #FF9A8B;
+background-image: linear-gradient(90deg, #FF9A8B 0%, #FF6A88 55%, #FF99AC 100%); */
+
 
     /* background-color: #6bc2f5d7;
     background-image: linear-gradient(160deg, #78b9df 0%, #80D0C7 100%); */
@@ -981,4 +1021,32 @@ background-image: linear-gradient(90deg, #FF9A8B 0%, #FF6A88 55%, #FF99AC 100%);
     text-align: center;
     border-radius: 5px;
     border: 1px solid #ccc;
+}
+.button-row {
+  display: flex;
+}
+
+
+.rating-btn{
+  /* background-color: #242424; */
+  text-shadow: rgba(137, 137, 137, 0.723);
+  color: #fffcfc;
+  font-size: 13px;
+  font-weight: 400;
+  border-radius: 10px;
+  width: 100px;
+  height: 28px;
+  margin-top: 14px;
+  padding-bottom: 5px;
+  margin-left: 40px;
+  text-align: center;
+  border: none;
+  color: black;
+  border: 2px solid black;
+
+}
+.rating-btn:hover{
+  background-color: rgb(52, 51, 51);
+  color: #fffcfc;
+ 
 }

@@ -20,8 +20,11 @@ import { ToastModule } from 'primeng/toast';
 import { MatCustomModule } from './modules/mat_custom_module';
 import { MessageService } from 'primeng/api';
 import { AuthorityReducer } from './state/authority.reducer';
-
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+// import { enviornment } from 'src/enviroment/enviroment';
+import { enviroment } from 'src/environment/environment';
+import {initializeApp} from 'firebase/app';
+initializeApp(enviroment.firebase)
 
 
 
@@ -61,7 +64,8 @@ const ngxUiLoader:NgxUiLoaderConfig={
                          authority:AuthorityReducer}),
 
     EffectsModule.forRoot([UserEffect]),
-    StoreDevtoolsModule.instrument({maxAge:50, logOnly: !isDevMode()})
+    StoreDevtoolsModule.instrument({maxAge:50, logOnly: !isDevMode()}),
+    NgbModule
 
   ],
 providers: [

@@ -1,4 +1,6 @@
-<nav *ngIf="isLogged" class="navbar navbar-expand navbar-dark bg-dark" style="width: 100%;">
+<!-- <nav *ngIf="isLogged" class="navbar navbar-expand navbar-dark bg-dark" style="width: 100%;"> -->
+  <nav *ngIf="isLogged" class="navbar navbar-expand" style="width: 100%;">
+    <img src="assets/Bus-banner/new-new.jpg" alt="Banner Image" style="position: absolute; top: 0; left: 0; width: 100%; height: auto; z-index: -1; opacity: 0.8;">
     <div class="header-container">
       <div class="nav-item">
 
@@ -32,26 +34,28 @@
       <!-- user  -->
       <ul *ngIf="!isAdmin" class="navbar-nav ml-auto " style="width: 100%;">
         <li  *ngIf="!isAdmin" style="margin-left:100px;margin-bottom: 19px;margin-top: 5px;" >
-        
+         
           <mat-tab-group >
-            <!-- <mat-tab>
-              <ng-template mat-tab-label>
-                <a routerLink="/customer/home" class="nav-item" style="color: yellow; font-weight: 500;text-decoration: none;">Logo</a>
-              </ng-template>
-            </mat-tab> -->
             <mat-tab>
               <ng-template mat-tab-label>
-                <a  (click)="navigateToHome('/customer/home')" class="nav-item nav-button" style="color: yellow; font-weight: 500;text-decoration: none;">Home</a>
+                <div class="grid-item1"><img src="assets/Bus-banner/loggo.jpg" alt="" style="height: 48px;width: 50px;border-radius: 50px;margin-right: 120px;"></div>
+                <!-- <im routerLink="/customer/home" class="nav-item" style="color: yellow; font-weight: 500;text-decoration: none;"</a> -->
+               </ng-template>
+            </mat-tab>
+            <mat-tab>
+              <ng-template mat-tab-label>
+                <a  (click)="navigateToHome('/customer/home')" class="nav-item nav-button" style="color: rgb(255, 255, 255); font-weight: 700;text-decoration: none;font-family: system-ui;font-size: larger;">Home</a>
               </ng-template>
             </mat-tab>
             <mat-tab>
               <ng-template mat-tab-label>
-                <button  (click)="navigateToMyTicket('/customer/my-tickets')" class="nav-item nav-button" style="color: yellow; font-weight: 500;text-decoration: none;">My Ticket</button>
+                <button  (click)="navigateToMyTicket('/customer/my-tickets')" class="nav-item nav-button" style="color: rgb(255, 255, 255); font-weight: 700;text-decoration: none;font-family: system-ui;font-size: larger">My Ticket</button>
               </ng-template>
             </mat-tab>
             <mat-tab>
               <ng-template mat-tab-label>
-                <button (click)="navigateToHome('/customer/home')" class="nav-item  nav-button"  style="color: yellow; font-weight: 500;text-decoration: none;">Track My Bus</button>
+                <!-- <button (click)="navigateToHome('/customer/home')" class="nav-item  nav-button"  style="color: rgb(255, 255, 255); font-weight: 700;text-decoration: none;font-family: system-ui;font-size: larger">Track My Bus</button> -->
+                <button (click)="navigateToAbout('/customer/about')" class="nav-item  nav-button"  style="color: rgb(255, 255, 255); font-weight: 700;text-decoration: none;font-family: system-ui;font-size: larger">About</button>
                 <!-- <a routerLink="/booking/track-bus" class="nav-item" style="color: yellow; font-weight: 500;text-decoration: none;">Track My Bus</a> -->
               </ng-template>
             </mat-tab>
@@ -59,24 +63,28 @@
         </li>
   
         <ng-container *ngIf="isLogged" >
-   
-            <button color="accent" class="profile-icon mat-button" [matMenuTriggerFor]="menu" style="background-color: #212529;border:none; color: yellow;">
-              <mat-icon class="large-icon" style="font-size: x-large; margin-right: 10px;">account_circle</mat-icon>
+          <!-- background-color: #212529 -->
+            <button color="accent" class="profile-icon mat-button" [matMenuTriggerFor]="menu" style="background-color: #404552;border:none; color: rgb(254, 254, 254);">
+              <mat-icon class="large-icon" style="font-size: x-large; margin-right: 10px;color: rgb(255, 255, 255);opacity: 5;">account_circle</mat-icon>
               <mat-icon style="margin-left: 10px;">keyboard_arrow_down</mat-icon>
-          </button>
-          
-        
+              <div style="color: aliceblue;font-size: 13px;font-weight: 350;margin-right: 37px;">
+                {{userName}}
+              </div>
+            </button>
 
             <mat-menu #menu="matMenu">
             
               <button class="nav-link" mat-menu-item  (click)="handleProfile()">Profile</button>
+              <button class="nav-link" mat-menu-item  (click)="handleWallet()">Wallet</button>
               <button class="nav-link" *ngIf="!isAdmin" mat-menu-item (click)="handleForgotPassword()">Forgot Password</button>
               <button class="nav-link" *ngIf="isAdmin" mat-menu-item (click)="handleChangePassword()">change Password</button>
               <button class="nav-link" mat-menu-item  (click)="handleLogout()">Logout</button>
             </mat-menu>
         </ng-container>
+          
       </ul>
     </div>
+   
 </nav>
 
 <!-- side bar list -->
@@ -101,45 +109,6 @@
   
 
 
-  <!-- <mat-drawer #drawer   [opened]="isAdmins()" opened="true" mode="side" position="start" class="sidebar"> 
-  
-    <mat-nav-list class="sidebar">
-
-      <mat-list-item class="sidebar-align1">
-        <button  class="sidebar-align" style="color: rgb(255, 255, 255);" routerLink="/admin/dashboard" mat-button>
-          <mat-icon class="sidebar">dashboard</mat-icon> Dashboard
-        </button>
-      </mat-list-item>
-
-      <mat-list-item class="sidebar-align">
-        <button class="sidebar-align" style="color: rgb(255, 255, 255);" [routerLink]="['customer/user-list']"  mat-button>
-          <mat-icon class="sidebar">group</mat-icon> Customers
-        </button> 
-      </mat-list-item>
-
-      <mat-list-item class="sidebar-align">
-        <button class="sidebar-align" style="color: rgb(255, 255, 255);" [routerLink]="['admin/employ-list']"  mat-button>
-          <mat-icon class="sidebar">group</mat-icon> Employees
-        </button>
-      </mat-list-item>
-      <mat-list-item class="sidebar-align"> 
-        <button class="sidebar-align" style="color: rgb(255, 255, 255);" [routerLink]="['admin/authority-details']" mat-button>
-          <mat-icon class="sidebar">group</mat-icon>Authority
-        </button>
-      </mat-list-item>
-      <mat-list-item class="sidebar-align"> 
-        <button class="sidebar-align" style="color: rgb(255, 255, 255);" [routerLink]="['employee/user-list']"  mat-button>
-          <mat-icon class="sidebar">directions_bus</mat-icon>Buses
-        </button>
-      </mat-list-item>
-      <mat-list-item class="sidebar-align"> 
-        <button class="sidebar-align" style="color: rgb(255, 255, 255);" [routerLink]="['admin/user-list']" mat-button>
-          <mat-icon class="sidebar">image</mat-icon>Banner/image
-        </button>
-      </mat-list-item>
-
-    </mat-nav-list>
-  </mat-drawer> -->
 
     <mat-drawer-content>
       <div style="height: 900px;">

@@ -6,6 +6,7 @@ import { BusResponse } from 'src/app/core/interface/bus-response';
 import { DriverServiceService } from 'src/app/service/driver-service.service';
 import { JwtServiceService } from 'src/app/service/jwt-service.service';
 import { AddStopsComponent } from '../add-stops/add-stops.component';
+import { EditRootComponent } from '../edit-root/edit-root.component';
 
 @Component({
   selector: 'app-view-root',
@@ -50,9 +51,11 @@ driverBus: any;
     { Head: 'Departure Date', bodyKey: 'departureDate' },
     { Head: 'Arrival Date', bodyKey: 'arrivalDate' },
     { Head: 'Total Hour', bodyKey: 'totalHour' },
+    { Head: 'Type', bodyKey: 'rootType' },
     { Head: 'Perday Trip', bodyKey: 'perdayTrip' },
-    { Head: 'Add Stop ', bodyKey: 'addStop' },
-    { Head: 'View Stops', bodyKey: 'viewStop' },
+    { Head: 'Edit', bodyKey: 'editRoot' },
+    // { Head: 'Add Stop ', bodyKey: 'addStop' },
+    // { Head: 'View Stops', bodyKey: 'viewStop' },
   ]
 
 
@@ -89,4 +92,26 @@ driverBus: any;
     this.router.navigate(['/operator/view-'], { queryParams: { busId: busId } });
 
   }
+
+  editRoot(rootId:string) {
+    console.log("Edit event  ",rootId);
+  
+   const busdata = this.driverBus.filter((each: { uuid: string; }) => each.uuid === rootId );
+   console.log("exsisting data root ",rootId);
+  
+    const dialogConfig= new MatDialogConfig();
+    dialogConfig.width="650px";
+    dialogConfig.data = { routeData: busdata[0] };
+    console.log("BUS Data for edit ",busdata);
+    
+    this.dialogs.open(EditRootComponent,dialogConfig)
+  
+    const dialogRef: MatDialogRef<EditRootComponent> = this.dialogs.open(EditRootComponent, dialogConfig);
+  
+    dialogRef.afterClosed().subscribe(result => {
+      // Perform page reload here
+      location.reload();
+    });
+    
+    }
 }

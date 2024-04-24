@@ -8,6 +8,8 @@ import { RouteTimeDataRequest } from '../core/interface/route-time-request';
 import { RouteTimeDataResponse } from '../core/interface/route-and-time-response';
 import { User } from '../user.model';
 import { DriverResponse } from '../core/interface/driverResponse';
+import { DatePipe } from '@angular/common';
+import { WalletResponse } from '../core/interface/walletResponse.model';
 
 
 const BASE_URL= environment.BASE_URL;
@@ -15,7 +17,8 @@ const BASE_URL= environment.BASE_URL;
   providedIn: 'root'
 })
 export class AuthorityServiceService {
-  
+ 
+ 
  
   
        
@@ -30,7 +33,15 @@ export class AuthorityServiceService {
     
     return this.http.get<any>(BASE_URL + 'booking/getAllBooking');
   }
+  getAllBookingByMail():Observable<any[]> {
+    console.log("service caled ");
+    
+    return this.http.get<any>(BASE_URL + 'booking/getAllBooking');
+  }
 
+  getAllNotificationByEmail(email: string | null) :Observable<any[]>{
+    return this.http.get<any>(BASE_URL + 'booking/getAllNotificationByEmail');
+  }
 
 // bus service bus entity
   getAllBusByMail(email: string | null): Observable<any> {
@@ -38,6 +49,17 @@ export class AuthorityServiceService {
       console.log("service layer ",url);
       return this.http.get<BusResponse[]>(url, { params: { email } } as any);
   }
+
+// user walet history 
+getUserWalletHistory(email: string | null): Observable<any> {
+  const url = `${BASE_URL}user/getUserWalletHistory`;
+  console.log("service layer wallet history * * *  ",url);
+  return this.http.get<WalletResponse[]>(url, { params: { email } } as any);
+}
+
+
+// end
+
 
 // usert service bus entity
 getAllBusByMails(email: string | null): Observable<any> {
@@ -79,6 +101,18 @@ getAllBusByMails(email: string | null): Observable<any> {
     
     return this.http.post<BusResponse>(`${BASE_URL}bus/edit-bus/${busId}`, busData);
   }
+
+  updateRoute(routeData: any, routeId: any) {
+    return this.http.post<BusResponse>(`${BASE_URL}bus/edit-root/${routeId}`, routeData);
+  }
+ 
+
+  updateUser(userData: any, userId: any) {
+    console.log("service : ", userId, "data ",userData);
+    
+    return this.http.post<BusResponse>(`${BASE_URL}user/updateUser/${userId}`, userData);
+  }
+  
  
 
 
@@ -106,6 +140,19 @@ getAllBusByMails(email: string | null): Observable<any> {
     
     return this.http.post<any>(`${BASE_URL}user/addBusRootAndTime/${busId}`, requestBody);
   }
+  // addRouteAndTimeByDriver(routeTimeData: RouteTimeDataRequest, busId: any): Observable<any> {
+  //   const date = this.datePipe.transform(new Date(), 'yyyy-MM-dd') ?? ''; 
+  //   const datetime = new Date().toISOString();
+    
+  //   const params = new HttpParams()
+  //     .set('date', date)
+  //     .set('datetime', datetime);
+    
+  //   console.log("ServiceWorker", busId);
+  //   const requestBody = { ...routeTimeData, busId };
+  //   console.log("Service request body", requestBody);
 
+  //   return this.http.post<any>(`${BASE_URL}user/addBusRootAndTime/${busId}`, requestBody, { params });
+  // }
  
 }

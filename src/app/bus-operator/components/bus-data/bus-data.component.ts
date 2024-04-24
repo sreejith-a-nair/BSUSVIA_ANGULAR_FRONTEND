@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { BusResponse } from 'src/app/core/interface/bus-response';
 import { DriverServiceService } from 'src/app/service/driver-service.service';
 import { JwtServiceService } from 'src/app/service/jwt-service.service';
 import { SeatRowsComponent } from '../seat-rows/seat-rows.component';
+import { EditRootComponent } from '../edit-root/edit-root.component';
 
 @Component({
   selector: 'app-bus-data',
@@ -34,7 +35,7 @@ export class BusDataComponent {
     { Head: 'Total Seats', bodyKey: 'totalSeats' },
     { Head: 'Double Seat Count', bodyKey: 'doubleSeatCount' },
     { Head: 'Third Row Seat Count', bodyKey: 'thirdRowSeatCount' },
-    { Head: 'Add Seats Row ', bodyKey: 'addSeatRow' },
+    // { Head: 'Add Seats Row ', bodyKey: 'addSeatRow' },
     { Head: 'View Seats Row', bodyKey: 'viewSeatRow' },
   ];
   
@@ -75,5 +76,14 @@ openAddStopRowModal(busId:string|null) {
   this.router.navigate(['/operator/add-seat-row'], { queryParams: { busId: busId } });
 
 }
+
+selectOfflineSeats(busId: any) {
+  console.log("bus id ", busId);
+  this.router.navigate(['/booking/offline-view-seat'], { queryParams: { busId: busId } });
+  // this.router.navigate(['/booking/view-seats'], { queryParams: { busId: busId } });
+  
+}
+
+
 
 }

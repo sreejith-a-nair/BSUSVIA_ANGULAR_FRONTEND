@@ -8,68 +8,145 @@
     </mat-toolbar-row>
 </mat-toolbar>
   
-<mat-dialog-content class="mat-typography">
-    <form [formGroup]="addRouteTimeForm">
-        <div fxFlex fxLayout="column">
+  <mat-dialog-content class="mat-typography">
+      <form [formGroup]="addRouteTimeForm">
+          <div fxFlex fxLayout="column">
+
+
             <mat-form-field fxFlex style="width: 100%;">
                 <mat-label>Source Location</mat-label>
                 <input matInput formControlName="sourceLocation" type="text" required>
                 <mat-error *ngIf="addRouteTimeForm.controls['sourceLocation'].touched && addRouteTimeForm.controls['sourceLocation'].hasError('required')">
                     <span>This field is mandatory.</span>
                 </mat-error>
+                <mat-error *ngIf="addRouteTimeForm.controls['sourceLocation'].hasError('pattern')">
+                    <span>Source location must contain at least 4 alphabetic characters.</span>
+                </mat-error>
             </mat-form-field>
+          
             <mat-form-field fxFlex style="width: 100%;">
                 <mat-label>Destination Location</mat-label>
                 <input matInput formControlName="destinationLocation" type="text" required>
                 <mat-error *ngIf="addRouteTimeForm.controls['destinationLocation'].touched && addRouteTimeForm.controls['destinationLocation'].hasError('required')">
                     <span>This field is mandatory.</span>
                 </mat-error>
+                <mat-error *ngIf="addRouteTimeForm.controls['destinationLocation'].hasError('pattern')">
+                    <span>Destination location must contain at least 4 alphabetic characters.</span>
+                </mat-error>
             </mat-form-field>
 
-            <div fxLayout="row">
-                <mat-form-field fxFlex style="width: 46%;margin-right: 10px;">
-                  <mat-label>Departure Time</mat-label>
-                  <input matInput formControlName="departureTime" type="time" (change)="calculateDuration()" required>
-                  <mat-error *ngIf="addRouteTimeForm.controls['departureTime'].touched && addRouteTimeForm.controls['departureTime'].hasError('required')">
-                    <span>This field is mandatory.</span>
-                  </mat-error>
-                </mat-form-field>
-              
-                <mat-form-field fxFlex style="width: 48%;">
-                    <mat-label>Departure Period</mat-label>
-                    <mat-select formControlName="departurePeriod" (selectionChange)="calculateDuration()" required>
-                      <mat-option value="" disabled selected>Select Period</mat-option>
-                      <mat-option *ngFor="let period of departurePeriods" [value]="period">{{ period }}</mat-option>
-                    </mat-select>
-                    <mat-error *ngIf="addRouteTimeForm.controls['departurePeriod'].touched && addRouteTimeForm.controls['departurePeriod'].hasError('required')">
-                      <span>This field is mandatory.</span>
-                    </mat-error>
-                </mat-form-field>
-              </div>
 
               <div fxLayout="row">
-                <mat-form-field fxFlex style="width: 46%;margin-right: 10px;">
-                  <mat-label>Arrival Time</mat-label>
-                  <input matInput formControlName="arrivalTime" type="time" (change)="calculateDuration()" required>
-                  <mat-error *ngIf="addRouteTimeForm.controls['arrivalTime'].touched && addRouteTimeForm.controls['arrivalTime'].hasError('required')">
+                  <mat-form-field fxFlex style="width: 46%;margin-right: 10px;">
+                    <mat-label>Departure Time</mat-label>
+                    <input matInput formControlName="departureTime" type="time" (change)="calculateDuration()" required>
+                    <mat-error *ngIf="addRouteTimeForm.controls['departureTime'].touched && addRouteTimeForm.controls['departureTime'].hasError('required')">
+                      <span>This field is mandatory.</span>
+                    </mat-error>
+                  </mat-form-field>
+                
+                  <mat-form-field fxFlex style="width: 48%;">
+                      <mat-label>Departure Period</mat-label>
+                      <mat-select formControlName="departurePeriod" (selectionChange)="calculateDuration()" required>
+                        <mat-option value="" disabled selected>Select Period</mat-option>
+                        <mat-option *ngFor="let period of departurePeriods" [value]="period">{{ period }}</mat-option>
+                      </mat-select>
+                      <mat-error *ngIf="addRouteTimeForm.controls['departurePeriod'].touched && addRouteTimeForm.controls['departurePeriod'].hasError('required')">
+                        <span>This field is mandatory.</span>
+                      </mat-error>
+                  </mat-form-field>
+                </div>
+
+                <div fxLayout="row">
+                  <mat-form-field fxFlex style="width: 46%;margin-right: 10px;">
+                    <mat-label>Arrival Time</mat-label>
+                    <input matInput formControlName="arrivalTime" type="time" (change)="calculateDuration()" required>
+                    <mat-error *ngIf="addRouteTimeForm.controls['arrivalTime'].touched && addRouteTimeForm.controls['arrivalTime'].hasError('required')">
+                      <span>This field is mandatory.</span>
+                    </mat-error>
+                  </mat-form-field>
+                
+                  <mat-form-field fxFlex style="width: 48%;">
+                      <mat-label>Departure Period</mat-label>
+                      <mat-select formControlName="arrivalPeriod" (selectionChange)="calculateDuration()" required>
+                        <mat-option value="" disabled selected>Select Period</mat-option>
+                        <mat-option *ngFor="let period of arrivalPeriods" [value]="period">{{ period }}</mat-option>
+                      </mat-select>
+                      <mat-error *ngIf="addRouteTimeForm.controls['arrivalPeriod'].touched && addRouteTimeForm.controls['arrivalPeriod'].hasError('required')">
+                        <span>This field is mandatory.</span>
+                      </mat-error>
+                  </mat-form-field>
+                </div>
+
+                <!-- [matDatepickerFilter]="dateFilter"  -->
+                <!--  -->
+                <!-- new update -->
+                <mat-form-field appearance="fill" class="input-style" >
+                  <mat-label>Choose Departure date</mat-label>
+                  <input matInput formControlName="departureDate" [matDatepicker]="departurePicker" [matDatepickerFilter]="dateFilter" (dateChange)="onDepartureDateChange($event.value)" >
+                  <mat-datepicker-toggle matSuffix [for]="departurePicker"></mat-datepicker-toggle>
+                  <mat-datepicker #departurePicker></mat-datepicker>
+                  <mat-error *ngIf="addRouteTimeForm.controls['departureDate'].touched && addRouteTimeForm.controls['departureDate'].hasError('required')">
+                    <span>This field is mandatory.</span>
+                </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill" class="input-style" >
+                  <mat-label>Choose Arrival date</mat-label>
+                  <input matInput formControlName="arrivalDate"  [matDatepicker]="arrivalPicker" [matDatepickerFilter]="dateFilter"  (dateChange)="onDepartureDateChange($event.value)" >
+                  <mat-datepicker-toggle matSuffix [for]="arrivalPicker"></mat-datepicker-toggle>
+                  <mat-datepicker #arrivalPicker></mat-datepicker>
+                  <mat-error *ngIf="addRouteTimeForm.controls['arrivalDate'].touched && addRouteTimeForm.controls['arrivalDate'].hasError('required')">
+                    <span>This field is mandatory.</span>
+                </mat-error>
+                </mat-form-field>
+
+                <mat-form-field fxFlex style="width: 48%;">
+                  <mat-label>Root Type</mat-label>
+                  <mat-select formControlName="rootType" required>
+                    <mat-option value="" disabled selected>Select Root Type</mat-option>
+                    <mat-option value="regular">Regular</mat-option>
+                    <mat-option value="other">Other</mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="addRouteTimeForm.controls['rootType'].touched && addRouteTimeForm.controls['rootType'].hasError('required')">
                     <span>This field is mandatory.</span>
                   </mat-error>
                 </mat-form-field>
-              
-                <mat-form-field fxFlex style="width: 48%;">
-                    <mat-label>Departure Period</mat-label>
-                    <mat-select formControlName="arrivalPeriod" (selectionChange)="calculateDuration()" required>
-                      <mat-option value="" disabled selected>Select Period</mat-option>
-                      <mat-option *ngFor="let period of arrivalPeriods" [value]="period">{{ period }}</mat-option>
-                    </mat-select>
-                    <mat-error *ngIf="addRouteTimeForm.controls['arrivalPeriod'].touched && addRouteTimeForm.controls['arrivalPeriod'].hasError('required')">
-                      <span>This field is mandatory.</span>
-                    </mat-error>
+                
+              <mat-form-field fxFlex style="width: 100%;">
+                  <mat-label>Total Hour</mat-label>
+                  <input matInput formControlName="totalHour" type="text" required>
+                  <mat-error *ngIf="addRouteTimeForm.controls['totalHour'].touched && addRouteTimeForm.controls['totalHour'].hasError('required')">
+                    <span>This field is mandatory.</span>
+                  </mat-error>
                 </mat-form-field>
-              </div>
-              
-            
-            <mat-form-field appearance="fill" style="margin-right: 84px;">
+
+
+                
+              <mat-form-field fxFlex style="width: 100%;">
+                  <mat-label>Per Day Trip</mat-label>
+                  <input matInput formControlName="perdayTrip" type="number" required>
+                  <mat-error *ngIf="addRouteTimeForm.controls['perdayTrip'].touched && addRouteTimeForm.controls['perdayTrip'].hasError('required')">
+                      <span>This field is mandatory.</span>
+                  </mat-error>
+              </mat-form-field>
+        </div>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-raised-button color="primary" type="submit" (click)="handleAddRouteTimeSubmits()" [disabled]="addRouteTimeForm.invalid">
+        <mat-icon>save</mat-icon>Submit
+    </button>
+    <button mat-raised-button color="warn" mat-dialog-close>
+        <mat-icon>cancel</mat-icon>Cancel
+    </button>
+</mat-dialog-actions>
+
+
+
+    
+            <!-- <mat-form-field appearance="fill" style="margin-right: 84px;">
                 <mat-label>Choose Departure date</mat-label>
                 <input matInput formControlName="departureDate" [matDatepicker]="departurePicker">
                 <mat-datepicker-toggle matSuffix [for]="departurePicker"></mat-datepicker-toggle>
@@ -78,6 +155,7 @@
                     <span>This field is mandatory.</span>
                 </mat-error>
             </mat-form-field>
+
             <mat-form-field appearance="fill">
                 <mat-label>Choose Arrival date</mat-label>
                 <input matInput formControlName="arrivalDate" [matDatepicker]="arrivalPicker">
@@ -86,33 +164,27 @@
                 <mat-error *ngIf="addRouteTimeForm.controls['arrivalDate'].touched && addRouteTimeForm.controls['arrivalDate'].hasError('required')">
                     <span>This field is mandatory.</span>
                 </mat-error>
-            </mat-form-field>
-            
-            <mat-form-field fxFlex style="width: 100%;">
-                <mat-label>Total Hour</mat-label>
-                <input matInput formControlName="totalHour" type="text" required>
-                <mat-error *ngIf="addRouteTimeForm.controls['totalHour'].touched && addRouteTimeForm.controls['totalHour'].hasError('required')">
-                  <span>This field is mandatory.</span>
-                </mat-error>
-              </mat-form-field>
-              
-            <mat-form-field fxFlex style="width: 100%;">
-                <mat-label>Per Day Trip</mat-label>
-                <input matInput formControlName="perdayTrip" type="number" required>
-                <mat-error *ngIf="addRouteTimeForm.controls['perdayTrip'].touched && addRouteTimeForm.controls['perdayTrip'].hasError('required')">
+            </mat-form-field> -->
+
+
+
+            <!-- time picker
+           <div fxLayout="row">
+                <mat-form-field fxFlex style="width: 46%;margin-right: 10px;">
+                  <mat-label>Departure Time</mat-label>
+                  <input  matInput rmControlName="departureTime" [ngxTimepicker]="departureTimePicker" required  >
+                  <ngx-material-timepicker #departureTimePicker></ngx-material-timepicker>
+                  <mat-error *ngIf="addRouteTimeForm.controls['departureTime'].touched && addRouteTimeForm.controls['departureTime'].hasError('required')">
                     <span>This field is mandatory.</span>
-                </mat-error>
-            </mat-form-field>
-        </div>
-    </form>
-</mat-dialog-content>
+                  </mat-error>
+                </mat-form-field>
 
-<mat-dialog-actions align="end">
-    <button mat-raised-button color="primary" type="submit" (click)="handleAddRouteTimeSubmits()" [disabled]="addRouteTimeForm.invalid">
-        <mat-icon>save</mat-icon>Save
-    </button>
-    <button mat-raised-button color="warn" mat-dialog-close>
-        <mat-icon>cancel</mat-icon>Cancel
-    </button>
-</mat-dialog-actions>
-
+                <mat-form-field fxFlex style="width: 46%;margin-right: 10px;">
+                  <mat-label>Arrival Time</mat-label>
+                  <input  matInput formControlName="arrivalTime"  [ngxTimepicker]="arrivalTimePicker" required >
+                  <ngx-material-timepicker #arrivalTimePicker></ngx-material-timepicker>
+                  <mat-error *ngIf="addRouteTimeForm.controls['arrivalTime'].touched && addRouteTimeForm.controls['arrivalTime'].hasError('required')">
+                    <span>This field is mandatory.</span>
+                  </mat-error>
+                </mat-form-field>
+</div>-->

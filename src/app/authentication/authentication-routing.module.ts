@@ -7,6 +7,7 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { MoreDetailsComponent } from './components/more-details/more-details.component';
+import { OtpValidationComponent } from './components/otp-validation/otp-validation.component';
 
 
 const routes: Routes = [{ path: '', component: AuthenticationComponent },
@@ -15,7 +16,8 @@ const routes: Routes = [{ path: '', component: AuthenticationComponent },
                         { path: 'forgot-password', component: ForgotPasswordComponent },
                         { path: 'change-password', component: ChangePasswordComponent },
                         { path: 'logout', component: LogoutComponent },
-                        { path: 'more-details', component: MoreDetailsComponent }
+                        { path: 'more-details', component: MoreDetailsComponent },
+                        { path: 'otp-validate', component: OtpValidationComponent }
                         ];
 
 @NgModule({

@@ -1,0 +1,118 @@
+
+<mat-toolbar color="primary">
+    <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
+      <span>Add coupon</span>
+      <span class="spacer"></span>
+      <button class="mat-dialog-close" mat-icon-button mat-dialog-close>
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-toolbar-row>
+</mat-toolbar>
+<mat-dialog-content class="mat-typography">
+    <form [formGroup]="addcouponForm">
+        <div fxFlex fxLayout="column">
+            <!-- <mat-form-field fxFlex style="width: 100%;">
+                <mat-label>Coupon Name</mat-label>
+                <input matInput formControlName="couponName" type="text" required>
+                <mat-error *ngIf="addcouponForm.controls['couponName'].touched && addcouponForm.controls['couponName'].hasError('required')">
+                    <span>This field is mandatory.</span>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field fxFlex style="width: 100%;">
+                <mat-label>Coupon Code</mat-label>
+                <input matInput formControlName="couponCode" type="text" required>
+                <mat-error *ngIf="addcouponForm.controls['couponCode'].touched && addcouponForm.controls['couponCode'].hasError('required')">
+                    <span>This field is mandatory.</span>
+                </mat-error>
+            </mat-form-field> -->
+
+            <!-- <mat-form-field fxFlex style="width: 100%;">
+                <mat-label>Expiry Date</mat-label>
+                <input matInput formControlName="expiryDate" type="date" required>
+                <mat-error *ngIf="addcouponForm.controls['expiryDate'].touched && addcouponForm.controls['expiryDate'].hasError('required')">
+                    <span>This field is mandatory.</span>
+                </mat-error>
+            </mat-form-field> -->
+
+            <mat-form-field fxFlex style="width: 100%;">
+                <mat-label>Coupon Name</mat-label>
+                <input matInput formControlName="couponName" type="text" pattern="[A-Za-z]{4,}" required>
+                <mat-error *ngIf="addcouponForm.controls['couponName'].touched && addcouponForm.controls['couponName'].hasError('required')">
+                    <span>This field is mandatory.</span>
+                </mat-error>
+                <mat-error *ngIf="addcouponForm.controls['couponName'].touched && addcouponForm.controls['couponName'].hasError('pattern')">
+                    <span>Coupon name must contain at least 4 alphabetical characters.</span>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field fxFlex style="width: 100%;">
+                <mat-label>Coupon Code</mat-label>
+                <input matInput formControlName="couponCode" type="text" pattern="[A-Z]{4,}" required>
+                <mat-error *ngIf="addcouponForm.controls['couponCode'].touched && addcouponForm.controls['couponCode'].hasError('required')">
+                    <span>This field is mandatory.</span>
+                </mat-error>
+                <mat-error *ngIf="addcouponForm.controls['couponCode'].touched && addcouponForm.controls['couponCode'].hasError('pattern')">
+                    <span>Coupon code must be in uppercase and contain at least 4 alphabetical characters.</span>
+                </mat-error>
+            </mat-form-field>
+
+
+            <mat-form-field fxFlex style="width: 100%;">
+                <mat-label>Expiry Date</mat-label>
+                <input matInput formControlName="expiryDate" type="date" required [min]="minDate" [max]="maxDate">
+                <mat-error *ngIf="addcouponForm.controls['expiryDate'].touched && addcouponForm.controls['expiryDate'].hasError('required')">
+                    <span>This field is mandatory.</span>
+                </mat-error>
+                <mat-error *ngIf="addcouponForm.controls['expiryDate'].touched && addcouponForm.controls['expiryDate'].hasError('min')">
+                    <span>The expiry date must be today or later.</span>
+                </mat-error>
+                <mat-error *ngIf="addcouponForm.controls['expiryDate'].touched && addcouponForm.controls['expiryDate'].hasError('max')">
+                    <span>The expiry date cannot be more than one year from today.</span>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field fxFlex style="width: 100%;">
+                <mat-label>Count</mat-label>
+                <input matInput formControlName="count" type="number" required>
+                <mat-error *ngIf="addcouponForm.controls['count'].touched && addcouponForm.controls['count'].hasError('required')">
+                    <span>This field is mandatory.</span>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field fxFlex style="width: 100%;">
+                <mat-label>Max Price</mat-label>
+                <input matInput formControlName="maxPrice" type="number" required>
+                <mat-error *ngIf="addcouponForm.controls['maxPrice'].touched && addcouponForm.controls['maxPrice'].hasError('required')">
+                    <span>This field is mandatory.</span>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field fxFlex style="width: 100%;">
+                <mat-label>Min Fare</mat-label>
+                <input matInput formControlName="minFare" type="number" required>
+                <mat-error *ngIf="addcouponForm.controls['minFare'].touched && addcouponForm.controls['minFare'].hasError('required')">
+                    <span>This field is mandatory.</span>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field fxFlex style="width: 100%;">
+                <mat-label>Off Percent</mat-label>
+                <input matInput formControlName="offPercent" type="number" required>
+                <mat-error *ngIf="addcouponForm.controls['offPercent'].touched && addcouponForm.controls['offPercent'].hasError('required')">
+                    <span>This field is mandatory.</span>
+                </mat-error>
+            </mat-form-field>
+
+        </div>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-raised-button color="primary" type="submit" (click)="handleAddBusSubmit()" [disabled]="addcouponForm.invalid">
+        <mat-icon>save</mat-icon>Next
+    </button>
+    <button mat-raised-button color="warn" mat-dialog-close>
+        <mat-icon>cancel</mat-icon>Cancel
+    </button>
+</mat-dialog-actions>

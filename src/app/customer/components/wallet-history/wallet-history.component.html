@@ -1,0 +1,14 @@
+
+<div class="heading">
+    <h4>Wallet History  Details</h4>
+</div>
+<button class="back-btn" mat-button (click)="backToWallet()" [routerLink]="['/admin/authority-details']">
+    <mat-icon>arrow_back</mat-icon>
+</button>
+<div>
+    <div class="col-md-12">
+        <app-commontable [HeadingArray]="HeadingArray" 
+                         [GridArray]="walletInfo">
+        </app-commontable>
+    </div>
+</div>

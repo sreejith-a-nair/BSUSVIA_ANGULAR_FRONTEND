@@ -18,11 +18,27 @@
   }
 
   .nav-item {
-    margin-left: 50px;
     margin-right: 100px;
     color: yellow; 
     font-weight: 500;
     text-decoration: none;
+    transition: width .5s ease, background-color .5s ease;
+    background: transparent;
+  }
+  .nav-item.nav-button::after {
+    content: '';
+    display: block;
+    margin: auto;
+    height: 3px;
+    width: 0px;
+    background: transparent;
+    transition: width .5s ease, background-color .5s ease;
+  }
+  
+  .nav-item.nav-button:hover::after {
+    width: 100%;
+    margin-top: 20px;
+    background: white;
   }
   .nav-item-home-text{
     color: rgb(230, 235, 74);
@@ -59,4 +75,3 @@
   background: red;
   color: blue;
 }
- 

@@ -9,6 +9,9 @@ import { AddBusComponent } from './components/add-bus/add-bus.component';
 // import { BusRouteAndTimeComponent } from './components/bus-route-and-time/bus-route-and-time.component';
 import { EditBusComponent } from './components/edit-bus/edit-bus.component';
 import { DriverBusTsComponent } from './components/driver-bus.ts/driver-bus.ts.component';
+import { ChatComponent } from '../communication/components/chat/chat.component';
+import { ChatManageComponent } from './components/chat-manage/chat-manage.component';
+import { NotificationManageComponent } from './components/notification-manage/notification-manage.component';
 
 const routes: Routes = [{ path: '', component: AuthorityComponent },
                         { path: 'bus-manage', component: BusManageComponent },
@@ -19,6 +22,10 @@ const routes: Routes = [{ path: '', component: AuthorityComponent },
                         // { path: 'add-route-time', component: BusRouteAndTimeComponent },
                         { path: 'operator-manage', component: DriverManageComponent },
                         { path: 'driver-bus', component: DriverBusTsComponent },
+                        { path: 'chat-manage', component: ChatManageComponent },
+                        { path: 'chat', component: ChatComponent },
+                        { path: 'notification', component: NotificationManageComponent },
+                        
                    ];
 
 @NgModule({

@@ -1,4 +1,4 @@
-<div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="420px">
+<div  [formGroup]="selectedFromToAndDate" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="490px">
     <!-- Departure Place Dropdown -->
     <div></div>
     <mat-form-field fxFlex class="input-style from-input-styles">
@@ -7,7 +7,6 @@
         <mat-icon matSuffix>departure</mat-icon>
         <mat-option *ngFor="let district of fromPlace" [value]="district">{{ district }}</mat-option>
       </mat-select>
-      <!-- <input matInput placeholder="Other..." formControlName="customDeparturePlace" class="from-input-styles" style="flex: 3;" [hidden]="!showInputField" /> -->
       <mat-error *ngIf="selectedFromToAndDate.controls['departurePlace'].touched && selectedFromToAndDate.controls['departurePlace'].hasError('required')">
         <span>This field is mandatory.</span>
       </mat-error>
@@ -24,13 +23,14 @@
       </mat-error>
     </mat-form-field>
   
-    <!-- From Date -->
-    <mat-form-field appearance="fill" class="input-style">
+
+
+    <mat-form-field appearance="fill" class="input-style" >
       <mat-label>Date</mat-label>
-      <input matInput formControlName="departureDate" [matDatepicker]="departurePicker" (dateChange)="onDepartureDateChange($event.value)" />
+      <input matInput formControlName="departureDate" [matDatepickerFilter]="dateFilter" [matDatepicker]="departurePicker"  (dateChange)="onDepartureDateChange($event.value)" >
       <mat-datepicker-toggle matSuffix [for]="departurePicker"></mat-datepicker-toggle>
       <mat-datepicker #departurePicker></mat-datepicker>
-      <mat-error *ngIf="selectedFromToAndDate.controls['departureDate'].touched && selectedFromToAndDate.controls['departureDate'].hasError('required')">
+      <mat-error *ngIf="selectedFromToAndDate.get('departureDate')?.hasError('required')">
         <span>This field is mandatory.</span>
       </mat-error>
     </mat-form-field>
@@ -41,49 +41,3 @@
   </div>
   
 
-<!-- 
-<div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="420px" >
-  
-    <div>
-        
-    </div>
-    <mat-form-field fxFlex class="input-style from-input-styles">
-      <mat-label>From</mat-label>
-      <mat-select formControlName="departurePlace" required class="from-input-styles">
-        <mat-icon matSuffix>departure</mat-icon>
-        <mat-option *ngFor="let district of fromPlace" [value]="district">{{ district }}</mat-option>
-      </mat-select>
-      <input matInput placeholder="Other..." formControlName="customDeparturePlace" class="from-input-styles" style="flex: 3;" [hidden]="!showInputField">
-          <mat-icon matSuffix>departure</mat-icon>
-      <mat-error *ngIf="selectedFromToAndDate.controls['departurePlace'].touched && selectedFromToAndDate.controls['departurePlace'].hasError('required')">
-        <span>This field is mandatory.</span>
-      </mat-error>
-    </mat-form-field>
-  
-    <mat-form-field fxFlex class="input-style">
-      <mat-label>To</mat-label>
-      <mat-select formControlName="arrivalPlace" required>
-        <mat-option *ngFor="let district of toPlace" [value]="district">{{ district }}</mat-option>
-      </mat-select>
-      <mat-icon matSuffix>arrival</mat-icon>
-      <mat-error *ngIf="selectedFromToAndDate.controls['arrivalPlace'].touched && selectedFromToAndDate.controls['arrivalPlace'].hasError('required')">
-        <span>This field is mandatory.</span>
-      </mat-error>
-    </mat-form-field>
-  
-
-    <mat-form-field appearance="fill" class="input-style">
-      <mat-label>Date</mat-label>
-      <input matInput formControlName="departureDate" [matDatepicker]="departurePicker">
-      <mat-datepicker-toggle matSuffix [for]="departurePicker"></mat-datepicker-toggle>
-      <mat-datepicker #departurePicker></mat-datepicker>
-      <mat-error *ngIf="selectedFromToAndDate.controls['departureDate'].touched && selectedFromToAndDate.controls['departureDate'].hasError('required')">
-        <span>This field is mandatory.</span>
-      </mat-error>
-    </mat-form-field>
-  
-    <button class="button-input-styles input-style" mat-raised-button color="primary" (click)="search()">Search</button>
-  </div> -->
-  
-  
-  

@@ -1,0 +1,49 @@
+
+<section style="background-color: rgba(20, 20, 224, 0.811);height: 900px;">
+    <div class="head">Your wallet 
+
+    </div>
+   
+      <!-- Content Wrapper -->
+      <div class="container col-md-10 content-wrapper pt-3">
+        <div class="row" style="margin-left:40px;margin-right:40px;">
+          <div class="wallet-container" >
+            <!-- Wallet content -->
+            <div style="text-align:center;">
+              <h4 style="color:black;"></h4>
+            </div>
+            <div class="referral-code">
+                <button class="wallet-history"  type="submit"  (click)="showWalletHistory()"> Show history</button>
+              </div>
+            <div class="wallet">
+    
+            </div>
+            <!-- Wallet info -->
+            <div class="wallet-info">
+
+             
+                 <div class="wallet-field">
+                    <span>User   Name :</span>
+                        <span class="conte">{{ userName }}</span>
+                 </div>
+            
+                  <div class="wallet-field">
+                    <span>Refund Money:</span>
+                    <span class="conte">{{ refundAmount }}</span>
+                  </div>
+                  <div class="wallet-field">
+                    <span>Paid Amount :</span>
+                    <span class="conte" >{{ paidAmount }}</span>
+                  </div> 
+                  <div class="wallet-field">
+                    <span>Total Money :</span>
+                    <span class="conte" >{{ total }}</span>
+                  </div> 
+                  
+            </div>
+            <div style="margin-top:30px;margin-bottom:60px;" type="button" class="btn-apply-money"></div>
+          </div>
+        </div>
+      </div>
+    
+  </section>

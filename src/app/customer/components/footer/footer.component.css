@@ -1,0 +1,105 @@
+.footer-body{
+    
+    height: 300px;
+    width: 100%;
+
+}
+.body-init{ 
+    margin-top: 70px;
+    background-color: #e2e2e2;
+    height: 520px;
+    position: relative;
+    padding-bottom: 30px;
+    padding-top: 30px;
+
+}
+.body{
+    background-color: #24292B;
+    height: 350px;
+    position: relative;
+
+}
+
+.line{
+    height: 2px;
+    width: 100%;
+    /* background-color: aliceblue; */
+    background-color: #4442C3; 
+    transition: background-color 0.5s ease; /* Transition background-color */
+    position: absolute; /* Change position to absolute */
+    top: 30px;
+}
+.line:hover {
+    background-color: #ffffff; /* Change to the desired hover color */
+}
+.line1{
+    height: 2px;
+    width: 100%;
+    /* background-color: aliceblue; */
+    background-color: #4442C3; 
+    transition: background-color 0.5s ease; /* Transition background-color */
+    position: absolute; /* Change position to absolute */
+    top: 310px;
+}
+.line1:hover {
+    /* background-color: #4442C3;  */
+    background-color: #ffffff;/* Change to the desired hover color */
+}
+
+.content{
+    position: absolute;
+    top:60px;
+    font-size: larger;
+    font-weight:700;
+    color: aliceblue;
+    margin-left: 45%;
+    transition: color 0.3s ease;
+    text-align: center;
+}
+.content:hover {
+    color: #4442C3; /* Change to the desired hover color */
+}
+.grid-container {
+    display: flex;
+    flex-wrap: wrap;
+     /* Allow items to wrap onto the next line */
+}
+
+.grid-item {
+    flex: 1; /* Each item takes up equal space */
+    min-width: calc(15% - 11px); /* Adjust width to create some spacing between columns */
+    margin: 20px; /* Adjust margin to create space around items */
+    background-color: #474444; /* Optional: Add background color */
+    padding: 16px; /* Optional: Add padding */
+    box-sizing: border-box;
+    margin-top: 120px;
+    width: 100px;
+  /* Ensure padding and border are included in the width */
+}
+.grid-item1 {
+    flex: 1; /* Each item takes up equal space */
+    min-width: calc(25% - 20px); /* Adjust width to create some spacing between columns */
+    margin: 10px; /* Adjust margin to create space around items */
+    background-color: #e1dede; /* Optional: Add background color */
+    padding: 20px;
+    border-radius: 10px; /* Optional: Add padding */
+    box-sizing: border-box;
+    margin-top: 120px;
+    font-size: large;
+    font-weight: 500;
+  /* Ensure padding and border are included in the width */
+}
+.body-init {
+    display: flex; /* Use flexbox for layout */
+}
+
+.column {
+    flex: 1; /* Each column takes up equal space */
+    padding: 30px; /* Add padding for spacing */
+}
+
+.separator {
+    width: 2px; /* Width of the separator */
+    background-color: #555555; /* Color of the separator */
+    margin: 10px 20px; /* Adjust margin for spacing between columns */
+}

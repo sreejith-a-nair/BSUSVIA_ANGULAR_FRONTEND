@@ -10,6 +10,9 @@ export interface BookingResponse {
     toLocations: string;
     busNumber: string;
     busId: string;
+    paymentMode:string;
+    authorityMail:string;
+
     passengers: Passenger[];
   }
   

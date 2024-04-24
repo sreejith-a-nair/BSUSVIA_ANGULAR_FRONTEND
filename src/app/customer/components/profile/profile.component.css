@@ -55,7 +55,7 @@
   
   .center-container {
     text-align: center;
-    background-color: #919395; 
+    /* background-color: #919395;  */
     border-radius: 20px; 
     color: rgb(13, 12, 12);
 
@@ -63,9 +63,11 @@
   
   .profile-container {
     display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 112vh; 
+  /* justify-content: center;
+  align-items: center; */
+  padding-left: 80px;
+  padding-top: 80px;
+  height: 97vh; 
   background-color: #5c6d7d;
 
 
@@ -74,17 +76,39 @@
   .profile-card {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
     width: 640px; 
-    height: 330px;
+    height: 430px;
 
   }
-
-  .profile-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center; 
-    width: 100%;
+  .head{
+    background-color: #c3e0ff;
+    font-weight: 600;
+    color: #453e80;
   }
+
   
   .center-container {
     margin: 10px; 
   }
+.contents{
+  margin-bottom: 50px; 
+  background-color: white;
+  text-align: start;
+  margin-left: 90px;
+  border-radius: 0px 0px 10px 10px;
+  
+  background: #c3e0ff;
+  margin-right: 70px;
+  padding-bottom: 70px;
+
+}
+.btn-details{
+  background-color: #22e0fae6;
+  border-radius: 10px;
+  border: none;
+  height: 40px;
+  width: 110px;
+  color: white;
+  margin-left: 450px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}

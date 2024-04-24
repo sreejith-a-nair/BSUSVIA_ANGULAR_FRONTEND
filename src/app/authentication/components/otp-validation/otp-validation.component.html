@@ -1,0 +1,37 @@
+
+<mat-toolbar color="primary">
+    <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
+      <span>Enter  OTP</span>
+      <span class="spacer"></span>
+      <button class="mat-dialog-close" mat-icon-button mat-dialog-close >
+        <mat-icon  >close</mat-icon>
+      </button>
+    </mat-toolbar-row>
+</mat-toolbar>
+<div class="card-body" style="padding: 10px; background-color: #88d1f3d7;">
+    <div class="row">
+      <div class="col">
+        <input type="number" class="form-control custom-input" maxlength="1" placeholder="" (input)="onInputChange(0, $event)">
+      </div>
+      <div class="col">
+        <input type="number" class="form-control custom-input" maxlength="1" placeholder="" (input)="onInputChange(1, $event)">
+      </div>
+      <div class="col">
+        <input type="number" class="form-control custom-input" maxlength="1" placeholder="" (input)="onInputChange(2, $event)">
+      </div>
+      <div class="col">
+        <input type="number" class="form-control custom-input" maxlength="1" placeholder="" (input)="onInputChange(3, $event)">
+      </div>
+    </div>
+
+    <div class="">
+        <!-- <button *ngIf="firstName==''"class="btn-otp mt-2" (click)="submit()">Submit</button>
+        <button *ngIf="firstName!==''"class="btn-otp mt-2" (click)="submitProfile()">Submit</button> -->
+        <button *ngIf="!firstName" class="btn-otp mt-2" (click)="submit()">Submit</button>
+       <button *ngIf="firstName" class="btn-otp mt-2" (click)="submitProfile()">Submit</button>
+
+    </div>
+   
+  </div>
+  
+  

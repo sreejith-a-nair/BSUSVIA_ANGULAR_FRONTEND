@@ -13,6 +13,7 @@ export interface BookingAllResponse {
     busId: string;
     userMail: string;
     status:boolean;
+    bookingDate:any;
     passengers: PassengerEntity[];
   }
   

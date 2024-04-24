@@ -1,0 +1,19 @@
+
+<div class="body">
+ <div class="inner-body">
+    <div class="text">
+        Trending offer
+    </div>
+    <div class="coupon-list">
+        <div *ngFor="let coupon of couponInfo; let i = index" class="coupon-card" [ngStyle]="{'background-color': getBackgroundColor(i),'background-image': getGradientBackground(i)}">
+          <div class="coupon-content">
+            <h3>{{coupon.couponName}}</h3>
+            <h4>'Save up to {{coupon.maxPrice}} on bus tickets'</h4>
+            <h6>'Max {{ coupon.offPercent }}%  off</h6>
+          </div>
+        </div>
+    </div>
+ </div>
+</div>
+
+  

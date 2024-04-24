@@ -7,38 +7,42 @@
     </div>
     <div class="col-md-8 frame">
         <div class="bus-card" style="display: flex;">
-            <div class="col-md-3 busdata" style="padding-left: 50px; margin-top: 10px;">
+            <div class="col-md-2 busdata" style="padding-left: 50px; margin-top: 10px;">
                 <h4>{{busName}}</h4><span>{{category}}</span>
                 <h5>{{busType}}</h5>
             </div>
 
-            <div class="col-md-7" style="text-align: center; margin-top: 10px;">
+            <div class="col-md-7" style="margin-top: 10px;">
                 <div class="row">
-                    <div class="col-md-5 place1">From
-                        <div>{{from}} ------------</div>
+                    <div class="col-md-6 place1">
+                        <div style="margin-left: 0px;"><span></span><h3><span style="margin-right: 26px;">From :</span>{{from}}</h3> </div>
                     </div>
-                    <div class="col-md-5 place2">To
-                        <div>--------- {{to}}</div>
+                   
+                    <div class="col-md-5 place2">
+                        <div style="margin-left: 40px;padding-left: 30px;"> <h3><span style="margin-right: 30px;">To : </span> {{to}}</h3></div>
                     </div>
                 </div>
            
-                <div class="row date">
-                    <div class="col-md-5 row date1">
+                <div class="row">
+                    <div class="col-md-5">
                         <div>{{departuredate}}</div>
                     </div>
-                    <div class="col-md-5 row date2">
-                        <div style="margin-right: 40px;">{{arrivaldate}}</div>
+                    <div class="col-md-5 offset-md-2"> <!-- Use offset to create space between columns -->
+                        <div>{{arrivaldate}}</div>
                     </div>
                 </div>
-
-                <div class="row route">
+                
+                <div class="row">
                     <div class="col-md-6">
-                        <div>{{departureTime}}</div>
+                        
+                        <div >{{departureTime}}</div>
                     </div>
-                    <div class="col-md-6">
-                        <div style="margin-right: 40px;">{{arrivalTime}}</div>
+                    <div class="col-md-6" style="margin-left: 356px;"> <!-- Use offset to create space between columns -->
+                        
+                        <div style="margin-top: 0px;padding-top: 0px;">{{arrivalTime}}</div>
                     </div>
                 </div>
+                
 
             </div>
             
@@ -77,10 +81,28 @@
             </div>
             
         </div>
-        <div >
-             <button class="payandBookButton"   onmouseover="this.style.backgroundColor='#4d96ce';" onmouseout="this.style.backgroundColor='#3e89c6';"  (click)="payBook()">PayNow
 
-             </button>
+            <div class="payment-options-body">
+                <div class="payment-options">
+                    <input type="radio" id="walletPayment" name="paymentOption" [(ngModel)]="selectedPaymentOption" [value]="PaymentOption.WalletPayment" (click)="logSelectedOption()">
+                    <label for="walletPayment">Wallet Payment</label>
+            
+                            
+                    <input type="radio" id="onlinePayment" name="paymentOption"  [(ngModel)]="selectedPaymentOption" [value]="PaymentOption.OnlinePayment" (click)="logSelectedOption()">
+                    <label for="onlinePayment">Online Payment</label>
+                </div>
+            </div>
+       
+        
+        <div >
+       
+            <div *ngIf="selectedPaymentOption === PaymentOption.WalletPayment">
+                <button class="payandBookButton" onmouseover="this.style.backgroundColor='#4d96ce';" onmouseout="this.style.backgroundColor='#3e89c6';"  (click)="payBookWithWallet()">PayNow</button>
+              </div>
+              
+              <div *ngIf="selectedPaymentOption === PaymentOption.OnlinePayment">
+                <button class="payandBookButton" onmouseover="this.style.backgroundColor='#4d96ce';" onmouseout="this.style.backgroundColor='#3e89c6';" (click)="payBook()">PayNow</button>
+              </div>
         </div>
     </div>
 
@@ -107,7 +129,28 @@
                 </div>
             </div>
         </section>
+
+     
+        <div >
+            <div class="coupons-body">
+                <div class="c-head">
+                    <strong style="text-align: center;">Select Coupon</strong>
+                </div>
+                
+                <div *ngFor="let coupon of couponInfo" class="coupon-list">
+                    <label>
+                        <input type="radio" name="selectedCoupon" [value]="coupon.uuid" (change)="selectedCouponUuid = coupon.uuid">
+                        {{ coupon.couponName }} - {{ coupon.offPercent }}% off
+                    </label>
+                </div>
+                <button class="coupon-button" *ngIf="!couponApplied" type="button" (click)="applyCoupon(selectedCouponUuid)">Apply</button>
+                <button class="cancel-coupon-button" *ngIf="couponApplied" type="button" (click)="cancelCoupon()">Cancel Coupon</button>
+            </div>
+        </div>
+        
         
 
     </div>
+  
+
 </div> 

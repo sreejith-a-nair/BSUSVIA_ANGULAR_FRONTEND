@@ -10,6 +10,7 @@ export interface BookingRequest {
     to: string;
     busNumber: string;
     // userMail: string;
+    paymentMode:string;
     passengers: Passenger[];
   }
   interface Passenger {

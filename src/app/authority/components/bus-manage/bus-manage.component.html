@@ -12,6 +12,7 @@
        <app-commontable     [HeadingArray]="HeadingArray"   
                             [GridArray]="busManage" (Delete)="deleteBusData($event)" 
                             (edit)="editBus($event)" 
+                            (Restrict)="onRestrictBus($event)"
                             (viewMoreBusDetails)="viewMoreBus($event)" >
         </app-commontable>
       </div>

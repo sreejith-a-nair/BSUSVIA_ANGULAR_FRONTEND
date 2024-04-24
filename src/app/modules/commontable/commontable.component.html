@@ -1,123 +1,177 @@
 
-<mat-card>
-    <mat-card-content >
-  
-  <table  style="background-color: rgb(236, 251, 255);">
+  <mat-card>
+      <mat-card-content >
     
-      <thead style="height: 46px;text-align: center;">
-        <tr style="background-color: rgba(111, 147, 212, 0.933);">
-            <th >S,NO</th>
-          <th *ngFor="let head of HeadingArray">{{head.Head}}</th>
-        </tr>
-      </thead>
-      <tbody>
-       
-        <tr *ngFor="let  item of GridArray let i=index" >
-            <td style=" text-align: center;">{{i+1}}</td>
-            <td style=" text-align: center;"  *ngFor="let head of HeadingArray">
+    <table  style="background-color: rgb(236, 251, 255);">
+      
+        <thead style="height: 46px;text-align: center;">
+          <tr style="background-color: rgba(111, 147, 212, 0.933);">
+              <th >S,NO</th>
+            <th *ngFor="let head of HeadingArray">{{head.Head}}</th>
+          </tr>
+        </thead>
+        <tbody>
 
-                <div *ngIf="head.bodyKey!==''">
-                  
-                    <!-- {{item[head.bodyKey]}} -->
-                    {{ head.bodyKey !== 'status' ? item[head.bodyKey] : '' }}
-                </div>
 
-            
-                
-                  <div *ngIf="head.bodyKey === 'status'">
-                      <button *ngIf="item.status == true" class="booked-button">Booked</button>
-                      <button *ngIf="item.status == false" class="canceled-button">Canceled</button>
-                  </div>
-                
-
-                <!-- deelete for all  -->
-                <div *ngIf="head.bodyKey=='delete'" >
-                    <button mat-button (click)="onDelete(item.uuid)" style="border: 1px solid  rgb(251, 255, 252); color: white" > ;
-            
-                        <mat-icon style="color:rgb(9, 8, 8)">delete</mat-icon>
-                      </button>
-                </div>
-
-                <!-- show Authority more details (admin side) more -->
-                <div *ngIf="head.bodyKey=='moreDetails'">
-                    <button mat-button (click)="viewMore(item.uuid)" style=" background-color: rgb(255, 255, 255); border: 1px solid  rgb(39, 209, 81); color: rgb(10, 83, 60);text-align: center;" > View More
-            
-                        <mat-icon style="color:rgb(6, 150, 64)">arrow_forward</mat-icon>
-
-                      </button>
-                </div>
+        
+          <tr *ngFor="let  item of GridArray let i=index" >
+              <td style=" text-align: center;">{{i+1}}</td>
+              <td style=" text-align: center;"  *ngFor="let head of HeadingArray">
 
                 
-                <div *ngIf="head.bodyKey=='busmoreDetails'">
-                    <button mat-button (click)="viewMoreBusData(item.uuid)" style=" background-color: rgb(255, 255, 255); border: 1px solid  rgb(39, 209, 81); color: rgb(10, 83, 60);text-align: center;" > show root
-            
-                        <mat-icon style="color:rgb(6, 150, 64)">arrow_forward</mat-icon>
+                 
+             
+                  <div *ngIf="head.bodyKey!==''">
+                    
+                      <!-- {{item[head.bodyKey]}} -->
+                      {{ head.bodyKey !== 'status' ? item[head.bodyKey] : '' }}
 
-                      </button>
-                </div>
+                  </div> 
 
-                <!--  -->
-                <div *ngIf="head.bodyKey=='edit'">
-                  <button mat-button (click)="editBus(item.uuid)" >
-                    <mat-icon >edit</mat-icon>
-                  </button>
-                </div>
-
-              <div *ngIf="head.bodyKey=='addBusToOperator'">
-                  <button mat-button (click)="addBusToOperator(item.uuid)" style="background-color: rgb(255, 255, 255); border: 1px solid  rgb(39, 209, 81); color: rgb(10, 83, 60); text-align: center;">
-                      <mat-icon style="color: rgb(6, 150, 64)">add</mat-icon>
-                  </button>
-              </div>
-
-              <div *ngIf="head.bodyKey=='viewDriverBuses'">
-                <button mat-button (click)="viewDriverBuses(item.busId)" style="background-color: rgb(255, 255, 255); border: 1px solid  rgb(39, 209, 81); color: rgb(10, 83, 60); text-align: center;">
-                    <mat-icon style="color: rgb(6, 150, 64)">arrow_forward</mat-icon>view bus
-                </button>
-              </div>
+                  <ng-container *ngIf="head.bodyKey === 'isCashAdded'">
+                    <button *ngIf="item.walletStatus=='REFUND'" class="booked-button">Added</button>
+                    <button *ngIf="item.walletStatus=='PAID'" class="canceled-button">Received</button>
+                  </ng-container>
 
               
-              <div *ngIf="head.bodyKey=='addRoot'">
-                <button mat-button (click)="addRootandTime(item.uuid)" style="background-color: rgb(255, 255, 255); border: 1px solid  rgb(39, 209, 81); color: rgb(10, 83, 60); text-align: center;">
-                  <mat-icon style="color: rgb(6, 150, 64)">add</mat-icon> Add Root
-                </button>
-              </div>
-              <div *ngIf="head.bodyKey=='viewroot'">
-                <button mat-button (click)="viewRoot(item.uuid)" style="background-color: rgb(255, 255, 255); border: 1px solid  rgb(39, 209, 81); color: rgb(10, 83, 60); text-align: center;">
-                    <mat-icon style="color:rgb(6, 150, 64)">arrow_forward</mat-icon> View Root
-                </button>
-            </div>
-                     
-              <div *ngIf="head.bodyKey=='viewSeatRow'">
-                  <button mat-button (click)="viewSeatRows(item.uuid)" style="background-color: rgb(255, 255, 255); border: 1px solid  rgb(39, 209, 81); color: rgb(10, 83, 60); text-align: center;">
-                      <mat-icon style="color:rgb(6, 150, 64)">arrow_forward</mat-icon> View seats row
+                  
+                    <div *ngIf="head.bodyKey === 'status'">
+                        <button *ngIf="item.status == true" class="booked-button">Booked</button>
+                        <button *ngIf="item.status == false" class="canceled-button">Canceled</button>
+                    </div>
+
+                    <div *ngIf="head.bodyKey === 'isCashAdded'">
+                      <button *ngIf="item.isCashAdded == true" class="booked-button">Added</button>
+                      <button *ngIf="item.isCashAdded == false" class="canceled-button">Recieved</button>
+                    </div>
+
+                    <div *ngIf="head.bodyKey === 'status'">
+                      <button *ngIf="item.available== true" class="active-button">Active</button>
+                      <button *ngIf="item.available== false" class="inactive-button">Inactive</button>
+                    </div>
+
+                    
+                    <div *ngIf="head.bodyKey === 'enable'">
+                      <button *ngIf="item.available== true" class="active-button">Active</button>
+                      <button *ngIf="item.available== false" class="inactive-button">Inactive</button>
+                    </div>
+
+                    <!-- restrict block unblock -->
+                    <!-- <div *ngIf="head.bodyKey === 'restrict'">
+                      <button mat-icon-button (click)="toggleRestriction(item.uuid,item.block)">
+                        <mat-icon>{{ item.restricted ? 'lock' : 'lock_open' }}</mat-icon>
+                      </button>
+                    </div> -->
+                    <div *ngIf="head.bodyKey === 'restrict'">
+                      <button mat-icon-button (click)="restrictUser(item.uuid,item.block)">
+                        <mat-icon>{{ item.block ? 'lock_open' : 'lock' }}</mat-icon>
+                      </button>
+                    </div>
+                    <div *ngIf="head.bodyKey === 'busRestrict'">
+                      <button mat-icon-button (click)="restrictBus(item.uuid,item.available)">
+                        <mat-icon>{{ item.available ? 'lock_open' : 'lock' }}</mat-icon>
+                      </button>
+                    </div>
+
+                    <div *ngIf="head.bodyKey === 'couponRestrict'">
+                      <button mat-icon-button (click)="restrictCoupon(item.uuid,item.enabled)">
+                        <mat-icon>{{ item.enabled ? 'lock_open' : 'lock' }}</mat-icon>
+                      </button> 
+                    </div>
+
+                  <!-- deelete for all  -->
+                  <div *ngIf="head.bodyKey=='delete'" >
+                      <button mat-button (click)="onDelete(item.uuid)" style="border: 1px solid  rgb(251, 255, 252); color: white" > ;
+              
+                          <mat-icon style="color:rgb(9, 8, 8)">delete</mat-icon>
+                        </button>
+                  </div>
+
+                  <!-- show Authority more details (admin side) more -->
+                  <div *ngIf="head.bodyKey=='moreDetails'">
+                      <button mat-button (click)="viewMore(item.uuid)" style=" background-color: rgb(255, 255, 255); border: 1px solid  rgb(39, 209, 81); color: rgb(10, 83, 60);text-align: center;" > View More
+              
+                          <mat-icon style="color:rgb(6, 150, 64)">arrow_forward</mat-icon>
+
+                        </button>
+                  </div>
+
+                  
+                  <div *ngIf="head.bodyKey=='busmoreDetails'">
+                      <button mat-button (click)="viewMoreBusData(item.uuid)" style=" background-color: rgb(255, 255, 255); border: 1px solid  rgb(39, 209, 81); color: rgb(10, 83, 60);text-align: center;" > show root
+              
+                          <mat-icon style="color:rgb(6, 150, 64)">arrow_forward</mat-icon>
+
+                        </button>
+                  </div>
+
+                  <!--  -->
+                  <div *ngIf="head.bodyKey=='edit'">
+                    <button mat-button (click)="editBus(item.uuid)" >
+                      <mat-icon >edit</mat-icon>
+                    </button>
+                  </div>
+
+                <div *ngIf="head.bodyKey=='addBusToOperator'">
+                    <button mat-button (click)="addBusToOperator(item.uuid)" style="background-color: rgb(255, 255, 255); border: 1px solid  rgb(39, 209, 81); color: rgb(10, 83, 60); text-align: center;">
+                        <mat-icon style="color: rgb(6, 150, 64)">add</mat-icon>
+                    </button>
+                </div>
+
+                <div *ngIf="head.bodyKey=='viewDriverBuses'">
+                  <button mat-button (click)="viewDriverBuses(item.busId)" style="background-color: rgb(255, 255, 255); border: 1px solid  rgb(39, 209, 81); color: rgb(10, 83, 60); text-align: center;">
+                      <mat-icon style="color: rgb(6, 150, 64)">arrow_forward</mat-icon>view bus
                   </button>
-              </div>
-              <div *ngIf="head.bodyKey=='addSeatRow'">
-                <button mat-button (click)="addSeatRows(item.uuid)" style="background-color: rgb(255, 255, 255); border: 1px solid  rgb(39, 209, 81); color: rgb(10, 83, 60); text-align: center;">
-                  <mat-icon style="color: rgb(6, 150, 64)">add</mat-icon> Add seats row
-                </button>
-              </div>
-                     
+                </div>
 
-              <div *ngIf="head.bodyKey=='viewStop'">
-                <button mat-button (click)="viewStops(item.uuid)" style="background-color: rgb(255, 255, 255); border: 1px solid  rgb(39, 209, 81); color: rgb(10, 83, 60); text-align: center;">
-                    <mat-icon style="color:rgb(6, 150, 64)">arrow_forward</mat-icon> View stops
-                </button>
-              </div>
+                
+                <div *ngIf="head.bodyKey=='addRoot'">
+                  <button mat-button (click)="addRootandTime(item.uuid)" style="background-color: rgb(255, 255, 255); border: 1px solid  rgb(39, 209, 81); color: rgb(10, 83, 60); text-align: center;">
+                    <mat-icon style="color: rgb(6, 150, 64)">add</mat-icon> Add Root
+                  </button>
+                </div>
+                <div *ngIf="head.bodyKey=='viewroot'">
+                  <button mat-button (click)="viewRoot(item.uuid)" style="background-color: rgb(255, 255, 255); border: 1px solid  rgb(39, 209, 81); color: rgb(10, 83, 60); text-align: center;">
+                      <mat-icon style="color:rgb(6, 150, 64)">arrow_forward</mat-icon> View Root
+                  </button>
+                </div>
+                <div *ngIf="head.bodyKey=='editRoot'">
+                  <button mat-button (click)="editRootTime(item.uuid)" style="background-color: rgb(255, 255, 255); border: 1px solid  rgb(39, 209, 81); color: rgb(10, 83, 60); text-align: center;">
+                      <mat-icon style="color:rgb(6, 150, 64)">add</mat-icon> Edit Root
+                  </button>
+                </div>
+                      
+                <div *ngIf="head.bodyKey=='viewSeatRow'">
+                    <button mat-button (click)="viewSeatRows(item.uuid)" style="background-color: rgb(255, 255, 255); border: 1px solid  rgb(39, 209, 81); color: rgb(10, 83, 60); text-align: center;">
+                        <mat-icon style="color:rgb(6, 150, 64)">arrow_forward</mat-icon> View seats row
+                    </button>
+                </div>
+                <div *ngIf="head.bodyKey=='addSeatRow'">
+                  <button mat-button (click)="addSeatRows(item.uuid)" style="background-color: rgb(255, 255, 255); border: 1px solid  rgb(39, 209, 81); color: rgb(10, 83, 60); text-align: center;">
+                    <mat-icon style="color: rgb(6, 150, 64)">add</mat-icon> Add seats row
+                  </button>
+                </div>
+                      
 
-              <div *ngIf="head.bodyKey=='addStop'">
-                <button mat-button (click)="addStops(item.uuid)" style="background-color: rgb(255, 255, 255); border: 1px solid  rgb(39, 209, 81); color: rgb(10, 83, 60); text-align: center;">
-                    <mat-icon style="color:rgb(6, 150, 64)">add</mat-icon> Add Stop
-                </button>
-              </div>
+                <div *ngIf="head.bodyKey=='viewStop'">
+                  <button mat-button (click)="viewStops(item.uuid)" style="background-color: rgb(255, 255, 255); border: 1px solid  rgb(39, 209, 81); color: rgb(10, 83, 60); text-align: center;">
+                      <mat-icon style="color:rgb(6, 150, 64)">arrow_forward</mat-icon> View stops
+                  </button>
+                </div>
 
-            
-            </td>  
-        </tr>
-      </tbody>
-    </table>
-    </mat-card-content>
-    <br>
-  </mat-card> 
-  
+                <div *ngIf="head.bodyKey=='addStop'">
+                  <button mat-button (click)="addStops(item.uuid)" style="background-color: rgb(255, 255, 255); border: 1px solid  rgb(39, 209, 81); color: rgb(10, 83, 60); text-align: center;">
+                      <mat-icon style="color:rgb(6, 150, 64)">add</mat-icon> Add Stop
+                  </button>
+                </div>
+
+              
+              </td>  
+          </tr>
+        </tbody>
+      </table>
+      </mat-card-content>
+      <br>
+    </mat-card> 
     
+      

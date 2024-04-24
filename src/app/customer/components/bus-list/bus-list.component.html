@@ -42,26 +42,29 @@
                   </div>
               </div>
 
-              <div class="header">
-                <span style="font-weight: 500;font-style: initial;"> Choose fare anger</span>
-                
-              </div>
 
+              <div class="pickup-time">
+                <div class="header">
+                    <span style="font-weight: 500;font-style: initial;font-weight: 545;">Category</span>
             
-              <div class="filter-group">
-                  <div class="filter-options">
-                      <button class="feture-button" (click)="filterBySeatType('A/c')"> <mat-icon>ac_unit</mat-icon>AC</button>
-                      <button class="feture-button" (click)="filterBySeatType('Non A/c')">  <mat-icon>ac_unit_off</mat-icon>Non AC</button>
-                  </div>
-              </div>
-              <div class="filter-group">
-                
-                  <div class="filter-options">
-                      <button class="feture-button" (click)="filterBySeatType('sleeper')">  <mat-icon>hotel</mat-icon> Sleeper</button>
-                      <button class="feture-button" (click)="filterBySeatType('seater')"><mat-icon>airline_seat_recline_extra</mat-icon> Seater</button>
-                  </div>
+                </div>
+                <div class="time-slot">
+                    <button class="clearButton "  (click)="filterByCategory('City Bus')">City Bus
+                    </button>
+                    <button class="clearButton "  (click)="filterByCategory('Tourist Bus')">Tourist Bus
+                    </button>
+                    <button class="clearButton "  (click)="filterByCategory('Sleeper Bus')">Sleeper Bus
+                    </button>
+                    <button class="clearButton "  (click)="filterByCategory('Luxury Bus')">Luxury Bus
+                    </button>
+                    <button class="clearButton "  (click)="filterByCategory('Executive Bus')">Executive Bus
+                    </button>
+                    <button class="clearButton "  (click)="filterByCategory('Coach Bus')">Coach Bus
+                    </button>
+                </div>
               </div>
 
+              
             <div class="pickup-time">
                 <div class="header">
                     <span style="font-weight: 500;font-style: initial;">Pick up time  Delhi</span>
@@ -72,7 +75,6 @@
                         <div class="material-icons">
                             <i class="material-icons">brightness_high</i>
                         </div>
-                        <!-- <i class="material-icons">brightness_5</i> -->
                         <div  style="margin-left: 48px;">6AM to 11 AM</div>
                     </button>
                     <button class="clearButton " (click)="checkTimeRange('11:00 AM', '6:00 PM')">
@@ -109,109 +111,53 @@
         </div>
         
         <div class="card-column"> 
-          
-          <div class="bus-card"  *ngFor="let bus of buses">
+          <div class="bus-card" *ngFor="let bus of buses">
             <div class="row">
-                
               <!-- First Column -->
               <div class="cols bus-info">
                 <h4>{{ bus.busName }}</h4>
-                <h6 style="color: rgb(103, 103, 103);">{{ bus.busType  }}-{{bus.category}}</h6>
-                <h6>{{ bus.busNumber  }}</h6>
-                <p style="font-size: small;font-weight: 400;color: rgb(90, 90, 116);">{{ bus.email  }}</p>
-                <!-- <p>4.6 ★★★★☆ | Primo</p> -->
+                <h6 style="color: rgb(103, 103, 103);">{{ bus.busType }}-{{ bus.category }}</h6>
+                <h6>{{ bus.busNumber }}</h6>
+                <p style="font-size: small;font-weight: 400;color: rgb(90, 90, 116);">{{ bus.email }}</p>
+                <div style="display: flex; align-items: center;">
+                  <h6 style="padding-top: 7px; margin-right: 5px;" *ngIf="bus.rating">{{ bus.rating.avgRating }}</h6>
+                  <ng-container *ngIf="bus.rating">
+                    <!-- <ngb-rating style="margin-top: 0px;margin-left: 10px;" [max]="5" [rate]="bus.rating.avgRating | number:'1.1-1'" [readonly]="true"></ngb-rating> -->
+                    <ngb-rating style="margin-top: 0px; margin-left: 10px;" [max]="5" [rate]="bus.rating.avgRating" [readonly]="true"></ngb-rating>
+
+                  </ng-container>
+                  <ng-container *ngIf="!bus.rating">
+                    <div>No rating available</div>
+                  </ng-container>
+                </div>
               </div>
-    
+          
               <!-- Second Column -->
               <div class="col bus-info">
-                <p style="font-style: normal;font-weight: 500;color: rgb(107, 107, 107);"><strong style="font-weight: 1200;">From  :</strong>  {{ bus.sourceLocation}} <span style="padding-left: 15px;padding-right: 15px;"></span><span style="padding-left: 15px;padding-right: 15px;"></span><strong style="font-weight: 1200;">To  :</strong>    {{bus.destinationLocation}}</p>
-                <p >{{ bus.departureDate }}<span style="padding-left: 15px;padding-right: 15px;"></span>—<span style="padding-left: 15px;padding-right: 15px;"></span>{{bus.arrivalDate}}</p>
-                <p> {{bus.departureTime}}<span style="padding-left: 35px;padding-right: 35px;"></span><span style="padding-left: 35px;padding-right: 35px;"></span>{{bus.arrivalTime}}</p>
+                <p style="font-style: normal;font-weight: 500;color: rgb(107, 107, 107);">
+                  <strong style="font-weight: 1200;">From :</strong> {{ bus.sourceLocation }}
+                  <strong style="padding-left: 15px;padding-right: 15px;">To :</strong> {{ bus.destinationLocation }}
+                </p>
+                <p>{{ bus.departureDate }} — {{ bus.arrivalDate }}</p>
+                <p>{{ bus.departureTime }} — {{ bus.arrivalTime }}</p>
               </div>
-    
-            
+          
               <div class="col bus-info">
-                <h4 style="margin-left: 160px;">Fare : ₹{{ bus.fare }}</h4>
-                <h6>Total Seats  |{{ bus.totalSeats }}</h6>
-                <h6 style="color: rgb(21, 173, 67);">Available Seats  |{{ bus.availableSeats }}</h6>
-                <h6>Double Seats | {{ bus.doubleSeatCount }} <span style="padding-right: 10px;"></span> Third Row Seats | {{ bus.thirdRowSeatCount }}</h6>
-                <!-- <h6>Third Row Seats | {{ bus.thirdRowSeatCount }}</h6> -->
-              
+                <h4 style="margin-left: 160px;">Fare: ₹{{ bus.fare }}</h4>
+                <h6>Total Seats: {{ bus.totalSeats }}</h6>
+                <h6 style="color: rgb(21, 173, 67);">Available Seats: {{ bus.availableSeats }}</h6>
+                <h6>Double Seats: {{ bus.doubleSeatCount }} <span style="padding-right: 10px;"></span> Third Row Seats: {{ bus.thirdRowSeatCount }}</h6>
                 <div class="bus-button" style="margin-top: 25px;">
                   <button (click)="selectSeats(bus.uuid)">SELECT SEATS</button>
                 </div>
               </div>
             </div>
           </div>
+          
+
         </div>
     </div>
  </div> 
  
   
 
-
-<!-- <div class="container"> -->
-    <!-- Sidebar -->
-    <!-- <div class="sidebar"> -->
-      <!-- Add your filters here -->
-      <!-- <h4>Filters</h4> -->
-      <!-- Example filter options -->
-      <!-- <label><input type="checkbox"> Option 1</label>
-      <label><input type="checkbox"> Option 2</label>
-      <label><input type="checkbox"> Option 3</label>
-    </div> -->
-
-    <!-- Card -->
-    <!-- <div class="bus-card"  *ngFor="let bus of buses">
-      <div class="row"> -->
-        <!-- First Column -->
-        <!-- <div class="col bus-info">
-          <h4>{{ bus.busName }}</h4>
-          <h6>{{ bus.busType  }}-{{bus.category}}</h6>
-          <h6>{{ bus.busNumber  }}</h6>
-          <p>{{ bus.email  }}</p>
-          <p>4.6 ★★★★☆ | Primo</p>
-        </div> -->
-
-        <!-- Second Column -->
-        <!-- <div class="col bus-info">
-          <p>23:30 28 FEB — 08:10 29 FEB</p>
-          <h3>{{bus.totalHour}}hr</h3>
-        </div> -->
-
-        <!-- Third Column -->
-        <!-- <div class="col bus-info">
-          <p>{{ bus.fare }}</p>
-          <p>Total Seats  |{{ bus.totalSeats }}</p>
-          <p>Available Seats  |{{ bus.availableSeats }}</p>
-          <p>Double Seats | {{ bus.doubleSeatCount }}</p>
-          <p>Third Row Seats | {{ bus.thirdRowSeatCount }}</p>
-          <p>37 Seats Left | 18 Window Seats</p>
-          <div class="bus-button">
-            <button (click)="selectSeats(bus.uuid)">SELECT SEATS</button>
-          </div>
-        </div>
-      </div> -->
-
-      <!-- Second Row -->
-      <!-- <div class="row"> -->
-     
-        <!-- <div class="col bus-options">
-          <a href="#">Policies</a>
-          |
-          <a href="#">Photos</a>
-          |
-          <a href="#">Amenities</a>
-          |
-          <a href="#">Pickups & Drops</a>
-          |
-          <a href="#">Reviews (600 Ratings)</a>
-        </div> -->
-
-
-        <!-- <div class="col">
-          <h4>Starts From Dehradun</h4>
-        </div> -->
-      <!-- </div> -->
-    <!-- </div>
-  </div> -->

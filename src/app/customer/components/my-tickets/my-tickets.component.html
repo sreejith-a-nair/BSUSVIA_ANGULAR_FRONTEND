@@ -1,51 +1,52 @@
 
 <div class="">
     <div>
-        <div class="title-bar">
+        <!-- <div class="title-bar">
             <h5>Ticket Details </h5>
-        </div>
+        </div> -->
     </div>
-
-
-
     <div class="contain">
         <div class="sidebar">
-
         </div>
         <div class="card-column">
-            
             <div class="bus-card" *ngFor="let detail of bookingDetails">
                 <div class="top-padd">
-
-                    <div class="hollo"></div><h6 style="color: rgba(64, 20, 135, 0.767);margin-left: 60px;padding-top: 0px;">BusVia.com</h6><span style="margin-left: 600px;font-weight: 500;color: beige;">Booking Date : {{detail.departuredate}}</span>
-                    
-                </div>
-                
+                    <div class="hollo"></div><h6 style="color: rgba(255, 255, 255, 0.767);margin-left: 60px;padding-top: 0px;">BusVia.com</h6><span style="margin-left: 600px;font-weight: 500;color: beige;">Booking Date : {{detail.bookingDate}}</span>
+                </div>             
                 <div class="row col-md-12 ">
                     <div class="col-md-2 bus-info" style=" padding-left: 10px;">
-                        <h4 style=" padding-left: 40px;padding-top: 20px;">{{ busName }}</h4>
+                        <h4 style=" padding-left: 40px;padding-top: 20px;color: rgb(74, 74, 74);">{{ busName }}</h4>
                         <h6 style="color: rgb(103, 103, 103); padding-left: 40px;">{{ category }}</h6>
                         <h6 style=" padding-left: 40px;">{{ detail.busNumber }}</h6>
                         <p style="font-size: small; font-weight: 400; color: rgb(90, 90, 116);padding-left: 40px;">{{ busMail }}</p>
+                        <div class="button-row">
+                            <button class="rating-btn"  (click)="showRating(detail.busId,detail.uuid)"> Rating  </button>
+                          </div>
                     </div>
                     <div class="col-md-5 bus-info">
                         <div class="from-to">
-                            <p style="font-style: normal; font-weight: 500;">
-                                <strong style="font-weight: 1200;">From :</strong> {{ detail.fromLocations }}
+                            <p style="font-style: normal;color: rgb(59, 57, 57);padding-top: 30px;">
+                                <strong style="font-weight: 1200;color: rgb(59, 57, 57);">From :</strong> {{ detail.fromLocations }}
                                 <span style="padding-left: 15px; padding-right: 15px;"></span>
-                                <strong style="font-weight: 1200;">To :</strong> {{ detail.toLocations }}
+                                <strong style="font-weight: 1200;color: rgb(59, 57, 57);">To :</strong> {{ detail.toLocations }}
                             </p>
-                        </div>
-                    
+                        </div>                
                         <p style="font-size: 16px;padding-left: 50px;color: rgb(100, 100, 100);">{{ detail.departuredate }}
                         <span style="padding-left: 15px; padding-right: 15px;"></span>—
                         <span style="padding-left: 15px; padding-right: 15px;"></span>{{ detail.arrivaldate }}
                         </p>
-
                         <p> {{ depatureTime }}
                           <span style="padding-left: 35px; padding-right: 35px;"></span>
                           <span style="padding-left: 35px; padding-right: 35px;"></span>{{ arrivalTime }}
                         </p>
+                        <div style="display: flex;width: 100%;">
+                            <div style="margin-right: 10px;"(click)="downloadBookingPdf(detail.uuid)">
+                                <mat-icon style="margin-right: 5px;"  >cloud_download</mat-icon>
+                                <a style="text-decoration: none;"></a>
+                            </div>                         
+                         <mat-icon style="margin-right: 5px;" (click)="ticketSendToMail(detail.uuid)">mail</mat-icon>
+                            <mat-icon (click)="showChat(detail.busId,busMail)">chat</mat-icon>
+                        </div>
                     </div>
                     <div class="col-md-4">
                         <span class="texings"><a style="color: rgb(90, 90, 90);">Mail</a> : {{detail.email}} </span><span class="texings"><a style="color: rgb(90, 90, 90);">Contact</a>  : {{detail.contact}} </span>
@@ -60,97 +61,19 @@
                     <div class="col-md-1">
                         <h5 style="margin-left: 10px;padding-top: 10px;color: rgb(65, 63, 63);"> ₹{{ detail.totalFare }}</h5>
                         <ng-container *ngIf="detail">
-                            <button *ngIf="detail.status; else canceledButton" class="cancel-but" type="submit" (click)="cancelBooking(detail.uuid)">Cancel</button>
+                            <button *ngIf="detail.status; else canceledButton" class="cancel-but" type="submit" (click)="cancelBooking(detail.uuid,detail.selectedSeats,detail.busId)">Cancel</button>
+                            
                             <ng-template #canceledButton>
-                                <button class="canceled-but" type="button" disabled>Canceled</button>
+                                <button class="canceled-but"  disabled>Canceled</button>
+                                <button  class="addToWallet-button" type="submit" (click)="addToWallet(detail.uuid, detail.totalFare)">Add to wallet</button>  
                             </ng-template>
-                        </ng-container>
-                    </div>
-                    
-                    
-                    
-                    
+                        </ng-container>                    
+                    </div>   
                 </div>
-                <div class="top-padd"></div>
+                <div class="top-padd1"></div>
             </div>
         </div>
       </div>
-      
-
-
-    <!-- <div class="box" *ngFor="let detail of bookingDetails" >
-        <ul class="left">
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
-        
-        <ul class="right">
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
-        <div class="ticket">
-          <span class="airline">BusVia.com <span style="font-style: italic;font-size: small;margin-left: 50px;color: antiquewhite;">Booking Date: {{ bookingDate }}</span></span>
-          <span class="airline airlineslip">BusVia</span>
-          <span class="boarding">Boarding pass</span>
-          <div class="content" >
-            <span class="jfk jfkslips">From : {{ detail.fromLocations }}</span>
-            
-            <span class="jfk jfkslip"></span>
-            <span class="sfo sfoslip"> To : {{ detail.toLocations }}</span>
-            <div class="sub-content">
-              <span class="watermark">BusVia.com</span>
-             
-              <div  *ngFor="let passenger of detail.passengers">
-                <span class="name">PASSENGER NAME<br><span>{{passenger.name}}</span></span>
-                <span class="gender">GENDER <br><span>{{passenger.gender}}</span></span>
-                <span class="age">Age <br><span>{{passenger.age}}</span></span>
-                <span class="seat seatslip">SEAT<br><span>{{passenger.seatNumber}}</span></span>
-              </div>
-            
-              <span class="flight">MAIL <br><span>{{detail.email}}</span></span>
-              <span class="gate">CONTACT<br><span>{{detail.contact}}</span></span>
-              <br>
-              <span class="boardingtime">BOARDING DATE & TIME  : <span>{{ detail.departuredate }} </span></span>
-    
-              
-                  
-               <span class="flight flightslip">BUS NO:<br><span>{{detail.busNumber}}</span></span>
-               <span class="flight flightslipS">BUS NAME:<br><span>{{busName}}</span></span>
-               <span class="flight flightslipes">Email : <br><span>{{busMail}}</span></span>
-                <span class="name nameslips " >FARE  :  &#8377; <span style=" font-size: larger;"> {{ detail.totalFare }}</span></span>
-                <br>
-               <span class="name nameslip">ARRIVAL  DATE : <span>: {{ detail.arrivaldate }}</span></span>
-            </div>
-          </div>
-          <div class="barcode"></div>
-          <div class="barcode slip"></div>
-        </div>
-    </div> -->
-
 </div>
 
 

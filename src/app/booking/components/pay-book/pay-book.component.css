@@ -1,10 +1,13 @@
 .bus-card{
     width: 100%;
     height: 170px;
-    background-color: hsla(186, 29%, 51%, 0.851);
-    background-image: linear-gradient(270deg, #dbf5f8d0 0%, #eafcffcb 19%, #effeff 39%, #f6feff 60%, #fcffff 90%, #fcfcfc 100%);
+    background-color: hsla(180, 4%, 28%, 0.851);
+    
+    background-image: linear-gradient(270deg, #4e4f53d0 0%, #484849cb 19%, #363738 39%, #35353d 60%, #3f4143 90%, #474748 100%);
     color : rgb(90, 87, 87);
     border-radius: 10px;
+    border: 2px solid #92a8deba;
+    color: rgba(224, 222, 234, 0.723);
    }
    .card-book {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -107,7 +110,7 @@
   flex-wrap: wrap; /* Wrap items onto multiple lines */
 }
 .title-bar{
-    background-color: rgb(123, 95, 204);
+    background-color: #1F046E;
     color: white;
     width: 100%;
     height: 60px;
@@ -147,4 +150,115 @@
   color: white; /* White text */
   width: 400px !important;
   height: 100px !important;
+}
+.coupons-body{
+  margin-left: 100px;
+  width: 100%;
+  margin-top: 30px;
+ 
+}
+.coupon-list{
+  width: 100%;
+  height: 60px;
+  margin-bottom: 30px;
+  margin-bottom: 30px;
+  border-radius: 20px 0 0 20px;
+   background-color: #94ffc6;
+  background-image: linear-gradient(45deg, #a1ffcd 0%, #fcf88c 100%);
+  color: rgba(82, 82, 255, 0.93);
+  font-size: 18px;
+  font-weight: 700;
+  padding-left: 10px;
+  padding-top: 18px;
+  margin-right: 70px;
+}
+.c-head{
+  padding-left: 20px;
+  margin-top: 60px;
+  margin-bottom: 30px;
+  background-color: #5b8cffd1;
+  color: #dbecfa;
+  text-align: center;
+  border-radius: 5px;
+  height: 30px;
+  
+}
+.body-c{
+  background-color: #4c4c4c;
+  width: 100%;
+}
+.coupon-button{
+  width: 100%;
+  height: 20%;
+  background-color: #3cac81;
+  color: white;
+  font-weight: 600;
+  font-size: 17px;
+  border-radius: 10px;
+  border:none;
+}
+.cancel-coupon-button{
+  width: 100%;
+  height: 20%;
+  background-color: #a4433c;
+  color: white;
+  font-weight: 600;
+  font-size: 17px;
+  border-radius: 10px;
+  border:none;
+}
+.payment-options {
+  display: flex;
+  align-items: center;
+}
+
+.payment-options input[type="radio"] {
+  display: none; /* Hide the default radio buttons */
+}
+
+.payment-options label {
+  margin-right: 20px; /* Adjust spacing between labels */
+  position: relative;
+  cursor: pointer;
+  padding-left: 25px; /* Space for custom radio button */
+}
+
+.payment-options label:before {
+  
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px; /* Size of custom radio button */
+  height: 18px;
+  border: 2px solid #fefefe; /* Border color */
+  border-radius: 50%; /* Make it circular */
+}
+
+.payment-options input[type="radio"]:checked + label:before {
+  background-color: #007bff; /* Color when radio button is checked */
+}
+
+/* Additional styling for hover effect */
+.payment-options label:hover:before {
+  border-color: #0056b3; /* Adjust border color on hover */
+}
+
+.payment-options input[type="radio"]:checked + label:hover:before {
+  background-color: #61eca0; /* Adjust background color when checked and hovered */
+}
+.payment-options-body{
+  color: rgb(255, 255, 255);
+  font-size: larger;
+  font-weight: 700;
+  width: 100%;
+  background-color: #6ac1f7;
+background-image: linear-gradient(90deg, #5cc0ff 0%, #9FACE6 100%);
+border-radius: 10px;
+padding-left: 100px;
+height: 60px;
+padding-top: 17px;
+
+
 }

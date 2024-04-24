@@ -28,6 +28,7 @@ export class ViewSeatComponent {
   bookedSeatsList : number[] = []
   busfare:any ;
   selectedSeatsCount:number=0;
+  authorityMail:string='';
 
 
   // mew
@@ -45,6 +46,7 @@ export class ViewSeatComponent {
 
       this.route.queryParams.subscribe(params => {
         this.busId = params['busId'];
+
         console.log("BUS ID I VIEW SEATS ", this.busId);
         this.bookingService.updatedSeatAfterBooking(this.busId).subscribe((response: number[])=>{
           console.log(response);
@@ -73,8 +75,14 @@ export class ViewSeatComponent {
 
         this.upperSeatCount=response.upperSeat
         this.lowerSeatCount=response.lowerSeat
+        this.authorityMail=response.email;
+        console.log("response : ", response);
         console.log("upperSeat : ",response.upperSeat );
         console.log("lowerseat : ", response.lowerSeat);
+
+        console.log("authorityMail res : ", response.mail);
+        console.log("authorityMail : ", this.authorityMail);
+
         
       //   for (let i = 0; i < response.totalSeats; i++) {
       //     if (i < response.upperSeat) {
@@ -140,73 +148,6 @@ export class ViewSeatComponent {
     this.matSnackBar.dismiss();
   }
 
-  // bookSeat (seatNumber : number){
- 
-
-    // if (this.lowerSeatsList.length >= 4) {
-    
-    //   const errors :string ="You cannot select more than 4 seats. in Lower Deck ";
-      
-    //   this.openCustomSnackBar(errors)
-  
-    //   return;
-    // }else if(this.upperSeatsList.length >= 4){
-    //   const errors :string ="You cannot select more than 4 seats. in upperDeck";
-      
-    //   this.openCustomSnackBar(errors)
-    // }
-//     if(seatNumber<this.lowerSeatCount){
-
-//           if(this.bookedSeatsList.includes(seatNumber)) return;
-
-//           let check = this.upperSeatsList[seatNumber]
-
-//           if(check.booked){
-//             console.log("if");
-            
-//           this.upperSeatsList[seatNumber] = {booked : false}
-//           const seatIndexToDelete=this.upperSeatsList.findIndex((data: { seatNumber: number; }) => data .seatNumber===seatNumber);
-//           this.selectedSeatsLists.splice(seatIndexToDelete);
-//           console.log("deleted ",this.selectedSeatsLists);
-//           this.selectedSeatsCount=this.selectedSeatsLists.length;
-
-//           return;
-//           }else{
-//           this.upperSeatsList[seatNumber] = {booked : true}
-//           }
-//           const isDataExists=this.selectedSeatsLists.find((data: { seatNumber: number; }) => data .seatNumber===seatNumber);
-//           if(isDataExists==undefined){
-//             this.selectedSeatsLists.push(seatNumber)
-//             console.log("Added ",this.selectedSeatsLists);}
-//             this.selectedSeatsCount=this.selectedSeatsLists.length;
-//           }else{
-
-//             console.log("else");
-
-//             if(this.bookedSeatsList.includes(seatNumber)) return;
-            
-   
-//           let checking = this.lowerSeatsList[seatNumber]
-
-//               if(checking.booked){
-//               this.lowerSeatsList[seatNumber] = {booked : false}
-//               const seatIndexToDelete=this.lowerSeatsList.findIndex((data: { seatNumber: number; }) => data .seatNumber===seatNumber);
-//               this.selectedSeatsListes.splice(seatIndexToDelete);
-//               console.log("delete ",this.selectedSeatsListes);
-//               this.selectedSeatsCount=this.selectedSeatsListes.length;
-
-//               return;
-//               }else{
-//               this.lowerSeatsList[seatNumber] = {booked : true}
-//               }
-
-//               const isDataExist=this.selectedSeatsListes.find((data: { seatNumber: number; }) => data .seatNumber===seatNumber);
-//               if(isDataExist==undefined){
-//                 this.selectedSeatsListes.push(seatNumber)
-//                 console.log("Added ",this.selectedSeatsListes);}
-//                 this.selectedSeatsCount=this.selectedSeatsListes.length;
-//            }
-// }
 
   bookSeat (seatNumber : number){
     if (this.selectedSeatsLists.length >= 7) {
@@ -264,8 +205,8 @@ export class ViewSeatComponent {
       const totalFare = this.selectedSeatsCount * this.busfare;
       const totalSeats=this.selectedSeatsCount;
       const fare=this.busfare;
-
-      this.router.navigate(['/booking/payment-details'], { queryParams: { selectedSeats, totalFare, busId: this.busId, totalSeats, fare } });
+      const authorityEmail=this.authorityMail;
+      this.router.navigate(['/booking/payment-details'], { queryParams: { selectedSeats, totalFare, busId: this.busId, totalSeats, fare ,authorityEmail} });
     }
   }
 

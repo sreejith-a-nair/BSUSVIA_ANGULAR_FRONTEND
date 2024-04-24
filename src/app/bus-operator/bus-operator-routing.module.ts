@@ -8,6 +8,8 @@ import { ViewRootComponent } from './components/view-root/view-root.component';
 import { AddStopsComponent } from './components/add-stops/add-stops.component';
 import { BusDataComponent } from './components/bus-data/bus-data.component';
 import { SeatRowsComponent } from './components/seat-rows/seat-rows.component';
+import { OfflineViewSeatComponent } from '../booking/components/offline-view-seat/offline-view-seat.component';
+import { ReservedUserListComponent } from './components/reserved-user-list/reserved-user-list.component';
 
 const routes: Routes = [{ path: '', component: BusOperatorComponent },
                         { path: 'bus-root-time', component: RootTimeComponent },
@@ -17,6 +19,8 @@ const routes: Routes = [{ path: '', component: BusOperatorComponent },
                         { path: 'add-stops', component: AddStopsComponent },
                         { path: 'bus-data', component: BusDataComponent },
                         { path: 'add-seat-row', component: SeatRowsComponent },
+                        { path: 'reserved-user-list', component: ReservedUserListComponent },
+                        
                       ];
 
 @NgModule({

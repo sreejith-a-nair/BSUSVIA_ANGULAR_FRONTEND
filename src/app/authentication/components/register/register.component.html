@@ -98,36 +98,39 @@
         <div class="form-group">
             <label for="password">Password</label>
             <div class="input-group position-relative">
-                <input [type]="inputType" class="form-control" id="password" formControlName="password" />
-                <div class="position-absolute top-0 end-0">
-                    <button type="button" class="btn btn-outline-secondary" (click)="togglePasswordVisibility()">
-                        <i class="far" [ngClass]="{ 'fa-eye': showPassword, 'fa-eye-slash': !showPassword }"></i>
-                    </button>
-                </div>
+              <input [type]="inputType" class="form-control" id="password" formControlName="password" />
+              <div class="position-absolute top-0 end-0">
+                <button type="button" class="btn btn-outline-secondary" (click)="togglePasswordVisibility()">
+                  <i class="far" [ngClass]="{ 'fa-eye': showPassword, 'fa-eye-slash': !showPassword }"></i>
+                </button>
+              </div>
             </div>
-            <small *ngIf="registerForm.get('password')?.invalid && (registerForm.get('password')?.dirty || registerForm.get('password')?.touched)" 
-                class="block p-error">
-                {{ getErrorMessageForPassword('password') }}
+          
+            <small *ngIf="registerForm.get('password')?.invalid && (registerForm.get('password')?.dirty || registerForm.get('password')?.touched)" class="block p-error">
+              <div *ngIf="registerForm.get('password')?.errors?.['required']">Password is required</div>
+              <div *ngIf="registerForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters</div>
+              <div *ngIf="registerForm.get('password')?.errors?.['maxlength']">Password must be at most 16 characters</div>
+              <div *ngIf="registerForm.get('password')?.errors?.['pattern']">Password must contain at least one special character, one number, and be at least 4 characters long</div>
             </small>
-        </div>          
-        
-        <div class="form-group">
-            <label for="confirmPassword">Confirm-Password</label>
+          </div>
+          
+          <div class="form-group">
+            <label for="confirmPassword">Confirm Password</label>
             <div class="input-group position-relative">
-                <input [type]="inputType" class="form-control" id="confirmPassword" formControlName="confirmPassword" />
-                <div class="position-absolute top-0 end-0">
-                    <button type="button" class="btn btn-outline-secondary" (click)="togglePasswordVisibility()">
-                        <i class="far" [ngClass]="{ 'fa-eye': showPassword, 'fa-eye-slash': !showPassword }"></i>
-                    </button>
-                </div>
+              <input [type]="inputType" class="form-control" id="confirmPassword" formControlName="confirmPassword" />
+              <div class="position-absolute top-0 end-0">
+                <button type="button" class="btn btn-outline-secondary" (click)="togglePasswordVisibility()">
+                  <i class="far" [ngClass]="{ 'fa-eye': showPassword, 'fa-eye-slash': !showPassword }"></i>
+                </button>
+              </div>
             </div>
-            <small *ngIf="registerForm.get('confirmPassword')?.invalid && (registerForm.get('confirmPassword')?.dirty || registerForm.get('confirmPassword')?.touched)" 
-                class="block p-error">
-                <div *ngIf="registerForm.get('confirmPassword')?.errors?.['required']">Confirm Password is required</div>
-                <div *ngIf="registerForm.hasError('passwordMismatch')">Passwords do not match</div>
+            <small *ngIf="registerForm.get('confirmPassword')?.invalid && (registerForm.get('confirmPassword')?.dirty || registerForm.get('confirmPassword')?.touched)" class="block p-error">
+              <div *ngIf="registerForm.get('confirmPassword')?.errors?.['required']">Confirm Password is required</div>
+              <div *ngIf="registerForm.get('confirmPassword')?.errors?.['passwordMismatch']">Passwords do not match</div>
             </small>
-        </div>
-       
+          </div>          
+          
+     
          <app-button *ngIf="!isAuthority"   [isSignup]="true"  >Sign Up</app-button>
          <app-button   *ngIf="isAuthority"  [isSignup]="true"  >Next</app-button>
 

@@ -1,0 +1,46 @@
+
+table {
+    font-family: Arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th {
+    
+    color: white;
+  }
+  
+
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  tr:hover {
+    background-color: #ddd;
+  }
+
+  td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  .heading{
+    font-size: large;
+    font-weight: 400;
+    color: rgb(70, 164, 208);
+    text-align: center;
+    width: 100%;
+    height:60px;
+    padding-top: 10px;
+  }
+  .back-btn{
+    background-color: azure;
+    border: 2px solid rgb(67, 132, 231);
+     border-radius: 6px;
+     width: 120px;
+     height: 30px;
+     text-align:center ;
+     margin-left: 40px;
+     margin-bottom: 10px;
+     
+  }
