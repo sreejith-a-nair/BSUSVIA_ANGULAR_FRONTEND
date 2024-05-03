@@ -1,6 +1,6 @@
 export const  environment={
     production:false,
-    BASE_URL:"http://localhost:8989/",
+    BASE_URL:"https://busvia.allstar.website/",
 
     USER_CHAT_URL:"http://localhost:8084/"
 }
