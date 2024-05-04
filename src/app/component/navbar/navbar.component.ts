@@ -52,7 +52,7 @@ export class NavbarComponent implements DoCheck{
                 { label: 'Driver management', routerLink: '/authority/operator-manage', icon: 'group' },
                 { label: 'Booking manage', routerLink: '/authority/booking-manage', icon: 'book' },
                 { label: 'Live Chat', routerLink: '/authority/chat-manage', icon: 'chat' },
-                { label: 'Notification', routerLink: '/authority/notification', icon: 'notifications' },
+                // { label: 'Notification', routerLink: '/authority/notification', icon: 'notifications' },
                 
                 // { label: 'Live Chat', routerLink: '/communication/chat', icon: 'chat' },
                
